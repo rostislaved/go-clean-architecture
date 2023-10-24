@@ -1,0 +1,102 @@
+[Application]
+    Name = "service_name"
+    Version = "1.0.0"
+
+[Services]
+    [Services.SyncService]
+        SyncInterval = "1m"
+
+[Adapters]
+    [Adapters.Secondary]
+        [Adapters.Secondary.Databases]
+            [Adapters.Secondary.Databases.Postgres]
+                Host = "POSTGRES_HOST"
+                Port = "POSTGRES_PORT"
+                Type = "postgres"
+                Name = "POSTGRES_NAME"
+                User = "POSTGRES_USER"
+                Password = "POSTGRES_PASSWORD"
+
+            [Adapters.Secondary.Databases.Clickhouse]
+                Host     = "CLICKHOUSE_HOST"
+                Port     = "CLICKHOUSE_PORT"
+                Type     = "chhttp"
+                Name     = "CLICKHOUSE_NAME"
+                User     = "CLICKHOUSE_USER"
+                Password = "CLICKHOUSE_PASSWORD"
+
+            [Adapters.Secondary.Databases.Mongo]
+                Name     = "MONGO_NAME"
+                Host     = "MONGO_HOST"
+                User     = "MONGO_USER"
+                Password = "MONGO_PASSWORD"
+
+
+        [Adapters.Secondary.Gateways]
+            [Adapters.Secondary.Gateways.Gateway1]
+                Host = "http://example.com"
+
+                [Adapters.Secondary.Gateways.Gateway1.Endpoints]
+                    [Adapters.Secondary.Gateways.Gateway1.Endpoints.CreateArticle]
+                        Method = "POST"
+                        Path = "/api/v2/article"
+                        Headers = {}
+                    [Adapters.Secondary.Gateways.Gateway1.Endpoints.GetBook]
+                        Method = "GET"
+                        Path = "/api/v1/book"
+                        Headers = {}
+        [Adapters.Secondary.NatsAdapterPublisher]
+            [Adapters.Secondary.NatsAdapterPublisher.Connection]
+                Host = "NATS_HOST"
+                ClusterID = ""
+                ClientID =  ""
+                AllowMultipleClients = true
+                User = "NATS_USER"
+                Password = "NATS_PASSWORD"
+            [Adapters.Secondary.NatsAdapterPublisher.Publisher1]
+                Channel = ""
+
+
+
+    [Adapters.Primary]
+        [Adapters.Primary.HttpAdapter]
+            [Adapters.Primary.HttpAdapter.Server]
+                Port = ":8080"
+            [Adapters.Primary.HttpAdapter.Router]
+                AuthenticationConfig = "AUTHENTICATION_CONFIG"
+                AuthorizationConfig = "AUTHORIZATION_CONFIG"
+                [Adapters.Primary.HttpAdapter.Router.Shutdown]
+                    Duration = 15
+                [Adapters.Primary.HttpAdapter.Router.Timeout]
+                    Duration = 60
+
+        [Adapters.Primary.KafkaAdapterSubscriber]
+                Host = "KAFKA_HOST" # kafka-server.ru:9092
+                Topic = "topic_name"
+                GroupID = "gorup_name"
+
+        [Adapters.Primary.NatsAdapterSubscriber]
+            [Adapters.Primary.NatsAdapterSubscriber.Connection]
+                Host = "NATS_HOST"
+                ClusterID = ""
+                ClientID =  ""
+                AllowMultipleClients = true
+                User = "NATS_USER"
+                Password = "NATS_PASSWORD"
+            [Adapters.Primary.NatsAdapterSubscriber.Subscriber1]
+                    Channel = ""
+                    QueueGroup = ""
+                    DurableName = ""
+                    MaxInflight = 123
+                    DeliverAllAvailable = true
+                    AckWaitTimeout = 123
+
+
+
+
+
+
+
+
+
+

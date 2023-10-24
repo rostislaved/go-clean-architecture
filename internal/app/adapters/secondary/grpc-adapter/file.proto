@@ -1,0 +1,16 @@
+//protoc --go_out=. --go_opt=paths=import \                                                                                                    rostislav@rostislav-xps159520
+//		--go-grpc_out=. --go-grpc_opt=paths=import \
+//		file.proto
+
+syntax = "proto3";
+package api;
+
+option go_package = "./generated";
+
+message Message {
+	string body = 1;
+}
+
+service Api {
+	rpc SendMessage(Message) returns (Message);
+}
