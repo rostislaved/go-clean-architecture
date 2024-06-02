@@ -10,7 +10,7 @@ import (
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
 )
 
-func (repo *FirstRepository) Get(ctx context.Context, ids []int) (books []book.Order, err error) {
+func (repo *FirstRepository) Get(ctx context.Context, ids []int) (books []book.Book, err error) {
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
 
 	builder := psql.

@@ -5,17 +5,19 @@ import (
 	"encoding/json"
 
 	"github.com/segmentio/kafka-go"
+
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
 )
 
-func (a *KafkaAdapterPublisher) SendOrder(ctx context.Context, o book.Book) error {
-	orderJSONBytes, err := json.Marshal(o)
+func (a *KafkaAdapterPublisher) SendBook(ctx context.Context, b book.Book) error {
+	bookJSONBytes, err := json.Marshal(b)
 	if err != nil {
 		return err
 	}
 
 	message := kafka.Message{
 		Key:   []byte("Key"),
-		Value: orderJSONBytes,
+		Value: bookJSONBytes,
 	}
 
 	err = a.writer.WriteMessages(ctx, message)

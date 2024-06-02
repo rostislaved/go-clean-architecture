@@ -2,18 +2,26 @@ package booksRepository
 
 import (
 	"database/sql"
+
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
 )
 
-type OrderDTO struct {
-	Field1 sql.NullString
-	Field2 sql.NullInt64
-	Field3 sql.NullBool
+type BookDTO struct {
+	ID            sql.NullInt64
+	Name          sql.NullString
+	Author        sql.NullString
+	Date          sql.NullTime
+	NumberOfPages sql.NullString
 }
 
-func (dto *OrderDTO) ToEntity() (book.Book, error) {
+func (dto *BookDTO) ToEntity() (book.Book, error) {
+	// add fields validation if necessary
+
 	return book.Book{
-		Field1: dto.Field1.String,
-		Field2: dto.Field2.Int64,
-		Field3: dto.Field3.Bool,
+		ID:            dto.ID.Int64,
+		Name:          dto.Name.String,
+		Author:        dto.Author.String,
+		Date:          dto.Date.Time,
+		NumberOfPages: 0,
 	}, nil
 }

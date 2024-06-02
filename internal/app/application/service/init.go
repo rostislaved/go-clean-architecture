@@ -16,8 +16,8 @@ type ApiService struct {
 }
 
 type repository interface {
-	GetBooks(ctx context.Context, ids []int) (books []book.Order, err error)
-	SaveBooks(ctx context.Context, books []book.Order) (ids []int, err error)
+	GetBooks(ctx context.Context, ids []int) (books []book.Book, err error)
+	SaveBooks(ctx context.Context, books []book.Book) (ids []int, err error)
 }
 
 type provider interface{}

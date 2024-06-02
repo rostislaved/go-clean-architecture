@@ -21,7 +21,7 @@ func (svc *ApiService) loop() (err error) {
 	return nil
 }
 
-func (svc *ApiService) GetBooksByIDs(ctx context.Context, ids []int) (books []book.Order, err error) {
+func (svc *ApiService) GetBooksByIDs(ctx context.Context, ids []int) (books []book.Book, err error) {
 	books, err = svc.repository.GetBooks(ctx, ids)
 	if err != nil {
 		return nil, err
@@ -30,7 +30,7 @@ func (svc *ApiService) GetBooksByIDs(ctx context.Context, ids []int) (books []bo
 	return nil, nil
 }
 
-func (svc *ApiService) SaveBooks(ctx context.Context, books []book.Order) (ids []int, err error) {
+func (svc *ApiService) SaveBooks(ctx context.Context, books []book.Book) (ids []int, err error) {
 	ids, err = svc.repository.SaveBooks(ctx, books)
 	if err != nil {
 		return nil, err
