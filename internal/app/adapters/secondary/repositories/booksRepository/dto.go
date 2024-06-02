@@ -1,9 +1,7 @@
-package firstRepository
+package booksRepository
 
 import (
 	"database/sql"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/order"
 )
 
 type OrderDTO struct {
@@ -12,8 +10,8 @@ type OrderDTO struct {
 	Field3 sql.NullBool
 }
 
-func (dto *OrderDTO) ToEntity() (order.Order, error) {
-	return order.Order{
+func (dto *OrderDTO) ToEntity() (book.Book, error) {
+	return book.Book{
 		Field1: dto.Field1.String,
 		Field2: dto.Field2.Int64,
 		Field3: dto.Field3.Bool,

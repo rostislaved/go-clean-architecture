@@ -2,12 +2,10 @@ package natsController
 
 import (
 	"encoding/json"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/order"
 )
 
 func (ctr NatsController) DoSomething(message []byte) (err error) {
-	var smth []order.Order
+	var smth []book.Book
 
 	err = json.Unmarshal(message, &smth)
 	if err != nil {

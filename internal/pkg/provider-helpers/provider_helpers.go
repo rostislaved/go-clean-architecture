@@ -130,6 +130,58 @@ var allHttpMethods = map[string]bool{
 	http.MethodTrace:   true,
 }
 
+func ValidateStatusCode(receivedStatusCode int, body []byte) (err error) {
+	switch getStatusCodeGroup(receivedStatusCode) {
+	case "1xx":
+		//
+	case "2xx":
+		if receivedStatusCode == http.StatusOK {
+			return
+		}
+
+		return
+	case "3xx":
+		//
+	case "4xx":
+		switch receivedStatusCode {
+		case http.StatusBadRequest:
+			err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
+
+			return
+		case http.StatusNotFound:
+			err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
+
+			return
+		}
+
+	case "5xx":
+		//
+	default: //
+	}
+
+	err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
+
+	return
+}
+
+func getStatusCodeGroup(receivedStatusCode int) (group string) {
+	switch {
+	case 100 <= receivedStatusCode && receivedStatusCode <= 199:
+		group = "1xx"
+	case 200 <= receivedStatusCode && receivedStatusCode <= 299:
+		group = "2xx"
+	case 300 <= receivedStatusCode && receivedStatusCode <= 399:
+		group = "3xx"
+	case 400 <= receivedStatusCode && receivedStatusCode <= 499:
+		group = "4xx"
+	case 500 <= receivedStatusCode && receivedStatusCode <= 599:
+		group = "5xx"
+	default:
+	}
+
+	return
+}
+
 func PrintRequestHook(client *resty.Client, request *http.Request) error {
 	curl, err := http2curl.GetCurlCommand(request)
 	if err != nil {

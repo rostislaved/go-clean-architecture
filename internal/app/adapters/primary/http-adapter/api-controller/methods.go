@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/order"
 )
 
 func (ctr Controller) Get(w http.ResponseWriter, r *http.Request) {
@@ -16,7 +14,7 @@ func (ctr Controller) Get(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var entityQuery []order.Order
+	var entityQuery []book.Book
 
 	err = json.Unmarshal(bodyBytes, &entityQuery)
 	if err != nil {

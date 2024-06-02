@@ -2,11 +2,44 @@
     Name = "service_name"
     Version = "1.0.0"
 
-[Services]
-    [Services.SyncService]
-        SyncInterval = "1m"
+[Application]
+    [Application.UpdateService]
+        UpdateInterval = "1m"
 
 [Adapters]
+    [Adapters.Primary]
+        [Adapters.Primary.HttpAdapter]
+            [Adapters.Primary.HttpAdapter.Server]
+                Port = ":8080"
+            [Adapters.Primary.HttpAdapter.Router]
+                AuthenticationConfig = "AUTHENTICATION_CONFIG"
+                AuthorizationConfig = "AUTHORIZATION_CONFIG"
+                [Adapters.Primary.HttpAdapter.Router.Shutdown]
+                    Duration = 15
+                [Adapters.Primary.HttpAdapter.Router.Timeout]
+                    Duration = 60
+
+        [Adapters.Primary.KafkaAdapterSubscriber]
+                Host = "KAFKA_HOST" # kafka-server.ru:9092
+                Topic = "topic_name"
+                GroupID = "gorup_name"
+
+        [Adapters.Primary.NatsAdapterSubscriber]
+            [Adapters.Primary.NatsAdapterSubscriber.Connection]
+                Host = "NATS_HOST"
+                ClusterID = ""
+                ClientID =  ""
+                AllowMultipleClients = true
+                User = "NATS_USER"
+                Password = "NATS_PASSWORD"
+            [Adapters.Primary.NatsAdapterSubscriber.Subscriber1]
+                    Channel = ""
+                    QueueGroup = ""
+                    DurableName = ""
+                    MaxInflight = 123
+                    DeliverAllAvailable = true
+                    AckWaitTimeout = 123
+
     [Adapters.Secondary]
         [Adapters.Secondary.Databases]
             [Adapters.Secondary.Databases.Postgres]
@@ -55,48 +88,3 @@
                 Password = "NATS_PASSWORD"
             [Adapters.Secondary.NatsAdapterPublisher.Publisher1]
                 Channel = ""
-
-
-
-    [Adapters.Primary]
-        [Adapters.Primary.HttpAdapter]
-            [Adapters.Primary.HttpAdapter.Server]
-                Port = ":8080"
-            [Adapters.Primary.HttpAdapter.Router]
-                AuthenticationConfig = "AUTHENTICATION_CONFIG"
-                AuthorizationConfig = "AUTHORIZATION_CONFIG"
-                [Adapters.Primary.HttpAdapter.Router.Shutdown]
-                    Duration = 15
-                [Adapters.Primary.HttpAdapter.Router.Timeout]
-                    Duration = 60
-
-        [Adapters.Primary.KafkaAdapterSubscriber]
-                Host = "KAFKA_HOST" # kafka-server.ru:9092
-                Topic = "topic_name"
-                GroupID = "gorup_name"
-
-        [Adapters.Primary.NatsAdapterSubscriber]
-            [Adapters.Primary.NatsAdapterSubscriber.Connection]
-                Host = "NATS_HOST"
-                ClusterID = ""
-                ClientID =  ""
-                AllowMultipleClients = true
-                User = "NATS_USER"
-                Password = "NATS_PASSWORD"
-            [Adapters.Primary.NatsAdapterSubscriber.Subscriber1]
-                    Channel = ""
-                    QueueGroup = ""
-                    DurableName = ""
-                    MaxInflight = 123
-                    DeliverAllAvailable = true
-                    AckWaitTimeout = 123
-
-
-
-
-
-
-
-
-
-

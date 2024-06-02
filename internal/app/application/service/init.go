@@ -1,6 +1,10 @@
 package service
 
 import (
+	"context"
+	"log/slog"
+
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
 )
 
@@ -11,7 +15,10 @@ type ApiService struct {
 	provider   provider
 }
 
-type repository interface{}
+type repository interface {
+	GetBooks(ctx context.Context, ids []int) (books []book.Order, err error)
+	SaveBooks(ctx context.Context, books []book.Order) (ids []int, err error)
+}
 
 type provider interface{}
 

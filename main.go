@@ -7,10 +7,9 @@ import (
 	_ "go.uber.org/automaxprocs"
 
 	httpAdapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/gateway1"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/firstRepository"
-
 	osSignalAdapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/gateway1"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/booksRepository"
 
 	natsAdapterSubscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
 	natsAdapterPublisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
@@ -30,7 +29,7 @@ func main() {
 	//// SECONDARY ADAPTERS
 
 	// Repository adapter
-	firstRepository := firstRepository.New(l, cfg.Adapters.Secondary.Databases.Postgres)
+	firstRepository := booksRepository.New(l, cfg.Adapters.Secondary.Databases.Postgres)
 	_ = firstRepository // Используем в сервисе
 
 	// Provider adapter
@@ -50,7 +49,7 @@ func main() {
 	// health checks
 
 	//// APPLICATION
-	svc := service.New(l, cfg.Services.UpdateService, firstRepository, provider)
+	svc := service.New(l, cfg.Application.UpdateService, firstRepository, provider)
 
 	//// PRIMARY ADAPTERS
 

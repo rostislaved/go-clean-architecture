@@ -2,11 +2,9 @@ package natsAdapterPublisher
 
 import (
 	"encoding/json"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/order"
 )
 
-func (a *NatsAdapterPublisher) SendOrder(o order.Order) error {
+func (a *NatsAdapterPublisher) SendOrder(o book.Book) error {
 	orderJSONBytes, err := json.Marshal(o)
 	if err != nil {
 		return err

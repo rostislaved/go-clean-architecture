@@ -5,11 +5,9 @@ import (
 	"encoding/json"
 
 	"github.com/segmentio/kafka-go"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/order"
 )
 
-func (a *KafkaAdapterPublisher) SendOrder(ctx context.Context, o order.Order) error {
+func (a *KafkaAdapterPublisher) SendOrder(ctx context.Context, o book.Book) error {
 	orderJSONBytes, err := json.Marshal(o)
 	if err != nil {
 		return err

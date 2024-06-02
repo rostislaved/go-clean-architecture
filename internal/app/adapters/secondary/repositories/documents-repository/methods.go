@@ -6,11 +6,9 @@ import (
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/order"
 )
 
-func (repo *DocumentsRepository) GetEmployees(ids []int64) ([]order.Employee, error) {
+func (repo *DocumentsRepository) GetEmployees(ids []int64) ([]book.Employee, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -40,7 +38,7 @@ func (repo *DocumentsRepository) GetEmployees(ids []int64) ([]order.Employee, er
 		}
 	}()
 
-	var employeeList []order.Employee
+	var employeeList []book.Employee
 
 	err = cursor.All(ctx, &employeeList)
 	if err != nil {
