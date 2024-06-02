@@ -11,18 +11,18 @@ import (
 
 	_ "github.com/mailru/go-clickhouse/v2"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/booksRepository"
 	"github.com/rostislaved/go-clean-architecture/internal/pkg/helpers"
 	"github.com/rostislaved/go-clean-architecture/internal/pkg/repohelpers"
 )
 
 type AnalyticsRepository struct {
 	logger *slog.Logger
-	config config.DatabaseRelational
+	config booksRepository.DatabaseRelational
 	DB     *sql.DB
 }
 
-func New(l *slog.Logger, cfg config.DatabaseRelational) *AnalyticsRepository {
+func New(l *slog.Logger, cfg booksRepository.DatabaseRelational) *AnalyticsRepository {
 	currentHostString := fmt.Sprintf("DB host: [%s:%s].", cfg.Host, cfg.Port)
 
 	log.Println(currentHostString + " Подключение...")

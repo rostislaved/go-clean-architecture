@@ -1,5 +1,7 @@
 package config
 
+import "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/booksRepository"
+
 type Adapters struct {
 	Primary   Primary
 	Secondary Secondary
@@ -18,8 +20,8 @@ type Secondary struct {
 	Gateways              Gateways
 }
 type Databases struct {
-	Postgres   DatabaseRelational
-	Clickhouse DatabaseRelational
+	Postgres   booksRepository.DatabaseRelational
+	Clickhouse booksRepository.DatabaseRelational
 	Mongo      DatabaseMongo
 }
 

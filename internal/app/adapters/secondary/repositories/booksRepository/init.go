@@ -13,18 +13,17 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 	_ "github.com/lib/pq"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
 	"github.com/rostislaved/go-clean-architecture/internal/pkg/helpers"
 	"github.com/rostislaved/go-clean-architecture/internal/pkg/repohelpers"
 )
 
 type FirstRepository struct {
 	logger *slog.Logger
-	config config.DatabaseRelational
+	config DatabaseRelational
 	DB     *sql.DB
 }
 
-func New(l *slog.Logger, cfg config.DatabaseRelational) *FirstRepository {
+func New(l *slog.Logger, cfg DatabaseRelational) *FirstRepository {
 	currentHostString := fmt.Sprintf("DB host: [%s:%s].", cfg.Host, cfg.Port)
 
 	log.Println(currentHostString + " Подключение...")
@@ -59,4 +58,14 @@ func New(l *slog.Logger, cfg config.DatabaseRelational) *FirstRepository {
 		config: cfg,
 		DB:     db,
 	}
+}
+
+type DatabaseRelational struct {
+	Type       string
+	Host       string `config:"envVar"`
+	Port       string `config:"envVar"`
+	User       string `config:"envVar"`
+	Password   string `config:"envVar"`
+	Name       string
+	Procedures map[string]string
 }
