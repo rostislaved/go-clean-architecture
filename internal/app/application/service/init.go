@@ -4,8 +4,8 @@ import (
 	"context"
 	"log/slog"
 
+	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
 )
 
 type ApiService struct {

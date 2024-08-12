@@ -9,3 +9,5 @@ v0.0.1
 3. Implement graceful shutdown
 4. Consider making a branch with google/wire
 5. Separate interface adapters layer and infrastructure layer
+6. Think about fatals in adapters constructors
+

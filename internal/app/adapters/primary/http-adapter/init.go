@@ -1,13 +1,13 @@
 package httpAdapter
 
 import (
+	"log/slog"
 	"net/http"
 	"time"
 
 	controller "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/api-controller"
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/router"
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/service"
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
 )
 
 const (
@@ -19,14 +19,14 @@ const (
 
 type HttpAdapter struct {
 	logger          *slog.Logger
-	config          config.HttpAdapter
+	config          HttpAdapterConfig
 	router          http.Handler
 	server          *http.Server
 	shutdownTimeout time.Duration
 	notify          chan error
 }
 
-func New(logger *slog.Logger, config config.HttpAdapter, svc *service.ApiService) HttpAdapter {
+func New(logger *slog.Logger, config HttpAdapterConfig, svc *service.ApiService) HttpAdapter {
 	r := router.New()
 
 	ctr := controller.New(logger, svc)

@@ -6,13 +6,13 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter"
 	middlewarehelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/middleware-helpers"
 )
 
 type Router struct {
 	router *mux.Router
-	config config.Router
+	config httpAdapter.RouterConfig
 }
 
 func New() *Router {

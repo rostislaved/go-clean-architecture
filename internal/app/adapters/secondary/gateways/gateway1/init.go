@@ -7,19 +7,17 @@ import (
 	"github.com/go-resty/resty/v2"
 
 	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/provider-helpers"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
 )
 
 type Gateway1 struct {
 	logger *slog.Logger
-	config config.Gateway1
+	config Config
 	client *resty.Client
 }
 
 func New(
 	l *slog.Logger,
-	config config.Gateway1,
+	config Config,
 ) *Gateway1 {
 	err := providerhelpers.ValidateEndpoints(config.Endpoints)
 	if err != nil {

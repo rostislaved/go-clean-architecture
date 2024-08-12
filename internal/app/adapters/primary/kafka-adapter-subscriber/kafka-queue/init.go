@@ -6,18 +6,18 @@ import (
 
 	"github.com/segmentio/kafka-go"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber"
 )
 
 type KafkaQueue struct {
 	logger      *slog.Logger
-	config      config.KafkaAdapterSubscriber
+	config      kafkaAdapterSubscriber.KafkaAdapterSubscriberConfig
 	kafkaReader *kafka.Reader
 }
 
 func New(
 	l *slog.Logger,
-	cfg config.KafkaAdapterSubscriber,
+	cfg kafkaAdapterSubscriber.KafkaAdapterSubscriberConfig,
 ) *KafkaQueue {
 	r := kafka.NewReader(kafka.ReaderConfig{
 		Brokers:  []string{cfg.Host},

@@ -1,18 +1,18 @@
 package kafkaAdapterPublisher
 
 import (
-	"github.com/segmentio/kafka-go"
+	"log/slog"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/config"
+	"github.com/segmentio/kafka-go"
 )
 
 type KafkaAdapterPublisher struct {
 	logger *slog.Logger
-	config config.KafkaAdapterPublisher
+	config KafkaAdapterPublisherConfig
 	writer *kafka.Writer
 }
 
-func New(logger *slog.Logger, config config.KafkaAdapterPublisher) *KafkaAdapterPublisher {
+func New(logger *slog.Logger, config KafkaAdapterPublisherConfig) *KafkaAdapterPublisher {
 	w := kafka.Writer{
 		// TODO Брать поля из конфига
 	}

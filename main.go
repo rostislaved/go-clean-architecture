@@ -10,6 +10,7 @@ import (
 	osSignalAdapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter"
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/gateway1"
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/booksRepository"
+	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 
 	natsAdapterSubscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
 	natsAdapterPublisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
@@ -18,7 +19,6 @@ import (
 	kafkaAdapterPublisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
 
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/service"
-	"github.com/rostislaved/go-clean-architecture/internal/pkg/config"
 )
 
 func main() {

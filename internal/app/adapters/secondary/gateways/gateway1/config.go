@@ -1,13 +1,13 @@
-package config
+package gateway1
 
 import providerhelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/provider-helpers"
 
-type Gateway1 struct {
+type Config struct {
 	Host      string
-	Endpoints Gateway1Endpoints
+	Endpoints Endpoints
 }
 
-type Gateway1Endpoints struct {
+type Endpoints struct {
 	SignFile       providerhelpers.Endpoint
 	GetCertificate providerhelpers.Endpoint
 }

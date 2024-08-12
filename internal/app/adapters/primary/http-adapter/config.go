@@ -1,17 +1,17 @@
-package config
+package httpAdapter
 
 import "time"
 
-type HttpAdapter struct {
-	Server Server
-	Router Router
+type HttpAdapterConfig struct {
+	Server ServerConfig
+	Router RouterConfig
 }
 
-type Server struct {
+type ServerConfig struct {
 	Port string
 }
 
-type Router struct {
+type RouterConfig struct {
 	Shutdown             shutdown
 	Timeout              timeout
 	AuthenticationConfig string `config:"envVar"`
