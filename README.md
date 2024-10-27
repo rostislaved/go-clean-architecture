@@ -28,7 +28,7 @@ Notes:
 1. snake_case in package names is opinionated
 2. adapters implementations are not production ready. They are just examples (except http-adapter)
 
-# Project layout structure
+# Project layout
 ```
 .
 ├── cmd
