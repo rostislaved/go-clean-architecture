@@ -37,11 +37,11 @@ linters:
     - bidichk
     - bodyclose
     - containedctx
-    #    - cyclop
+    - cyclop
     - decorder
     - dogsled
     - dupword
-    #    - durationcheck
+    - durationcheck
     - errchkjson
     - errname
     - errorlint

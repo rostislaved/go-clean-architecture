@@ -1,6 +1,14 @@
 ## Work in progress
 
 v0.0.2 (27.10.2024)
+* added graceful lib for graceful shutdown
+* http-adapter is ready
+* main is refactored. Initialization and runtime parts are separated
+* configs now are parts of their packages
+* consistent package names (all snake_case)
+* general refactoring. Refactored names of: packages, variables, functions etc.
+
+
 
 v0.0.1
 * initial version
