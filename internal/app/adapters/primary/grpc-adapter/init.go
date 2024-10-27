@@ -1,12 +1,13 @@
-package grpcAdapter
+package grpc_adapter
 
 import (
 	"log"
 	"net"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/controller"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/generated"
 	"google.golang.org/grpc"
+
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/generated"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/handlers"
 )
 
 type GrpcAdapter struct {
@@ -21,7 +22,7 @@ func New() *GrpcAdapter {
 
 	server := grpc.NewServer()
 
-	generated.RegisterApiServer(server, controller.Server{})
+	generated.RegisterApiServer(server, handlers.Server{})
 
 	startFunc := func() error {
 		err = server.Serve(listener)

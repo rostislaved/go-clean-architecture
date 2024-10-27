@@ -7,7 +7,7 @@ import (
 	middlewarehelpers "github.com/rostislaved/go-clean-architecture/internal/libs/middleware-helpers"
 )
 
-func (r *Router) AppendRoutes(config Config, controller *handlers.Handlers) {
+func (r *Router) AppendRoutes(config Config, handlers *handlers.Handlers) {
 	r.config = config
 
 	apiV1Subrouter := r.router.PathPrefix(apiV1Prefix).Subrouter()
@@ -17,7 +17,7 @@ func (r *Router) AppendRoutes(config Config, controller *handlers.Handlers) {
 			Name:    "method1",
 			Path:    "/method1",
 			Method:  http.MethodPost,
-			Handler: middlewarehelpers.And()(http.HandlerFunc(controller.Get)),
+			Handler: middlewarehelpers.And()(http.HandlerFunc(handlers.Get)),
 		},
 	}
 

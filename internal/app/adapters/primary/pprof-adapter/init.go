@@ -1,4 +1,4 @@
-package pprofAdapter
+package pprof_adapter
 
 import (
 	"context"
@@ -6,6 +6,7 @@ import (
 	"net/http/pprof"
 
 	"github.com/gorilla/mux"
+
 	http_server "github.com/rostislaved/go-clean-architecture/internal/libs/http-server"
 )
 

@@ -12,8 +12,6 @@
             [Adapters.Primary.HttpAdapter.Server]
                 Port = ":8080"
             [Adapters.Primary.HttpAdapter.Router]
-                AuthenticationConfig = "AUTHENTICATION_CONFIG"
-                AuthorizationConfig = "AUTHORIZATION_CONFIG"
                 [Adapters.Primary.HttpAdapter.Router.Shutdown]
                     Duration = 15
                 [Adapters.Primary.HttpAdapter.Router.Timeout]
