@@ -5,7 +5,7 @@ import (
 	kafka_queue "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-queue"
 	nats_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
 	pprofAdapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/gateway1"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/books-gateway"
 	kafka_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
 	nats_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
 	books_repository_clickhouse "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-clickhouse"
@@ -39,5 +39,5 @@ type Databases struct {
 }
 
 type Gateways struct {
-	Gateway1 gateway1.Config
+	Gateway1 books_gateway.Config
 }

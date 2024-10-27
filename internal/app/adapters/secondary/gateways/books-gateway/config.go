@@ -1,4 +1,4 @@
-package gateway1
+package books_gateway
 
 import providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
 

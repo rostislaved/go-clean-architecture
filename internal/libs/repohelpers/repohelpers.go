@@ -2,7 +2,6 @@ package repohelpers
 
 import (
 	"fmt"
-	"log"
 	"strings"
 )
 
@@ -38,7 +37,7 @@ func GetConnectionString(Type, Host, Port, User, Password, Name string) (connect
 			Name,
 		)
 	default:
-		log.Fatal("Неверный тип БД")
+		panic("Неверный тип БД")
 	}
 
 	return

@@ -21,7 +21,7 @@ v0.0.1
 5. Separate interface adapters layer and infrastructure layer
 6. Think about fatals in adapters constructors (+)
 7. Validate how context is propagated in adapters
-8. Consider changing (or adding) Config.toml to yaml or hcl.
+8. Consider changing (or adding) Config.toml to yaml or hcl
 
 
 Notes:

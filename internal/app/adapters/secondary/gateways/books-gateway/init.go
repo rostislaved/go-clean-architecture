@@ -1,14 +1,14 @@
-package gateway1
+package books_gateway
 
 import (
-	"log"
 	"log/slog"
 
 	"github.com/go-resty/resty/v2"
+
 	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
 )
 
-type Gateway1 struct {
+type BooksGateway struct {
 	logger *slog.Logger
 	config Config
 	client *resty.Client
@@ -17,10 +17,10 @@ type Gateway1 struct {
 func New(
 	l *slog.Logger,
 	config Config,
-) *Gateway1 {
+) *BooksGateway {
 	err := providerhelpers.ValidateEndpoints(config.Endpoints)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	client := resty.New().
@@ -28,7 +28,7 @@ func New(
 		// SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetRetryCount(3)
 
-	return &Gateway1{
+	return &BooksGateway{
 		logger: l,
 		config: config,
 		client: client,

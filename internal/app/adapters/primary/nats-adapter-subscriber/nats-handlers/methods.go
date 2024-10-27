@@ -30,16 +30,16 @@ func (ctr NatsHandlers) SaveBooks(message []byte) (err error) {
 	return
 }
 
+type Request struct {
+	RequestBooks []RequestBook `json:"books"`
+}
+
 type RequestBook struct {
 	ID            int64     `json:"id"`
 	Name          string    `json:"name"`
 	Author        string    `json:"author"`
 	Date          time.Time `json:"date"`
 	NumberOfPages int       `json:"number_of_pages"`
-}
-
-type Request struct {
-	RequestBooks []RequestBook `json:"books"`
 }
 
 func (r Request) ToEntity() []book.Book {
