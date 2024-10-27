@@ -1,4 +1,4 @@
-package repohelpers
+package repo_helpers
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ const (
 	clickhouse = "clickhouse"
 )
 
-// connectionString := repohelpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
+// connectionString := repo-helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
 func GetConnectionString(Type, Host, Port, User, Password, Name string) (connectionString string) {
 	switch Type {
 	case mssql:

@@ -9,8 +9,9 @@ import (
 	"time"
 
 	_ "github.com/mailru/go-clickhouse/v2"
+
 	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
-	"github.com/rostislaved/go-clean-architecture/internal/libs/repohelpers"
+	"github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers"
 )
 
 type BooksRepositoryClickhouse struct {
@@ -35,7 +36,7 @@ func New(l *slog.Logger, cfg Config) *BooksRepositoryClickhouse {
 	log.Println(currentHostString + " Подключение...")
 	l.Info(currentHostString+" Подключение...", "source", helpers.GetFunctionName())
 
-	connectionString := repohelpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
+	connectionString := repo_helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
 
 	db, err := sql.Open(cfg.Type, connectionString)
 	if err != nil {

@@ -27,3 +27,52 @@ v0.0.1
 Notes:
 1. snake_case in package names is opinionated
 2. adapters implementations are not production ready. They are just examples (except http-adapter)
+
+# Project layout structure
+```
+.
+├── cmd
+│   └── service
+└── internal
+    ├── app
+    │   ├── adapters
+    │   │   ├── primary
+    │   │   │   ├── grpc-adapter
+    │   │   │   │   ├── generated
+    │   │   │   │   └── handlers
+    │   │   │   ├── http-adapter
+    │   │   │   │   ├── handlers
+    │   │   │   │   └── router
+    │   │   │   ├── kafka-adapter-subscriber
+    │   │   │   │   ├── kafka-handlers
+    │   │   │   │   └── kafka-queue
+    │   │   │   ├── nats-adapter-subscriber
+    │   │   │   │   └── nats-handlers
+    │   │   │   ├── os-signal-adapter
+    │   │   │   └── pprof-adapter
+    │   │   └── secondary
+    │   │       ├── gateways
+    │   │       │   └── books-gateway
+    │   │       ├── grpc-adapter
+    │   │       │   └── generated
+    │   │       ├── kafka-adapter-publisher
+    │   │       ├── nats-adapter-publisher
+    │   │       └── repositories
+    │   │           ├── books-repository-clickhouse
+    │   │           ├── books-repository-mongo
+    │   │           └── books-repository-postgres
+    │   ├── application
+    │   │   └── usecases
+    │   ├── config
+    │   └── domain
+    │       └── book
+    └── libs
+        ├── graceful
+        ├── helpers
+        ├── http-server
+        ├── middleware-helpers
+        ├── provider-helpers
+        └── repo-helpers
+
+
+```

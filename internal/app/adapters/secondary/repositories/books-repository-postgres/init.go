@@ -10,8 +10,9 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 	sql "github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
+
 	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
-	"github.com/rostislaved/go-clean-architecture/internal/libs/repohelpers"
+	"github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers"
 )
 
 type BooksRepositoryPostgres struct {
@@ -26,7 +27,7 @@ func New(l *slog.Logger, cfg Config) *BooksRepositoryPostgres {
 	log.Println(currentHostString + " Подключение...")
 	l.Info(currentHostString+" Подключение...", "source", helpers.GetFunctionName())
 
-	connectionString := repohelpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
+	connectionString := repo_helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
 
 	db, err := sql.Open(cfg.Type, connectionString)
 	if err != nil {
