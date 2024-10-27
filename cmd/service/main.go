@@ -5,12 +5,13 @@ import (
 	"log/slog"
 	"os"
 
+	_ "go.uber.org/automaxprocs"
+
 	"github.com/rostislaved/go-clean-architecture/internal/app"
-	osSignalAdapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter"
 	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 	"github.com/rostislaved/go-clean-architecture/internal/libs/graceful"
 	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
-	_ "go.uber.org/automaxprocs"
 )
 
 func main() {
@@ -22,11 +23,11 @@ func main() {
 	app := app.New(l, cfg)
 
 	gr := graceful.New(
-		graceful.NewProcess(app.NatsAdapterSubscriber),
-		graceful.NewProcess(app.KafkaAdapterSubscriber),
 		graceful.NewProcess(app.HttpAdapter),
 		graceful.NewProcess(app.PprofAdapter),
-		graceful.NewProcess(osSignalAdapter.New()),
+		graceful.NewProcess(app.NatsAdapterSubscriber),
+		graceful.NewProcess(app.KafkaAdapterSubscriber),
+		graceful.NewProcess(os_signal_adapter.New()),
 	)
 
 	ctx, cancel := context.WithCancel(context.Background())

@@ -39,5 +39,5 @@ type Databases struct {
 }
 
 type Gateways struct {
-	Gateway1 books_gateway.Config
+	BooksGateway books_gateway.Config
 }

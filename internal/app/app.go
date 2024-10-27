@@ -24,7 +24,7 @@ type App struct {
 
 func New(l *slog.Logger, cfg config.Config) App {
 	booksRepository := books_repository_postgres.New(l, cfg.Adapters.Secondary.Databases.Postgres)
-	gateway := books_gateway.New(l, cfg.Adapters.Secondary.Gateways.Gateway1)
+	gateway := books_gateway.New(l, cfg.Adapters.Secondary.Gateways.BooksGateway)
 	natsAdapterPublisher := nats_adapter_publisher.New(l, cfg.Adapters.Secondary.NatsAdapterPublisher)
 	kafkaAdapterPublisher := kafka_adapter_publisher.New(l, cfg.Adapters.Secondary.KafkaAdapterPublisher)
 
@@ -37,10 +37,10 @@ func New(l *slog.Logger, cfg config.Config) App {
 		kafkaAdapterPublisher,
 	)
 
-	natsAdapterSubscriber := nats_adapter_subscriber.New(l, cfg.Adapters.Primary.NatsAdapterSubscriber, usecases)
-	kafkaAdapter := kafka_adapter_subscriber.New(l, cfg.Adapters.Primary.KafkaAdapterSubscriber, usecases)
 	httpAdapter := http_adapter.New(l, cfg.Adapters.Primary.HttpAdapter, usecases)
 	pprofAdapter := pprof_adapter.New(l, cfg.Adapters.Primary.PprofAdapter)
+	natsAdapterSubscriber := nats_adapter_subscriber.New(l, cfg.Adapters.Primary.NatsAdapterSubscriber, usecases)
+	kafkaAdapter := kafka_adapter_subscriber.New(l, cfg.Adapters.Primary.KafkaAdapterSubscriber, usecases)
 
 	return App{
 		HttpAdapter:            httpAdapter,
