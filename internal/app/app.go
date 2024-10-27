@@ -3,14 +3,14 @@ package app
 import (
 	"log/slog"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/books-gateway"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-postgres"
+	http_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter"
+	kafka_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber"
+	nats_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
+	pprof_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter"
+	books_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/books-gateway"
+	kafka_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
+	nats_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
+	books_repository_postgres "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-postgres"
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
 	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 )
