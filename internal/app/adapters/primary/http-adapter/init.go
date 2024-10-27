@@ -8,7 +8,6 @@ import (
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/handlers"
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/router"
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
-	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 	http_server "github.com/rostislaved/go-clean-architecture/internal/libs/http-server"
 )
 
@@ -16,8 +15,8 @@ type HttpAdapter struct {
 	server *http_server.Server
 }
 
-func New(logger *slog.Logger, config config.HttpAdapter, svc *usecases.UseCases) *HttpAdapter {
-	router := newRouter(logger, config.Router, svc)
+func New(logger *slog.Logger, config Config, svc *usecases.UseCases) *HttpAdapter {
+	router := newRouter(logger, config, svc)
 
 	s := http_server.New(logger, config.Server, router)
 
@@ -26,12 +25,12 @@ func New(logger *slog.Logger, config config.HttpAdapter, svc *usecases.UseCases)
 	}
 }
 
-func newRouter(logger *slog.Logger, config config.Router, svc *usecases.UseCases) http.Handler {
+func newRouter(logger *slog.Logger, config Config, svc *usecases.UseCases) http.Handler {
 	r := router.New()
 
 	ctr := handlers.New(logger, svc)
 
-	r.AppendRoutes(config, ctr)
+	r.AppendRoutes(config.Router, ctr)
 
 	router := r.Router()
 

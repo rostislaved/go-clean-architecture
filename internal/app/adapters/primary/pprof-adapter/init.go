@@ -6,7 +6,6 @@ import (
 	"net/http/pprof"
 
 	"github.com/gorilla/mux"
-	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 	http_server "github.com/rostislaved/go-clean-architecture/internal/libs/http-server"
 )
 
@@ -14,7 +13,11 @@ type PprofAdapter struct {
 	server *http_server.Server
 }
 
-func New(logger *slog.Logger, config config.PprofAdapter) *PprofAdapter {
+type Config struct {
+	Server http_server.Config
+}
+
+func New(logger *slog.Logger, config Config) *PprofAdapter {
 	router := newPprofRouter()
 
 	s := http_server.New(logger, config.Server, router)

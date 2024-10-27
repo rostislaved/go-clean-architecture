@@ -2,14 +2,29 @@ package router
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gorilla/mux"
-	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 )
 
 type Router struct {
 	router *mux.Router
-	config config.Router
+	config Config
+}
+
+type Config struct {
+	Shutdown             shutdown
+	Timeout              timeout
+	AuthenticationConfig string `config:"envVar"`
+	AuthorizationConfig  string `config:"envVar"`
+}
+
+type shutdown struct {
+	Duration time.Duration
+}
+
+type timeout struct {
+	Duration time.Duration
 }
 
 func New() *Router {
