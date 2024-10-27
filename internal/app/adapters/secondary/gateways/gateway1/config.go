@@ -1,6 +1,6 @@
 package gateway1
 
-import providerhelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/provider-helpers"
+import providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
 
 type Config struct {
 	Host      string

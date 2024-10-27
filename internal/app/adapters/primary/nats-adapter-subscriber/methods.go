@@ -1,4 +1,7 @@
-package natsAdapterSubscriber
+package nats_adapter_subscriber
 
-func (a *NatsAdapterSubscriber) Start() {
+import "context"
+
+func (a *NatsAdapterSubscriber) Start(ctx context.Context) error {
+	return nil
 }

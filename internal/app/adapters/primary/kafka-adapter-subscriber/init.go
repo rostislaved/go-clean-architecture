@@ -1,26 +1,26 @@
-package kafkaAdapterSubscriber
+package kafka_adapter_subscriber
 
 import (
 	"log/slog"
 
-	kafkaController "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-controller"
-	kafkaQueue "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-queue"
-	"github.com/rostislaved/go-clean-architecture/internal/app/application/service"
+	kafka_handlers "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-handlers"
+	kafka_queue "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-queue"
+	"github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
 )
 
 type KafkaAdapter struct {
 	logger          *slog.Logger
-	config          KafkaAdapterSubscriberConfig
-	kafkaQueue      *kafkaQueue.KafkaQueue
-	kafkaController *kafkaController.KafkaController
+	config          kafka_queue.Config
+	kafkaQueue      *kafka_queue.KafkaQueue
+	kafkaController *kafka_handlers.KafkaHandlers
 }
 
-func New(l *slog.Logger, config KafkaAdapterSubscriberConfig, svc *service.ApiService) KafkaAdapter {
-	kafkaQueue := kafkaQueue.New(l, config)
+func New(l *slog.Logger, config kafka_queue.Config, svc *usecases.UseCases) *KafkaAdapter {
+	kafkaQueue := kafka_queue.New(l, config)
 
-	kafkaController := kafkaController.New(l, svc)
+	kafkaController := kafka_handlers.New(l, svc)
 
-	return KafkaAdapter{
+	return &KafkaAdapter{
 		logger:          l,
 		config:          config,
 		kafkaQueue:      kafkaQueue,

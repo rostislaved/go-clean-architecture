@@ -6,7 +6,6 @@ import (
 
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/controller"
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/generated"
-
 	"google.golang.org/grpc"
 )
 
@@ -15,7 +14,7 @@ type GrpcAdapter struct {
 }
 
 func New() *GrpcAdapter {
-	listener, err := net.Listen("tcp", ":9000")
+	listener, err := net.Listen("tcp", "localhost:9000")
 	if err != nil {
 		log.Fatal(err)
 	}

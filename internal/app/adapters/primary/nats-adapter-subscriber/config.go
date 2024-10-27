@@ -1,15 +1,22 @@
-package natsAdapterSubscriber
+package nats_adapter_subscriber
 
 import (
 	"time"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 )
 
-type NatsAdapterSubscriberConfig struct {
-	Connection config.Connection
+type Config struct {
+	Connection Connection
 
 	Subscriber1 Subscriber
+}
+
+type Connection struct {
+	Host                 string `config:"envVar"`
+	ClusterID            string
+	ClientID             string
+	AllowMultipleClients bool
+	User                 string `config:"envVar"`
+	Password             string `config:"envVar"`
 }
 
 type Subscriber struct {

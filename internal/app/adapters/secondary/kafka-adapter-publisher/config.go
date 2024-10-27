@@ -1,3 +1,3 @@
-package kafkaAdapterPublisher
+package kafka_adapter_publisher
 
-type KafkaAdapterPublisherConfig struct{}
+type Config struct{}

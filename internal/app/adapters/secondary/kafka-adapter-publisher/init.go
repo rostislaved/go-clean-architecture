@@ -1,4 +1,4 @@
-package kafkaAdapterPublisher
+package kafka_adapter_publisher
 
 import (
 	"log/slog"
@@ -8,11 +8,11 @@ import (
 
 type KafkaAdapterPublisher struct {
 	logger *slog.Logger
-	config KafkaAdapterPublisherConfig
+	config Config
 	writer *kafka.Writer
 }
 
-func New(logger *slog.Logger, config KafkaAdapterPublisherConfig) *KafkaAdapterPublisher {
+func New(logger *slog.Logger, config Config) *KafkaAdapterPublisher {
 	w := kafka.Writer{
 		// TODO Брать поля из конфига
 	}

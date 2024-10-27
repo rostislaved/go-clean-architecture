@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"time"
 
-	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/provider-helpers"
+	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
 )
 
 func (prv *Gateway1) Method1(ctx context.Context, input struct{}) (output struct{}, err error) {

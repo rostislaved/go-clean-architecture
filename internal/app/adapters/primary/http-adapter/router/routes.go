@@ -3,13 +3,12 @@ package router
 import (
 	"net/http"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter"
-	"github.com/rostislaved/go-clean-architecture/internal/pkg/middleware-helpers"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/api-controller"
+	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/handlers"
+	"github.com/rostislaved/go-clean-architecture/internal/app/config"
+	middlewarehelpers "github.com/rostislaved/go-clean-architecture/internal/libs/middleware-helpers"
 )
 
-func (r *Router) AppendRoutes(config httpAdapter.RouterConfig, controller *apiController.Controller) {
+func (r *Router) AppendRoutes(config config.Router, controller *handlers.Handlers) {
 	r.config = config
 
 	apiV1Subrouter := r.router.PathPrefix(apiV1Prefix).Subrouter()

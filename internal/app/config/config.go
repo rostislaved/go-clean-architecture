@@ -1,8 +1,6 @@
 package config
 
-import (
-	"time"
-)
+import "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
 
 type Config struct {
 	Info        Info
@@ -15,9 +13,5 @@ type Info struct {
 }
 
 type Application struct {
-	UpdateService UpdateService
-}
-
-type UpdateService struct {
-	UpdateInterval time.Duration
+	UseCases usecases.Config
 }

@@ -27,7 +27,7 @@ const (
 	Api_SendMessage_FullMethodName = "/api.Api/SendMessage"
 )
 
-// ApiClient is the client API for Api service.
+// ApiClient is the client API for Api usecases.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ApiClient interface {
@@ -51,7 +51,7 @@ func (c *apiClient) SendMessage(ctx context.Context, in *Message, opts ...grpc.C
 	return out, nil
 }
 
-// ApiServer is the server API for Api service.
+// ApiServer is the server API for Api usecases.
 // All implementations must embed UnimplementedApiServer
 // for forward compatibility
 type ApiServer interface {
@@ -67,7 +67,7 @@ func (UnimplementedApiServer) SendMessage(context.Context, *Message) (*Message, 
 }
 func (UnimplementedApiServer) mustEmbedUnimplementedApiServer() {}
 
-// UnsafeApiServer may be embedded to opt out of forward compatibility for this service.
+// UnsafeApiServer may be embedded to opt out of forward compatibility for this usecases.
 // Use of this interface is not recommended, as added methods to ApiServer will
 // result in compilation errors.
 type UnsafeApiServer interface {
@@ -96,7 +96,7 @@ func _Api_SendMessage_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
-// Api_ServiceDesc is the grpc.ServiceDesc for Api service.
+// Api_ServiceDesc is the grpc.ServiceDesc for Api usecases.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Api_ServiceDesc = grpc.ServiceDesc{

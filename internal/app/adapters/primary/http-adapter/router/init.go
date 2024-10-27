@@ -4,15 +4,12 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter"
-	middlewarehelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/middleware-helpers"
+	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 )
 
 type Router struct {
 	router *mux.Router
-	config httpAdapter.RouterConfig
+	config config.Router
 }
 
 func New() *Router {
@@ -21,8 +18,6 @@ func New() *Router {
 	r := Router{
 		router: router,
 	}
-
-	r.addInfrastructureRoutes()
 
 	return &r
 }
@@ -42,29 +37,7 @@ func (r *Router) Router() http.Handler {
 	return r.router
 }
 
-func (r *Router) addInfrastructureRoutes() {
-	r.router.
-		Name("info").
-		Methods(http.MethodGet).
-		Path("/tech/info")
-
-	r.router.
-		Name("state").
-		Methods(http.MethodGet).
-		Path("/tech/state") // TODO
-
-	r.router.
-		Name("metrics").
-		Methods(http.MethodGet).
-		Path("/metrics").
-		Handler(promhttp.Handler())
-}
-
 func (r *Router) appendRoutesToRouter(subrouter *mux.Router, routes []Route) {
-	for i := range routes {
-		routes[i].Handler = middlewarehelpers.And()(routes[i].Handler)
-	}
-
 	for _, route := range routes {
 		subrouter.
 			Methods(route.Method).

@@ -18,5 +18,5 @@ func (a GrpcAdapter) SendMessage(msg string) (resp string, err error) {
 		return "", err
 	}
 
-	return r.Body, nil
+	return r.GetBody(), nil
 }

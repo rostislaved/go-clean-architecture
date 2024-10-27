@@ -1,4 +1,4 @@
-package natsAdapterPublisher
+package nats_adapter_publisher
 
 import (
 	"log/slog"
@@ -6,7 +6,7 @@ import (
 
 type NatsAdapterPublisher struct {
 	logger    *slog.Logger
-	config    NatsAdapterPublisherConfig
+	config    Config
 	publisher publisher
 }
 
@@ -14,7 +14,7 @@ type publisher interface {
 	Publish(channel string, data []byte) error
 }
 
-func New(logger *slog.Logger, config NatsAdapterPublisherConfig) *NatsAdapterPublisher {
+func New(logger *slog.Logger, config Config) *NatsAdapterPublisher {
 	return &NatsAdapterPublisher{
 		logger: logger,
 		config: config,

@@ -4,7 +4,6 @@ import (
 	"log"
 
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/grpc-adapter/generated"
-
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

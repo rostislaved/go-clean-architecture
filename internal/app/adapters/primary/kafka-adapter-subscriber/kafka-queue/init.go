@@ -1,23 +1,27 @@
-package kafkaQueue
+package kafka_queue
 
 import (
 	"log/slog"
 	"time"
 
 	"github.com/segmentio/kafka-go"
-
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber"
 )
 
 type KafkaQueue struct {
 	logger      *slog.Logger
-	config      kafkaAdapterSubscriber.KafkaAdapterSubscriberConfig
+	config      Config
 	kafkaReader *kafka.Reader
+}
+
+type Config struct {
+	Host    string
+	GroupID string
+	Topic   string
 }
 
 func New(
 	l *slog.Logger,
-	cfg kafkaAdapterSubscriber.KafkaAdapterSubscriberConfig,
+	cfg Config,
 ) *KafkaQueue {
 	r := kafka.NewReader(kafka.ReaderConfig{
 		Brokers:  []string{cfg.Host},

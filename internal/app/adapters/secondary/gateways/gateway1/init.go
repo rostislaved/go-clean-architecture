@@ -5,8 +5,7 @@ import (
 	"log/slog"
 
 	"github.com/go-resty/resty/v2"
-
-	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/provider-helpers"
+	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
 )
 
 type Gateway1 struct {
