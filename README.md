@@ -25,8 +25,9 @@ v0.0.1
 
 
 Notes:
-1. snake_case in package names is opinionated
-2. adapters implementations are not production ready. They are just examples (except http-adapter)
+1. Opinionated: snake_case in package names 
+2. Opinionated: I put the struct and constructor in init.go and the methods in methods.go
+3. adapters implementations are not production ready. They are just examples (except http-adapter)
 
 # Project layout
 ```
