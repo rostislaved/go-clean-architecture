@@ -2,8 +2,7 @@ package graceful
 
 import (
 	"context"
-	"fmt"
-	"log"
+	"log/slog"
 
 	"golang.org/x/sync/errgroup"
 )
@@ -14,11 +13,13 @@ type starter interface {
 
 type graceful struct {
 	processes []process
+	logger    *slog.Logger
 }
 
 func New(processes ...process) *graceful {
 	return &graceful{
 		processes: processes,
+		logger:    slog.Default(),
 	}
 }
 
@@ -35,8 +36,8 @@ func (gr *graceful) Start(ctx context.Context) error {
 		f := func() error {
 			err := process.starter.Start(ctx)
 			if err != nil {
-				log.Println(err)
-				log.Println("Start graceful shutdown")
+				gr.logger.Error(err.Error())
+				gr.logger.Info("Start graceful shutdown")
 
 				return err
 			}
@@ -49,9 +50,16 @@ func (gr *graceful) Start(ctx context.Context) error {
 
 	err := g.Wait()
 	if err != nil {
-		fmt.Println("Application stopped gracefully")
+		gr.logger.Info("Application stopped gracefully")
+
 		return err
 	}
 
+	gr.logger.Info("Every process stopped by itself with no error")
+
 	return nil
+}
+
+func (gr *graceful) SetLogger(l *slog.Logger) {
+	gr.logger = l
 }
