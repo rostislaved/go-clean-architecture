@@ -1,0 +1,11 @@
+services:
+  app:
+    restart: always
+    container_name: "${APP_NAME}"
+    build:
+      context: ../../
+      dockerfile: docker/prod/Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../../.env

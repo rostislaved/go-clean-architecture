@@ -5,13 +5,12 @@ import (
 	"log/slog"
 	"os"
 
-	_ "go.uber.org/automaxprocs"
-
 	"github.com/rostislaved/go-clean-architecture/internal/app"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter"
+	os_signal_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter"
 	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 	"github.com/rostislaved/go-clean-architecture/internal/libs/graceful"
 	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
+	_ "go.uber.org/automaxprocs"
 )
 
 func main() {

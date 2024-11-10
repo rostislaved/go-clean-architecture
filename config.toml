@@ -1,8 +1,6 @@
 [Application]
     Name = "service_name"
     Version = "1.0.0"
-
-[Application]
     [Application.UpdateService]
         UpdateInterval = "1m"
 

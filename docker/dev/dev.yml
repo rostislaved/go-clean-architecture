@@ -1,0 +1,14 @@
+services:
+  app:
+    restart: always
+    container_name: "${APP_NAME}"
+    command: "air -c .air.toml"
+    build:
+      context: ../../
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - ../../:/app
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../../.env

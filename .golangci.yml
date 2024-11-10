@@ -126,7 +126,6 @@ linters:
 #    - exhaustruct
 #    - dupl
 
-
 linters-settings:
   wrapcheck:
     # An array of strings that specify substrings of signatures to ignore.
@@ -153,24 +152,26 @@ linters-settings:
     line-length: 180
 
   staticcheck:
-  # Select the Go version to target.
-  # Default: 1.13
-  #    go: "1.15"
-  # https://staticcheck.io/docs/options#checks
-  #    checks: ["all",
-  #             "-ST1000", #  Incorrect or missing package comment
-  #             "-ST1003", # should not use MixedCaps in package name
-  #    ]
+    # Select the Go version to target.
+    # Default: 1.13
+    #    go: "1.15"
+    # https://staticcheck.io/docs/options#checks
+    checks: [
+        "all",
+        "-ST1000", #  Incorrect or missing package comment
+        "-ST1003", # should not use MixedCaps in package name
+      ]
 
   stylecheck:
     #    # Select the Go version to target.
     #    # Default: 1.13
     #    go: "1.15"
     #    # https://staticcheck.io/docs/options#checks
-    checks: ["all",
-             "-ST1000", # Incorrect or missing package comment
-             "-ST1003", # Should not use MixedCaps in package name
-    ]
+    checks: [
+        "all",
+        "-ST1000", # Incorrect or missing package comment
+        "-ST1003", # Should not use MixedCaps in package name
+      ]
 
   mnd:
     # List of enabled checks, see https://github.com/tommy-muehle/go-mnd/#checks for description.
@@ -194,8 +195,8 @@ linters-settings:
     # List of function patterns to exclude from analysis.
     # Values always ignored: `time.Time`
     ignored-functions:
-      - 'context.*'
-      - 'resty.*'
+      - "context.*"
+      - "resty.*"
 
   revive:
     rules:

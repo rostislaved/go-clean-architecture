@@ -10,9 +10,8 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 	sql "github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
-
 	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
-	"github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers"
+	repo_helpers "github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers"
 )
 
 type BooksRepositoryPostgres struct {

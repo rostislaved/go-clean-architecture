@@ -9,9 +9,8 @@ import (
 	"time"
 
 	_ "github.com/mailru/go-clickhouse/v2"
-
 	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
-	"github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers"
+	repo_helpers "github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers"
 )
 
 type BooksRepositoryClickhouse struct {

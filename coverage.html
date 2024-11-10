@@ -1,0 +1,2749 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>service: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">github.com/rostislaved/go-clean-architecture/cmd/service/main.go (0.0%)</option>
+				
+				<option value="file1">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/generated/file.pb.go (0.0%)</option>
+				
+				<option value="file2">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/generated/file_grpc.pb.go (0.0%)</option>
+				
+				<option value="file3">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/handlers/api.go (0.0%)</option>
+				
+				<option value="file4">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/init.go (0.0%)</option>
+				
+				<option value="file5">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/handlers/endpoint_create.go (0.0%)</option>
+				
+				<option value="file6">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/handlers/endpoint_get.go (0.0%)</option>
+				
+				<option value="file7">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/handlers/init.go (0.0%)</option>
+				
+				<option value="file8">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/init.go (0.0%)</option>
+				
+				<option value="file9">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/router/init.go (0.0%)</option>
+				
+				<option value="file10">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/router/routes.go (0.0%)</option>
+				
+				<option value="file11">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/init.go (0.0%)</option>
+				
+				<option value="file12">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-handlers/init.go (0.0%)</option>
+				
+				<option value="file13">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-handlers/methods.go (0.0%)</option>
+				
+				<option value="file14">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-queue/init.go (0.0%)</option>
+				
+				<option value="file15">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-queue/methods.go (0.0%)</option>
+				
+				<option value="file16">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/methods.go (0.0%)</option>
+				
+				<option value="file17">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber/init.go (0.0%)</option>
+				
+				<option value="file18">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber/methods.go (0.0%)</option>
+				
+				<option value="file19">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber/nats-handlers/init.go (0.0%)</option>
+				
+				<option value="file20">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber/nats-handlers/methods.go (0.0%)</option>
+				
+				<option value="file21">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter/init.go (0.0%)</option>
+				
+				<option value="file22">github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter/init.go (0.0%)</option>
+				
+				<option value="file23">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/books-gateway/init.go (0.0%)</option>
+				
+				<option value="file24">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/books-gateway/methods.go (0.0%)</option>
+				
+				<option value="file25">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/grpc-adapter/generated/file.pb.go (0.0%)</option>
+				
+				<option value="file26">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/grpc-adapter/generated/file_grpc.pb.go (0.0%)</option>
+				
+				<option value="file27">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/grpc-adapter/init.go (0.0%)</option>
+				
+				<option value="file28">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/grpc-adapter/methods.go (0.0%)</option>
+				
+				<option value="file29">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher/init.go (0.0%)</option>
+				
+				<option value="file30">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher/methods.go (0.0%)</option>
+				
+				<option value="file31">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher/init.go (0.0%)</option>
+				
+				<option value="file32">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher/methods.go (0.0%)</option>
+				
+				<option value="file33">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-clickhouse/init.go (0.0%)</option>
+				
+				<option value="file34">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-clickhouse/methods.go (0.0%)</option>
+				
+				<option value="file35">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-clickhouse/queries.go (0.0%)</option>
+				
+				<option value="file36">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-mongo/init.go (0.0%)</option>
+				
+				<option value="file37">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-mongo/methods.go (0.0%)</option>
+				
+				<option value="file38">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-postgres/dto.go (0.0%)</option>
+				
+				<option value="file39">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-postgres/init.go (0.0%)</option>
+				
+				<option value="file40">github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-postgres/methods.go (0.0%)</option>
+				
+				<option value="file41">github.com/rostislaved/go-clean-architecture/internal/app/app.go (0.0%)</option>
+				
+				<option value="file42">github.com/rostislaved/go-clean-architecture/internal/app/application/usecases/init.go (0.0%)</option>
+				
+				<option value="file43">github.com/rostislaved/go-clean-architecture/internal/app/application/usecases/methods.go (0.0%)</option>
+				
+				<option value="file44">github.com/rostislaved/go-clean-architecture/internal/app/config/init.go (0.0%)</option>
+				
+				<option value="file45">github.com/rostislaved/go-clean-architecture/internal/libs/graceful/graceful.go (0.0%)</option>
+				
+				<option value="file46">github.com/rostislaved/go-clean-architecture/internal/libs/graceful/process.go (0.0%)</option>
+				
+				<option value="file47">github.com/rostislaved/go-clean-architecture/internal/libs/helpers/helpers.go (0.0%)</option>
+				
+				<option value="file48">github.com/rostislaved/go-clean-architecture/internal/libs/http-server/server.go (0.0%)</option>
+				
+				<option value="file49">github.com/rostislaved/go-clean-architecture/internal/libs/middleware-helpers/middleware_helpers.go (0.0%)</option>
+				
+				<option value="file50">github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers/provider_helpers.go (40.3%)</option>
+				
+				<option value="file51">github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers/repohelpers.go (0.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package main
+
+import (
+        "context"
+        "log/slog"
+        "os"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app"
+        os_signal_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter"
+        "github.com/rostislaved/go-clean-architecture/internal/app/config"
+        "github.com/rostislaved/go-clean-architecture/internal/libs/graceful"
+        "github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
+        _ "go.uber.org/automaxprocs"
+)
+
+func main() <span class="cov0" title="0">{
+        cfg := config.New()
+
+        h := slog.NewTextHandler(os.Stdout, &amp;slog.HandlerOptions{})
+        l := slog.New(h)
+
+        app := app.New(l, cfg)
+
+        gr := graceful.New(
+                graceful.NewProcess(app.HttpAdapter),
+                graceful.NewProcess(app.PprofAdapter),
+                graceful.NewProcess(app.NatsAdapterSubscriber),
+                graceful.NewProcess(app.KafkaAdapterSubscriber),
+                graceful.NewProcess(os_signal_adapter.New()),
+        )
+
+        ctx, cancel := context.WithCancel(context.Background())
+        defer cancel()
+
+        err := gr.Start(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                l.Error(err.Error(), "source", helpers.GetFunctionName())
+
+                panic(err)</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">// protoc --go_out=.      --go_opt=paths=import \
+//        --go-grpc_out=. --go-grpc_opt=paths=import \
+//                   file.proto
+
+// Code generated by protoc-gen-go. DO NOT EDIT.
+// versions:
+//         protoc-gen-go v1.31.0
+//         protoc        v4.23.4
+// source: file.proto
+
+package generated
+
+import (
+        reflect "reflect"
+        sync "sync"
+
+        protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+        protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+)
+
+const (
+        // Verify that this generated code is sufficiently up-to-date.
+        _ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)
+        // Verify that runtime/protoimpl is sufficiently up-to-date.
+        _ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
+)
+
+type Message struct {
+        state         protoimpl.MessageState
+        sizeCache     protoimpl.SizeCache
+        unknownFields protoimpl.UnknownFields
+
+        Body string `protobuf:"bytes,1,opt,name=body,proto3" json:"body,omitempty"`
+}
+
+func (x *Message) Reset() <span class="cov0" title="0">{
+        *x = Message{}
+        if protoimpl.UnsafeEnabled </span><span class="cov0" title="0">{
+                mi := &amp;file_file_proto_msgTypes[0]
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                ms.StoreMessageInfo(mi)
+        }</span>
+}
+
+func (x *Message) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*Message) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *Message) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_file_proto_msgTypes[0]
+        if protoimpl.UnsafeEnabled &amp;&amp; x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use Message.ProtoReflect.Descriptor instead.
+func (*Message) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_file_proto_rawDescGZIP(), []int{0}
+}</span>
+
+func (x *Message) GetBody() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Body
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+var File_file_proto protoreflect.FileDescriptor
+
+var file_file_proto_rawDesc = []byte{
+        0x0a, 0x0a, 0x66, 0x69, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x61, 0x70,
+        0x69, 0x22, 0x1d, 0x0a, 0x07, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04,
+        0x62, 0x6f, 0x64, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x62, 0x6f, 0x64, 0x79,
+        0x32, 0x30, 0x0a, 0x03, 0x41, 0x70, 0x69, 0x12, 0x29, 0x0a, 0x0b, 0x53, 0x65, 0x6e, 0x64, 0x4d,
+        0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x0c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x4d, 0x65, 0x73,
+        0x73, 0x61, 0x67, 0x65, 0x1a, 0x0c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61,
+        0x67, 0x65, 0x42, 0x0d, 0x5a, 0x0b, 0x2e, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65,
+        0x64, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+}
+
+var (
+        file_file_proto_rawDescOnce sync.Once
+        file_file_proto_rawDescData = file_file_proto_rawDesc
+)
+
+func file_file_proto_rawDescGZIP() []byte <span class="cov0" title="0">{
+        file_file_proto_rawDescOnce.Do(func() </span><span class="cov0" title="0">{
+                file_file_proto_rawDescData = protoimpl.X.CompressGZIP(file_file_proto_rawDescData)
+        }</span>)
+        <span class="cov0" title="0">return file_file_proto_rawDescData</span>
+}
+
+var (
+        file_file_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+        file_file_proto_goTypes  = []interface{}{
+                (*Message)(nil), // 0: api.Message
+        }
+)
+
+var file_file_proto_depIdxs = []int32{
+        0, // 0: api.Api.SendMessage:input_type -&gt; api.Message
+        0, // 1: api.Api.SendMessage:output_type -&gt; api.Message
+        1, // [1:2] is the sub-list for method output_type
+        0, // [0:1] is the sub-list for method input_type
+        0, // [0:0] is the sub-list for extension type_name
+        0, // [0:0] is the sub-list for extension extendee
+        0, // [0:0] is the sub-list for field type_name
+}
+
+func init() <span class="cov0" title="0">{ file_file_proto_init() }</span>
+func file_file_proto_init() <span class="cov0" title="0">{
+        if File_file_proto != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+        <span class="cov0" title="0">if !protoimpl.UnsafeEnabled </span><span class="cov0" title="0">{
+                file_file_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} </span><span class="cov0" title="0">{
+                        switch v := v.(*Message); i </span>{
+                        case 0:<span class="cov0" title="0">
+                                return &amp;v.state</span>
+                        case 1:<span class="cov0" title="0">
+                                return &amp;v.sizeCache</span>
+                        case 2:<span class="cov0" title="0">
+                                return &amp;v.unknownFields</span>
+                        default:<span class="cov0" title="0">
+                                return nil</span>
+                        }
+                }
+        }
+        <span class="cov0" title="0">type x struct{}
+        out := protoimpl.TypeBuilder{
+                File: protoimpl.DescBuilder{
+                        GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
+                        RawDescriptor: file_file_proto_rawDesc,
+                        NumEnums:      0,
+                        NumMessages:   1,
+                        NumExtensions: 0,
+                        NumServices:   1,
+                },
+                GoTypes:           file_file_proto_goTypes,
+                DependencyIndexes: file_file_proto_depIdxs,
+                MessageInfos:      file_file_proto_msgTypes,
+        }.Build()
+        File_file_proto = out.File
+        file_file_proto_rawDesc = nil
+        file_file_proto_goTypes = nil
+        file_file_proto_depIdxs = nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">// protoc --go_out=.      --go_opt=paths=import \
+//        --go-grpc_out=. --go-grpc_opt=paths=import \
+//                   file.proto
+
+// Code generated by protoc-gen-go-grpc. DO NOT EDIT.
+// versions:
+// - protoc-gen-go-grpc v1.3.0
+// - protoc             v4.23.4
+// source: file.proto
+
+package generated
+
+import (
+        context "context"
+
+        grpc "google.golang.org/grpc"
+        codes "google.golang.org/grpc/codes"
+        status "google.golang.org/grpc/status"
+)
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
+
+const (
+        Api_SendMessage_FullMethodName = "/api.Api/SendMessage"
+)
+
+// ApiClient is the client API for Api usecases.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ApiClient interface {
+        SendMessage(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Message, error)
+}
+
+type apiClient struct {
+        cc grpc.ClientConnInterface
+}
+
+func NewApiClient(cc grpc.ClientConnInterface) ApiClient <span class="cov0" title="0">{
+        return &amp;apiClient{cc}
+}</span>
+
+func (c *apiClient) SendMessage(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Message, error) <span class="cov0" title="0">{
+        out := new(Message)
+        err := c.cc.Invoke(ctx, Api_SendMessage_FullMethodName, in, out, opts...)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return out, nil</span>
+}
+
+// ApiServer is the server API for Api usecases.
+// All implementations must embed UnimplementedApiServer
+// for forward compatibility
+type ApiServer interface {
+        SendMessage(context.Context, *Message) (*Message, error)
+        mustEmbedUnimplementedApiServer()
+}
+
+// UnimplementedApiServer must be embedded to have forward compatible implementations.
+type UnimplementedApiServer struct{}
+
+func (UnimplementedApiServer) SendMessage(context.Context, *Message) (*Message, error) <span class="cov0" title="0">{
+        return nil, status.Errorf(codes.Unimplemented, "method SendMessage not implemented")
+}</span>
+func (UnimplementedApiServer) mustEmbedUnimplementedApiServer() {<span class="cov0" title="0">}</span>
+
+// UnsafeApiServer may be embedded to opt out of forward compatibility for this usecases.
+// Use of this interface is not recommended, as added methods to ApiServer will
+// result in compilation errors.
+type UnsafeApiServer interface {
+        mustEmbedUnimplementedApiServer()
+}
+
+func RegisterApiServer(s grpc.ServiceRegistrar, srv ApiServer) <span class="cov0" title="0">{
+        s.RegisterService(&amp;Api_ServiceDesc, srv)
+}</span>
+
+func _Api_SendMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) <span class="cov0" title="0">{
+        in := new(Message)
+        if err := dec(in); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">if interceptor == nil </span><span class="cov0" title="0">{
+                return srv.(ApiServer).SendMessage(ctx, in)
+        }</span>
+        <span class="cov0" title="0">info := &amp;grpc.UnaryServerInfo{
+                Server:     srv,
+                FullMethod: Api_SendMessage_FullMethodName,
+        }
+        handler := func(ctx context.Context, req interface{}) (interface{}, error) </span><span class="cov0" title="0">{
+                return srv.(ApiServer).SendMessage(ctx, req.(*Message))
+        }</span>
+        <span class="cov0" title="0">return interceptor(ctx, in, info, handler)</span>
+}
+
+// Api_ServiceDesc is the grpc.ServiceDesc for Api usecases.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Api_ServiceDesc = grpc.ServiceDesc{
+        ServiceName: "api.Api",
+        HandlerType: (*ApiServer)(nil),
+        Methods: []grpc.MethodDesc{
+                {
+                        MethodName: "SendMessage",
+                        Handler:    _Api_SendMessage_Handler,
+                },
+        },
+        Streams:  []grpc.StreamDesc{},
+        Metadata: "file.proto",
+}
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package handlers
+
+import (
+        "context"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/generated"
+)
+
+type Server struct {
+        generated.UnimplementedApiServer
+}
+
+func (s Server) SendMessage(ctx context.Context, message *generated.Message) (*generated.Message, error) <span class="cov0" title="0">{
+        m := generated.Message{Body: "Ответ"}
+        // Тут вызов сервиса
+
+        return &amp;m, nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package grpc_adapter
+
+import (
+        "net"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/generated"
+        "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/handlers"
+        "google.golang.org/grpc"
+)
+
+type GrpcAdapter struct {
+        start func() error
+}
+
+func New() *GrpcAdapter <span class="cov0" title="0">{
+        listener, err := net.Listen("tcp", "localhost:9000")
+        if err != nil </span><span class="cov0" title="0">{
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">server := grpc.NewServer()
+
+        generated.RegisterApiServer(server, handlers.Server{})
+
+        startFunc := func() error </span><span class="cov0" title="0">{
+                err = server.Serve(listener)
+
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return &amp;GrpcAdapter{
+                start: startFunc,
+        }</span>
+}
+
+func (a GrpcAdapter) Start() <span class="cov0" title="0">{
+        err := a.start()
+        if err != nil </span><span class="cov0" title="0">{
+                panic(err)</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">package handlers
+
+import (
+        "net/http"
+)
+
+func (h Handlers) Create(w http.ResponseWriter, r *http.Request) {<span class="cov0" title="0">}</span>
+
+type RequestCreate struct{}
+
+type ResponseCreate struct{}
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package handlers
+
+import (
+        "encoding/json"
+        "net/http"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+func (h Handlers) Get(w http.ResponseWriter, r *http.Request) <span class="cov0" title="0">{
+        var ids []int
+
+        err := json.NewDecoder(r.Body).Decode(&amp;ids)
+        if err != nil </span><span class="cov0" title="0">{
+                w.WriteHeader(http.StatusBadRequest)
+
+                return
+        }</span>
+
+        <span class="cov0" title="0">books, err := h.service.GetBooksByIDs(r.Context(), ids)
+        if err != nil </span><span class="cov0" title="0">{
+                w.WriteHeader(http.StatusInternalServerError)
+
+                return
+        }</span>
+
+        <span class="cov0" title="0">response := ToResponse(books)
+
+        err = json.NewEncoder(w).Encode(response)
+        if err != nil </span><span class="cov0" title="0">{
+                w.WriteHeader(http.StatusInternalServerError)
+
+                return
+        }</span>
+}
+
+type RequestGet struct{}
+
+func ToResponse(books []book.Book) ResponseGet <span class="cov0" title="0">{
+        responseGetBooks := make([]ResponseGetBook, 0, len(books))
+
+        for _, book := range books </span><span class="cov0" title="0">{
+                responseGetBooks = append(responseGetBooks, ResponseGetBook(book))
+        }</span>
+
+        <span class="cov0" title="0">response := ResponseGet{responseGetBooks}
+
+        return response</span>
+}
+
+type ResponseGet struct {
+        ResponseGetBooks []ResponseGetBook `json:"books"`
+}
+
+type ResponseGetBook struct {
+        ID            int64     `json:"id"`
+        Name          string    `json:"name"`
+        Author        string    `json:"author"`
+        Date          time.Time `json:"date"`
+        NumberOfPages int       `json:"number_of_pages"`
+}
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package handlers
+
+import (
+        "log/slog"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
+)
+
+type Handlers struct {
+        Logger  *slog.Logger
+        service *usecases.UseCases
+}
+
+func New(logger *slog.Logger, service *usecases.UseCases) *Handlers <span class="cov0" title="0">{
+        return &amp;Handlers{
+                Logger:  logger,
+                service: service,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package http_adapter
+
+import (
+        "context"
+        "log/slog"
+        "net/http"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/handlers"
+        "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/router"
+        "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
+        http_server "github.com/rostislaved/go-clean-architecture/internal/libs/http-server"
+)
+
+type HttpAdapter struct {
+        server *http_server.Server
+}
+
+func New(logger *slog.Logger, config Config, svc *usecases.UseCases) *HttpAdapter <span class="cov0" title="0">{
+        router := newRouter(logger, config, svc)
+
+        s := http_server.New(logger, config.Server, router)
+
+        return &amp;HttpAdapter{
+                server: s,
+        }
+}</span>
+
+func newRouter(logger *slog.Logger, config Config, svc *usecases.UseCases) http.Handler <span class="cov0" title="0">{
+        r := router.New()
+
+        ctr := handlers.New(logger, svc)
+
+        r.AppendRoutes(config.Router, ctr)
+
+        router := r.Router()
+
+        return router
+}</span>
+
+func (a HttpAdapter) Start(ctx context.Context) error <span class="cov0" title="0">{
+        return a.server.Start(ctx)
+}</span>
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">package router
+
+import (
+        "net/http"
+        "time"
+
+        "github.com/gorilla/mux"
+)
+
+type Router struct {
+        router *mux.Router
+        config Config
+}
+
+type Config struct {
+        Shutdown             shutdown
+        Timeout              timeout
+        AuthenticationConfig string `config:"envVar"`
+        AuthorizationConfig  string `config:"envVar"`
+}
+
+type shutdown struct {
+        Duration time.Duration
+}
+
+type timeout struct {
+        Duration time.Duration
+}
+
+func New() *Router <span class="cov0" title="0">{
+        router := mux.NewRouter()
+
+        r := Router{
+                router: router,
+        }
+
+        return &amp;r
+}</span>
+
+const (
+        apiV1Prefix = "/api/v1"
+)
+
+type Route struct {
+        Name    string
+        Method  string
+        Path    string
+        Handler http.Handler
+}
+
+func (r *Router) Router() http.Handler <span class="cov0" title="0">{
+        return r.router
+}</span>
+
+func (r *Router) appendRoutesToRouter(subrouter *mux.Router, routes []Route) <span class="cov0" title="0">{
+        for _, route := range routes </span><span class="cov0" title="0">{
+                subrouter.
+                        Methods(route.Method).
+                        Name(route.Name).
+                        Path(route.Path).
+                        Handler(route.Handler)
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package router
+
+import (
+        "net/http"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/handlers"
+        middlewarehelpers "github.com/rostislaved/go-clean-architecture/internal/libs/middleware-helpers"
+)
+
+func (r *Router) AppendRoutes(config Config, handlers *handlers.Handlers) <span class="cov0" title="0">{
+        r.config = config
+
+        apiV1Subrouter := r.router.PathPrefix(apiV1Prefix).Subrouter()
+
+        routes := []Route{
+                {
+                        Name:    "method1",
+                        Path:    "/method1",
+                        Method:  http.MethodPost,
+                        Handler: middlewarehelpers.And()(http.HandlerFunc(handlers.Get)),
+                },
+        }
+
+        r.appendRoutesToRouter(apiV1Subrouter, routes)
+}</span>
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package kafka_adapter_subscriber
+
+import (
+        "log/slog"
+
+        kafka_handlers "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-handlers"
+        kafka_queue "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-queue"
+        "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
+)
+
+type KafkaAdapter struct {
+        logger          *slog.Logger
+        config          kafka_queue.Config
+        kafkaQueue      *kafka_queue.KafkaQueue
+        kafkaController *kafka_handlers.KafkaHandlers
+}
+
+func New(l *slog.Logger, config kafka_queue.Config, svc *usecases.UseCases) *KafkaAdapter <span class="cov0" title="0">{
+        kafkaQueue := kafka_queue.New(l, config)
+
+        kafkaController := kafka_handlers.New(l, svc)
+
+        return &amp;KafkaAdapter{
+                logger:          l,
+                config:          config,
+                kafkaQueue:      kafkaQueue,
+                kafkaController: kafkaController,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">package kafka_handlers
+
+import (
+        "log/slog"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
+)
+
+type KafkaHandlers struct {
+        Logger  *slog.Logger
+        service *usecases.UseCases
+}
+
+func New(logger *slog.Logger, service *usecases.UseCases) *KafkaHandlers <span class="cov0" title="0">{
+        return &amp;KafkaHandlers{
+                Logger:  logger,
+                service: service,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package kafka_handlers
+
+import (
+        "context"
+        "encoding/json"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+func (ctr KafkaHandlers) SaveBooks(ctx context.Context, message []byte) (err error) <span class="cov0" title="0">{
+        var request Request
+
+        err = json.Unmarshal(message, &amp;request)
+        if err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">books := request.ToEntity()
+
+        value, err := ctr.service.SaveBooks(ctx, books)
+        if err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">_ = value
+
+        return</span>
+}
+
+type Request struct {
+        RequestBooks []RequestBook `json:"books"`
+}
+
+type RequestBook struct {
+        ID            int64     `json:"id"`
+        Name          string    `json:"name"`
+        Author        string    `json:"author"`
+        Date          time.Time `json:"date"`
+        NumberOfPages int       `json:"number_of_pages"`
+}
+
+func (r Request) ToEntity() []book.Book <span class="cov0" title="0">{
+        books := make([]book.Book, 0, len(r.RequestBooks))
+
+        for _, requestBook := range r.RequestBooks </span><span class="cov0" title="0">{
+                books = append(books, book.Book(requestBook))
+        }</span>
+
+        <span class="cov0" title="0">return books</span>
+}
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package kafka_queue
+
+import (
+        "log/slog"
+        "time"
+
+        "github.com/segmentio/kafka-go"
+)
+
+type KafkaQueue struct {
+        logger      *slog.Logger
+        config      Config
+        kafkaReader *kafka.Reader
+}
+
+type Config struct {
+        Host    string
+        GroupID string
+        Topic   string
+}
+
+func New(
+        l *slog.Logger,
+        cfg Config,
+) *KafkaQueue <span class="cov0" title="0">{
+        r := kafka.NewReader(kafka.ReaderConfig{
+                Brokers:  []string{cfg.Host},
+                GroupID:  cfg.GroupID,
+                Topic:    cfg.Topic,
+                MinBytes: 10e3, // 10KB
+                MaxBytes: 10e6, // 10MB
+                MaxWait:  1 * time.Second,
+        })
+
+        return &amp;KafkaQueue{
+                logger:      l,
+                config:      cfg,
+                kafkaReader: r,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package kafka_queue
+
+import (
+        "context"
+)
+
+func (queue *KafkaQueue) Subscribe(businessLogicFunc func(context.Context, []byte) error) <span class="cov0" title="0">{
+        for </span><span class="cov0" title="0">{
+                err := queue.processOneMessage(businessLogicFunc)
+                if err != nil </span><span class="cov0" title="0">{
+                        continue</span>
+                }
+        }
+}
+
+func (queue *KafkaQueue) processOneMessage(businessLogicFunc func(context.Context, []byte) error) (err error) <span class="cov0" title="0">{
+        ctx := context.TODO()
+
+        message, err := queue.kafkaReader.FetchMessage(ctx) // Тут нельзя делать таймаут. Ибо, если очередь пуста, то тут мы тоже блокируемся и по таймауту получим ошибку. А должны ждать следующего сообщения
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">err = businessLogicFunc(ctx, message.Value)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">err = queue.kafkaReader.CommitMessages(ctx, message)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file16" style="display: none">package kafka_adapter_subscriber
+
+import "context"
+
+func (a *KafkaAdapter) Start(ctx context.Context) error <span class="cov0" title="0">{
+        a.kafkaQueue.Subscribe(a.kafkaController.SaveBooks)
+
+        return nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package nats_adapter_subscriber
+
+import (
+        "log/slog"
+
+        natsController "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber/nats-handlers"
+        "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
+)
+
+type NatsAdapterSubscriber struct {
+        logger         *slog.Logger
+        config         Config
+        subscriber     subscriber
+        svc            *usecases.UseCases
+        natsController *natsController.NatsHandlers
+}
+
+type subscriber interface {
+        // Subscribe(cfg SubscriptionConfig) (*Subscription, error)
+}
+
+func New(logger *slog.Logger, config Config, svc *usecases.UseCases) *NatsAdapterSubscriber <span class="cov0" title="0">{
+        natsController := natsController.New(logger, svc)
+
+        return &amp;NatsAdapterSubscriber{
+                logger: logger,
+                config: config,
+                // subscriber:     a,
+                svc:            svc,
+                natsController: natsController,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package nats_adapter_subscriber
+
+import "context"
+
+func (a *NatsAdapterSubscriber) Start(ctx context.Context) error <span class="cov0" title="0">{
+        return nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package nats_handlers
+
+import (
+        "log/slog"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
+)
+
+type NatsHandlers struct {
+        Logger  *slog.Logger
+        service *usecases.UseCases
+}
+
+func New(logger *slog.Logger, service *usecases.UseCases) *NatsHandlers <span class="cov0" title="0">{
+        return &amp;NatsHandlers{
+                Logger:  logger,
+                service: service,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package nats_handlers
+
+import (
+        "context"
+        "encoding/json"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+func (ctr NatsHandlers) SaveBooks(message []byte) (err error) <span class="cov0" title="0">{
+        ctx := context.TODO()
+
+        var request Request
+
+        err = json.Unmarshal(message, &amp;request)
+        if err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">books := request.ToEntity()
+
+        value, err := ctr.service.SaveBooks(ctx, books)
+        if err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">_ = value
+
+        return</span>
+}
+
+type Request struct {
+        RequestBooks []RequestBook `json:"books"`
+}
+
+type RequestBook struct {
+        ID            int64     `json:"id"`
+        Name          string    `json:"name"`
+        Author        string    `json:"author"`
+        Date          time.Time `json:"date"`
+        NumberOfPages int       `json:"number_of_pages"`
+}
+
+func (r Request) ToEntity() []book.Book <span class="cov0" title="0">{
+        books := make([]book.Book, 0, len(r.RequestBooks))
+
+        for _, requestBook := range r.RequestBooks </span><span class="cov0" title="0">{
+                books = append(books, book.Book(requestBook))
+        }</span>
+
+        <span class="cov0" title="0">return books</span>
+}
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package os_signal_adapter
+
+import (
+        "context"
+        "fmt"
+        "os"
+        "os/signal"
+        "syscall"
+)
+
+type OsSignalAdapter struct{}
+
+func New() *OsSignalAdapter <span class="cov0" title="0">{
+        return &amp;OsSignalAdapter{}
+}</span>
+
+func (a *OsSignalAdapter) Start(ctx context.Context) error <span class="cov0" title="0">{
+        osSignCh := make(chan os.Signal, 1)
+
+        signal.Notify(osSignCh, syscall.SIGINT, syscall.SIGTERM, syscall.SIGQUIT)
+
+        select </span>{
+        case &lt;-ctx.Done():<span class="cov0" title="0">
+                err := ctx.Err()
+
+                return err</span>
+        case sig := &lt;-osSignCh:<span class="cov0" title="0">
+                err := fmt.Errorf("\nПолучен сигнал [%s]\n", sig.String()) //nolint:stylecheck
+
+                return err</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">package pprof_adapter
+
+import (
+        "context"
+        "log/slog"
+        "net/http/pprof"
+
+        "github.com/gorilla/mux"
+        http_server "github.com/rostislaved/go-clean-architecture/internal/libs/http-server"
+)
+
+type PprofAdapter struct {
+        server *http_server.Server
+}
+
+type Config struct {
+        Server http_server.Config
+}
+
+func New(logger *slog.Logger, config Config) *PprofAdapter <span class="cov0" title="0">{
+        router := newPprofRouter()
+
+        s := http_server.New(logger, config.Server, router)
+
+        return &amp;PprofAdapter{
+                server: s,
+        }
+}</span>
+
+func newPprofRouter() *mux.Router <span class="cov0" title="0">{
+        router := mux.NewRouter()
+
+        router.HandleFunc("/debug/pprof/", pprof.Index)
+        router.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
+        router.HandleFunc("/debug/pprof/profile", pprof.Profile)
+        router.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
+        router.HandleFunc("/debug/pprof/trace", pprof.Trace)
+
+        return router
+}</span>
+
+func (a PprofAdapter) Start(ctx context.Context) error <span class="cov0" title="0">{
+        return a.server.Start(ctx)
+}</span>
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">package books_gateway
+
+import (
+        "log/slog"
+
+        "github.com/go-resty/resty/v2"
+        providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
+)
+
+type BooksGateway struct {
+        logger *slog.Logger
+        config Config
+        client *resty.Client
+}
+
+func New(
+        l *slog.Logger,
+        config Config,
+) *BooksGateway <span class="cov0" title="0">{
+        err := providerhelpers.ValidateEndpoints(config.Endpoints)
+        if err != nil </span><span class="cov0" title="0">{
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">client := resty.New().
+                SetBaseURL(config.Host).
+                // SetTLSClientConfig(&amp;tls.Config{InsecureSkipVerify: true}).
+                SetRetryCount(3)
+
+        return &amp;BooksGateway{
+                logger: l,
+                config: config,
+                client: client,
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file24" style="display: none">package books_gateway
+
+import (
+        "context"
+        "net/url"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+        providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
+)
+
+func (prv *BooksGateway) GetBooks(ctx context.Context, input struct{}) (books []book.Book, err error) <span class="cov0" title="0">{
+        ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
+        defer cancel()
+
+        values := url.Values{
+                "param1": []string{"value1", "value2"},
+                "param2": []string{"value1"},
+        }
+
+        req := providerhelpers.CreateRequest(ctx, prv.client, prv.config.Endpoints.SignFile)
+
+        var request Request
+
+        req.
+                SetQueryParamsFromValues(values).
+                SetBody(input).
+                ForceContentType("application/json").
+                SetResult(&amp;request)
+
+        resp, err := req.Send()
+        if err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">err = providerhelpers.ValidateStatusCode(resp.StatusCode(), resp.Body())
+        if err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">books = request.ToEntity()
+
+        return books, nil</span>
+}
+
+type Request struct {
+        RequestBooks []RequestBook `json:"books"`
+}
+
+type RequestBook struct {
+        ID            int64     `json:"id"`
+        Name          string    `json:"name"`
+        Author        string    `json:"author"`
+        Date          time.Time `json:"date"`
+        NumberOfPages int       `json:"number_of_pages"`
+}
+
+func (r Request) ToEntity() []book.Book <span class="cov0" title="0">{
+        books := make([]book.Book, 0, len(r.RequestBooks))
+
+        for _, requestBook := range r.RequestBooks </span><span class="cov0" title="0">{
+                books = append(books, book.Book(requestBook))
+        }</span>
+
+        <span class="cov0" title="0">return books</span>
+}
+</pre>
+		
+		<pre class="file" id="file25" style="display: none">// protoc --go_out=. --go_opt=paths=import \                                                                                                    rostislav@rostislav-xps159520
+//                --go-grpc_out=. --go-grpc_opt=paths=import \
+//                file.proto
+
+// Code generated by protoc-gen-go. DO NOT EDIT.
+// versions:
+//         protoc-gen-go v1.31.0
+//         protoc        v4.23.4
+// source: file.proto
+
+package generated
+
+import (
+        reflect "reflect"
+        sync "sync"
+
+        protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+        protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+)
+
+const (
+        // Verify that this generated code is sufficiently up-to-date.
+        _ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)
+        // Verify that runtime/protoimpl is sufficiently up-to-date.
+        _ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
+)
+
+type Message struct {
+        state         protoimpl.MessageState
+        sizeCache     protoimpl.SizeCache
+        unknownFields protoimpl.UnknownFields
+
+        Body string `protobuf:"bytes,1,opt,name=body,proto3" json:"body,omitempty"`
+}
+
+func (x *Message) Reset() <span class="cov0" title="0">{
+        *x = Message{}
+        if protoimpl.UnsafeEnabled </span><span class="cov0" title="0">{
+                mi := &amp;file_file_proto_msgTypes[0]
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                ms.StoreMessageInfo(mi)
+        }</span>
+}
+
+func (x *Message) String() string <span class="cov0" title="0">{
+        return protoimpl.X.MessageStringOf(x)
+}</span>
+
+func (*Message) ProtoMessage() {<span class="cov0" title="0">}</span>
+
+func (x *Message) ProtoReflect() protoreflect.Message <span class="cov0" title="0">{
+        mi := &amp;file_file_proto_msgTypes[0]
+        if protoimpl.UnsafeEnabled &amp;&amp; x != nil </span><span class="cov0" title="0">{
+                ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+                if ms.LoadMessageInfo() == nil </span><span class="cov0" title="0">{
+                        ms.StoreMessageInfo(mi)
+                }</span>
+                <span class="cov0" title="0">return ms</span>
+        }
+        <span class="cov0" title="0">return mi.MessageOf(x)</span>
+}
+
+// Deprecated: Use Message.ProtoReflect.Descriptor instead.
+func (*Message) Descriptor() ([]byte, []int) <span class="cov0" title="0">{
+        return file_file_proto_rawDescGZIP(), []int{0}
+}</span>
+
+func (x *Message) GetBody() string <span class="cov0" title="0">{
+        if x != nil </span><span class="cov0" title="0">{
+                return x.Body
+        }</span>
+        <span class="cov0" title="0">return ""</span>
+}
+
+var File_file_proto protoreflect.FileDescriptor
+
+var file_file_proto_rawDesc = []byte{
+        0x0a, 0x0a, 0x66, 0x69, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x61, 0x70,
+        0x69, 0x22, 0x1d, 0x0a, 0x07, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04,
+        0x62, 0x6f, 0x64, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x62, 0x6f, 0x64, 0x79,
+        0x32, 0x30, 0x0a, 0x03, 0x41, 0x70, 0x69, 0x12, 0x29, 0x0a, 0x0b, 0x53, 0x65, 0x6e, 0x64, 0x4d,
+        0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x0c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x4d, 0x65, 0x73,
+        0x73, 0x61, 0x67, 0x65, 0x1a, 0x0c, 0x2e, 0x61, 0x70, 0x69, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61,
+        0x67, 0x65, 0x42, 0x0d, 0x5a, 0x0b, 0x2e, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65,
+        0x64, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+}
+
+var (
+        file_file_proto_rawDescOnce sync.Once
+        file_file_proto_rawDescData = file_file_proto_rawDesc
+)
+
+func file_file_proto_rawDescGZIP() []byte <span class="cov0" title="0">{
+        file_file_proto_rawDescOnce.Do(func() </span><span class="cov0" title="0">{
+                file_file_proto_rawDescData = protoimpl.X.CompressGZIP(file_file_proto_rawDescData)
+        }</span>)
+        <span class="cov0" title="0">return file_file_proto_rawDescData</span>
+}
+
+var (
+        file_file_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+        file_file_proto_goTypes  = []interface{}{
+                (*Message)(nil), // 0: api.Message
+        }
+)
+
+var file_file_proto_depIdxs = []int32{
+        0, // 0: api.Api.SendMessage:input_type -&gt; api.Message
+        0, // 1: api.Api.SendMessage:output_type -&gt; api.Message
+        1, // [1:2] is the sub-list for method output_type
+        0, // [0:1] is the sub-list for method input_type
+        0, // [0:0] is the sub-list for extension type_name
+        0, // [0:0] is the sub-list for extension extendee
+        0, // [0:0] is the sub-list for field type_name
+}
+
+func init() <span class="cov0" title="0">{ file_file_proto_init() }</span>
+func file_file_proto_init() <span class="cov0" title="0">{
+        if File_file_proto != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+        <span class="cov0" title="0">if !protoimpl.UnsafeEnabled </span><span class="cov0" title="0">{
+                file_file_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} </span><span class="cov0" title="0">{
+                        switch v := v.(*Message); i </span>{
+                        case 0:<span class="cov0" title="0">
+                                return &amp;v.state</span>
+                        case 1:<span class="cov0" title="0">
+                                return &amp;v.sizeCache</span>
+                        case 2:<span class="cov0" title="0">
+                                return &amp;v.unknownFields</span>
+                        default:<span class="cov0" title="0">
+                                return nil</span>
+                        }
+                }
+        }
+        <span class="cov0" title="0">type x struct{}
+        out := protoimpl.TypeBuilder{
+                File: protoimpl.DescBuilder{
+                        GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
+                        RawDescriptor: file_file_proto_rawDesc,
+                        NumEnums:      0,
+                        NumMessages:   1,
+                        NumExtensions: 0,
+                        NumServices:   1,
+                },
+                GoTypes:           file_file_proto_goTypes,
+                DependencyIndexes: file_file_proto_depIdxs,
+                MessageInfos:      file_file_proto_msgTypes,
+        }.Build()
+        File_file_proto = out.File
+        file_file_proto_rawDesc = nil
+        file_file_proto_goTypes = nil
+        file_file_proto_depIdxs = nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file26" style="display: none">// protoc --go_out=. --go_opt=paths=import \                                                                                                    rostislav@rostislav-xps159520
+//                --go-grpc_out=. --go-grpc_opt=paths=import \
+//                file.proto
+
+// Code generated by protoc-gen-go-grpc. DO NOT EDIT.
+// versions:
+// - protoc-gen-go-grpc v1.3.0
+// - protoc             v4.23.4
+// source: file.proto
+
+package generated
+
+import (
+        context "context"
+
+        grpc "google.golang.org/grpc"
+        codes "google.golang.org/grpc/codes"
+        status "google.golang.org/grpc/status"
+)
+
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the grpc package it is being compiled against.
+// Requires gRPC-Go v1.32.0 or later.
+const _ = grpc.SupportPackageIsVersion7
+
+const (
+        Api_SendMessage_FullMethodName = "/api.Api/SendMessage"
+)
+
+// ApiClient is the client API for Api usecases.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ApiClient interface {
+        SendMessage(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Message, error)
+}
+
+type apiClient struct {
+        cc grpc.ClientConnInterface
+}
+
+func NewApiClient(cc grpc.ClientConnInterface) ApiClient <span class="cov0" title="0">{
+        return &amp;apiClient{cc}
+}</span>
+
+func (c *apiClient) SendMessage(ctx context.Context, in *Message, opts ...grpc.CallOption) (*Message, error) <span class="cov0" title="0">{
+        out := new(Message)
+        err := c.cc.Invoke(ctx, Api_SendMessage_FullMethodName, in, out, opts...)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">return out, nil</span>
+}
+
+// ApiServer is the server API for Api usecases.
+// All implementations must embed UnimplementedApiServer
+// for forward compatibility
+type ApiServer interface {
+        SendMessage(context.Context, *Message) (*Message, error)
+        mustEmbedUnimplementedApiServer()
+}
+
+// UnimplementedApiServer must be embedded to have forward compatible implementations.
+type UnimplementedApiServer struct{}
+
+func (UnimplementedApiServer) SendMessage(context.Context, *Message) (*Message, error) <span class="cov0" title="0">{
+        return nil, status.Errorf(codes.Unimplemented, "method SendMessage not implemented")
+}</span>
+func (UnimplementedApiServer) mustEmbedUnimplementedApiServer() {<span class="cov0" title="0">}</span>
+
+// UnsafeApiServer may be embedded to opt out of forward compatibility for this usecases.
+// Use of this interface is not recommended, as added methods to ApiServer will
+// result in compilation errors.
+type UnsafeApiServer interface {
+        mustEmbedUnimplementedApiServer()
+}
+
+func RegisterApiServer(s grpc.ServiceRegistrar, srv ApiServer) <span class="cov0" title="0">{
+        s.RegisterService(&amp;Api_ServiceDesc, srv)
+}</span>
+
+func _Api_SendMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) <span class="cov0" title="0">{
+        in := new(Message)
+        if err := dec(in); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+        <span class="cov0" title="0">if interceptor == nil </span><span class="cov0" title="0">{
+                return srv.(ApiServer).SendMessage(ctx, in)
+        }</span>
+        <span class="cov0" title="0">info := &amp;grpc.UnaryServerInfo{
+                Server:     srv,
+                FullMethod: Api_SendMessage_FullMethodName,
+        }
+        handler := func(ctx context.Context, req interface{}) (interface{}, error) </span><span class="cov0" title="0">{
+                return srv.(ApiServer).SendMessage(ctx, req.(*Message))
+        }</span>
+        <span class="cov0" title="0">return interceptor(ctx, in, info, handler)</span>
+}
+
+// Api_ServiceDesc is the grpc.ServiceDesc for Api usecases.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var Api_ServiceDesc = grpc.ServiceDesc{
+        ServiceName: "api.Api",
+        HandlerType: (*ApiServer)(nil),
+        Methods: []grpc.MethodDesc{
+                {
+                        MethodName: "SendMessage",
+                        Handler:    _Api_SendMessage_Handler,
+                },
+        },
+        Streams:  []grpc.StreamDesc{},
+        Metadata: "file.proto",
+}
+</pre>
+		
+		<pre class="file" id="file27" style="display: none">package grpcAdapter
+
+import (
+        "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/grpc-adapter/generated"
+        "google.golang.org/grpc"
+        "google.golang.org/grpc/credentials/insecure"
+)
+
+type GrpcAdapter struct {
+        client generated.ApiClient
+}
+
+func New() *GrpcAdapter <span class="cov0" title="0">{
+        conn, err := grpc.Dial(":9000", grpc.WithTransportCredentials(insecure.NewCredentials()))
+        if err != nil </span><span class="cov0" title="0">{
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">client := generated.NewApiClient(conn)
+
+        return &amp;GrpcAdapter{
+                client: client,
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file28" style="display: none">package grpcAdapter
+
+import (
+        "context"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/grpc-adapter/generated"
+)
+
+func (a GrpcAdapter) SendMessage(msg string) (resp string, err error) <span class="cov0" title="0">{
+        ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+        defer cancel()
+
+        message := &amp;generated.Message{Body: msg}
+
+        r, err := a.client.SendMessage(ctx, message)
+        if err != nil </span><span class="cov0" title="0">{
+                return "", err
+        }</span>
+
+        <span class="cov0" title="0">return r.GetBody(), nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file29" style="display: none">package kafka_adapter_publisher
+
+import (
+        "log/slog"
+
+        "github.com/segmentio/kafka-go"
+)
+
+type KafkaAdapterPublisher struct {
+        logger *slog.Logger
+        config Config
+        writer *kafka.Writer
+}
+
+func New(logger *slog.Logger, config Config) *KafkaAdapterPublisher <span class="cov0" title="0">{
+        w := kafka.Writer{
+                // TODO Брать поля из конфига
+        }
+
+        return &amp;KafkaAdapterPublisher{
+                logger: logger,
+                config: config,
+                writer: &amp;w,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file30" style="display: none">package kafka_adapter_publisher
+
+import (
+        "context"
+        "encoding/json"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+        "github.com/segmentio/kafka-go"
+)
+
+func (a *KafkaAdapterPublisher) SendBook(ctx context.Context, b book.Book) error <span class="cov0" title="0">{
+        r := Request(b)
+
+        bookJSONBytes, err := json.Marshal(r)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">message := kafka.Message{
+                Key:   []byte("Key"),
+                Value: bookJSONBytes,
+        }
+
+        err = a.writer.WriteMessages(ctx, message)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+type Request struct {
+        ID            int64     `json:"id"`
+        Name          string    `json:"name"`
+        Author        string    `json:"author"`
+        Date          time.Time `json:"date"`
+        NumberOfPages int       `json:"number_of_pages"`
+}
+</pre>
+		
+		<pre class="file" id="file31" style="display: none">package nats_adapter_publisher
+
+import (
+        "log/slog"
+)
+
+type NatsAdapterPublisher struct {
+        logger    *slog.Logger
+        config    Config
+        publisher publisher
+}
+
+type publisher interface {
+        Publish(channel string, data []byte) error
+}
+
+func New(logger *slog.Logger, config Config) *NatsAdapterPublisher <span class="cov0" title="0">{
+        return &amp;NatsAdapterPublisher{
+                logger: logger,
+                config: config,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file32" style="display: none">package nats_adapter_publisher
+
+import (
+        "context"
+        "encoding/json"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+func (a *NatsAdapterPublisher) SendBook(ctx context.Context, b book.Book) error <span class="cov0" title="0">{
+        r := Request(b)
+
+        bookJSONBytes, err := json.Marshal(r)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">err = a.publisher.Publish(a.config.Publisher1.Channel, bookJSONBytes)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+type Request struct {
+        ID            int64     `json:"id"`
+        Name          string    `json:"name"`
+        Author        string    `json:"author"`
+        Date          time.Time `json:"date"`
+        NumberOfPages int       `json:"number_of_pages"`
+}
+</pre>
+		
+		<pre class="file" id="file33" style="display: none">package books_repository_clickhouse
+
+import (
+        "context"
+        "database/sql"
+        "fmt"
+        "log"
+        "log/slog"
+        "time"
+
+        _ "github.com/mailru/go-clickhouse/v2"
+        "github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
+        repo_helpers "github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers"
+)
+
+type BooksRepositoryClickhouse struct {
+        logger *slog.Logger
+        config Config
+        DB     *sql.DB
+}
+
+type Config struct {
+        Type       string
+        Host       string `config:"envVar"`
+        Port       string `config:"envVar"`
+        User       string `config:"envVar"`
+        Password   string `config:"envVar"`
+        Name       string
+        Procedures map[string]string
+}
+
+func New(l *slog.Logger, cfg Config) *BooksRepositoryClickhouse <span class="cov0" title="0">{
+        currentHostString := fmt.Sprintf("DB host: [%s:%s].", cfg.Host, cfg.Port)
+
+        log.Println(currentHostString + " Подключение...")
+        l.Info(currentHostString+" Подключение...", "source", helpers.GetFunctionName())
+
+        connectionString := repo_helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
+
+        db, err := sql.Open(cfg.Type, connectionString)
+        if err != nil </span><span class="cov0" title="0">{
+                l.Error(err.Error(), "source", helpers.GetFunctionName())
+
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+        defer cancel()
+
+        err = db.PingContext(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                l.Error(err.Error(), "source", helpers.GetFunctionName())
+
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">log.Println(currentHostString + " Подключено!")
+        l.Info(currentHostString+" Подключено!", "source", helpers.GetFunctionName())
+
+        return &amp;BooksRepositoryClickhouse{
+                logger: l,
+                config: cfg,
+                DB:     db,
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file34" style="display: none">package books_repository_clickhouse
+
+import (
+        "context"
+        "database/sql"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+func (repo *BooksRepositoryClickhouse) Get(ids []int64) (books []book.Book, err error) <span class="cov0" title="0">{
+        queryString := repo.getGetSomethingQuery(ids)
+
+        ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+        defer cancel()
+
+        rows, err := repo.DB.QueryContext(ctx, queryString)
+        if err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">books, err = scanGetSomething(rows)
+        if err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">return books, nil</span>
+}
+
+func scanGetSomething(rows *sql.Rows) ([]book.Book, error) <span class="cov0" title="0">{
+        return nil, nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file35" style="display: none">package books_repository_clickhouse
+
+func (repo *BooksRepositoryClickhouse) getGetSomethingQuery(shkIDs []int64) string <span class="cov0" title="0">{
+        query := `SELECT * FROM table`
+
+        return query
+}</span>
+</pre>
+		
+		<pre class="file" id="file36" style="display: none">package books_repository_mongo
+
+import (
+        "context"
+        "log/slog"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
+        "go.mongodb.org/mongo-driver/mongo"
+        "go.mongodb.org/mongo-driver/mongo/options"
+)
+
+type BooksRepositoryMongo struct {
+        logger *slog.Logger
+        config Config
+        DB     *mongo.Database
+}
+
+func New(l *slog.Logger, cfg Config) *BooksRepositoryMongo <span class="cov0" title="0">{
+        ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+        defer cancel()
+
+        credential := options.Credential{
+                Username: cfg.User,
+                Password: cfg.Password,
+        }
+
+        clientOptions := options.Client().ApplyURI(cfg.Host).SetAuth(credential)
+
+        client, err := mongo.Connect(ctx, clientOptions)
+        if err != nil </span><span class="cov0" title="0">{
+                l.Error(err.Error(), "source", helpers.GetFunctionName())
+
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">err = client.Ping(ctx, nil)
+        if err != nil </span><span class="cov0" title="0">{
+                l.Error(err.Error(), "source", helpers.GetFunctionName())
+
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">db := client.Database(cfg.Name)
+
+        return &amp;BooksRepositoryMongo{
+                logger: l,
+                config: cfg,
+                DB:     db,
+        }</span>
+}
+
+type Config struct {
+        Name     string
+        Host     string `config:"envVar"`
+        User     string `config:"envVar"`
+        Password string `config:"envVar"`
+}
+</pre>
+		
+		<pre class="file" id="file37" style="display: none">package books_repository_mongo
+
+import (
+        "context"
+        "log"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+        "go.mongodb.org/mongo-driver/bson"
+)
+
+func (repo *BooksRepositoryMongo) Get(ids []int64) ([]book.Book, error) <span class="cov0" title="0">{
+        ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+        defer cancel()
+
+        doc := bson.D{
+                {
+                        Key: "id",
+                        Value: bson.D{
+                                {
+                                        Key:   "$in",
+                                        Value: ids,
+                                },
+                        },
+                },
+        }
+
+        collection := repo.DB.Collection("book_collection")
+
+        cursor, err := collection.Find(ctx, doc)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">defer func() </span><span class="cov0" title="0">{
+                errC := cursor.Close(ctx)
+                if errC != nil </span><span class="cov0" title="0">{
+                        log.Println(errC)
+                }</span>
+        }()
+
+        <span class="cov0" title="0">var books []book.Book
+
+        err = cursor.All(ctx, &amp;books)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return books, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file38" style="display: none">package books_repository_postgres
+
+import (
+        "database/sql"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+type BookDTO struct {
+        ID            sql.NullInt64
+        Name          sql.NullString
+        Author        sql.NullString
+        Date          sql.NullTime
+        NumberOfPages sql.NullString
+}
+
+func (dto *BookDTO) ToEntity() (book.Book, error) <span class="cov0" title="0">{
+        // add fields validation if necessary
+        return book.Book{
+                ID:            dto.ID.Int64,
+                Name:          dto.Name.String,
+                Author:        dto.Author.String,
+                Date:          dto.Date.Time,
+                NumberOfPages: 0,
+        }, nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file39" style="display: none">package books_repository_postgres
+
+import (
+        "context"
+        "fmt"
+        "log"
+        "log/slog"
+        "time"
+
+        _ "github.com/denisenkom/go-mssqldb"
+        sql "github.com/jmoiron/sqlx"
+        _ "github.com/lib/pq"
+        "github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
+        repo_helpers "github.com/rostislaved/go-clean-architecture/internal/libs/repo-helpers"
+)
+
+type BooksRepositoryPostgres struct {
+        logger *slog.Logger
+        config Config
+        DB     *sql.DB
+}
+
+func New(l *slog.Logger, cfg Config) *BooksRepositoryPostgres <span class="cov0" title="0">{
+        currentHostString := fmt.Sprintf("DB host: [%s:%s].", cfg.Host, cfg.Port)
+
+        log.Println(currentHostString + " Подключение...")
+        l.Info(currentHostString+" Подключение...", "source", helpers.GetFunctionName())
+
+        connectionString := repo_helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
+
+        db, err := sql.Open(cfg.Type, connectionString)
+        if err != nil </span><span class="cov0" title="0">{
+                l.Error(err.Error(), "source", helpers.GetFunctionName())
+
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+        defer cancel()
+
+        err = db.PingContext(ctx)
+        if err != nil </span><span class="cov0" title="0">{
+                l.Error(err.Error(), "source", helpers.GetFunctionName())
+
+                panic(err)</span>
+        }
+
+        <span class="cov0" title="0">log.Println(currentHostString + " Подключено!")
+        l.Info(currentHostString+" Подключено!", "source", helpers.GetFunctionName())
+
+        return &amp;BooksRepositoryPostgres{
+                logger: l,
+                config: cfg,
+                DB:     db,
+        }</span>
+}
+
+type Config struct {
+        Type       string
+        Host       string `config:"envVar"`
+        Port       string `config:"envVar"`
+        User       string `config:"envVar"`
+        Password   string `config:"envVar"`
+        Name       string
+        Procedures map[string]string
+}
+</pre>
+		
+		<pre class="file" id="file40" style="display: none">package books_repository_postgres
+
+import (
+        "context"
+        "database/sql"
+        "errors"
+
+        sq "github.com/Masterminds/squirrel"
+        "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+func (repo *BooksRepositoryPostgres) Get(ctx context.Context, ids []int) (books []book.Book, err error) <span class="cov0" title="0">{
+        psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
+
+        builder := psql.
+                Select(
+                        "name",
+                        "author",
+                        "price",
+                ).
+                From("services.bu_entry_get()").
+                Where(sq.Eq{"id": ids})
+
+        query, args, err := builder.ToSql()
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">err = repo.DB.SelectContext(ctx, &amp;books, query, args...)
+        if err != nil </span><span class="cov0" title="0">{
+                if errors.Is(err, sql.ErrNoRows) </span><span class="cov0" title="0">{
+                        return nil, usecases.ErrNotFound
+                }</span>
+
+                <span class="cov0" title="0">return nil, err</span>
+        }
+
+        <span class="cov0" title="0">return</span>
+}
+
+func (repo *BooksRepositoryPostgres) Save(ctx context.Context, books []book.Book) (ids []int, err error) <span class="cov0" title="0">{
+        return
+}</span>
+</pre>
+		
+		<pre class="file" id="file41" style="display: none">package app
+
+import (
+        "log/slog"
+
+        http_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter"
+        kafka_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber"
+        nats_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
+        pprof_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter"
+        books_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/books-gateway"
+        kafka_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
+        nats_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
+        books_repository_postgres "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-postgres"
+        "github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
+        "github.com/rostislaved/go-clean-architecture/internal/app/config"
+)
+
+type App struct {
+        HttpAdapter            *http_adapter.HttpAdapter
+        PprofAdapter           *pprof_adapter.PprofAdapter
+        NatsAdapterSubscriber  *nats_adapter_subscriber.NatsAdapterSubscriber
+        KafkaAdapterSubscriber *kafka_adapter_subscriber.KafkaAdapter
+}
+
+func New(l *slog.Logger, cfg config.Config) App <span class="cov0" title="0">{
+        booksRepository := books_repository_postgres.New(l, cfg.Adapters.Secondary.Databases.Postgres)
+        gateway := books_gateway.New(l, cfg.Adapters.Secondary.Gateways.BooksGateway)
+        natsAdapterPublisher := nats_adapter_publisher.New(l, cfg.Adapters.Secondary.NatsAdapterPublisher)
+        kafkaAdapterPublisher := kafka_adapter_publisher.New(l, cfg.Adapters.Secondary.KafkaAdapterPublisher)
+
+        usecases := usecases.New(
+                l,
+                cfg.Application.UseCases,
+                booksRepository,
+                gateway,
+                natsAdapterPublisher,
+                kafkaAdapterPublisher,
+        )
+
+        httpAdapter := http_adapter.New(l, cfg.Adapters.Primary.HttpAdapter, usecases)
+        pprofAdapter := pprof_adapter.New(l, cfg.Adapters.Primary.PprofAdapter)
+        natsAdapterSubscriber := nats_adapter_subscriber.New(l, cfg.Adapters.Primary.NatsAdapterSubscriber, usecases)
+        kafkaAdapter := kafka_adapter_subscriber.New(l, cfg.Adapters.Primary.KafkaAdapterSubscriber, usecases)
+
+        return App{
+                HttpAdapter:            httpAdapter,
+                PprofAdapter:           pprofAdapter,
+                NatsAdapterSubscriber:  natsAdapterSubscriber,
+                KafkaAdapterSubscriber: kafkaAdapter,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file42" style="display: none">package usecases
+
+import (
+        "context"
+        "log/slog"
+        "time"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+type UseCases struct {
+        logger                *slog.Logger
+        config                Config
+        booksRepository       booksRepository
+        provider              provider
+        kafkaAdapterPublisher bookSender
+        natsAdapterPublisher  bookSender
+}
+
+type Config struct {
+        UpdateInterval time.Duration
+}
+
+type booksRepository interface {
+        Get(ctx context.Context, ids []int) (books []book.Book, err error)
+        Save(ctx context.Context, books []book.Book) (ids []int, err error)
+}
+
+type bookSender interface {
+        SendBook(ctx context.Context, b book.Book) error
+}
+
+type provider interface{}
+
+func New(
+        l *slog.Logger,
+        cfg Config,
+        repository booksRepository,
+        provider provider,
+        kafkaAdapterPublisher bookSender,
+        natsAdapterPublisher bookSender,
+) *UseCases <span class="cov0" title="0">{
+        return &amp;UseCases{
+                logger:                l,
+                config:                cfg,
+                booksRepository:       repository,
+                provider:              provider,
+                kafkaAdapterPublisher: kafkaAdapterPublisher,
+                natsAdapterPublisher:  natsAdapterPublisher,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file43" style="display: none">package usecases
+
+import (
+        "context"
+        "errors"
+
+        "github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+)
+
+var ErrNotFound = errors.New("not found")
+
+func (svc *UseCases) GetBooksByIDs(ctx context.Context, ids []int) (books []book.Book, err error) <span class="cov0" title="0">{
+        books, err = svc.booksRepository.Get(ctx, ids)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return books, nil</span>
+}
+
+func (svc *UseCases) SaveBooks(ctx context.Context, books []book.Book) (ids []int, err error) <span class="cov0" title="0">{
+        ids, err = svc.booksRepository.Save(ctx, books)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">return ids, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file44" style="display: none">package config
+
+func New() (config Config) <span class="cov0" title="0">{
+        return
+}</span>
+</pre>
+		
+		<pre class="file" id="file45" style="display: none">package graceful
+
+import (
+        "context"
+        "log/slog"
+
+        "golang.org/x/sync/errgroup"
+)
+
+type starter interface {
+        Start(ctx context.Context) error
+}
+
+type graceful struct {
+        processes []process
+        logger    *slog.Logger
+}
+
+func New(processes ...process) *graceful <span class="cov0" title="0">{
+        return &amp;graceful{
+                processes: processes,
+                logger:    slog.Default(),
+        }
+}</span>
+
+func (gr *graceful) Start(ctx context.Context) error <span class="cov0" title="0">{
+        g, ctx := errgroup.WithContext(ctx)
+
+        for _, process := range gr.processes </span><span class="cov0" title="0">{
+                process := process // TODO remove if go &gt; 1.22
+
+                if process.disabled </span><span class="cov0" title="0">{
+                        continue</span>
+                }
+
+                <span class="cov0" title="0">f := func() error </span><span class="cov0" title="0">{
+                        err := process.starter.Start(ctx)
+                        if err != nil </span><span class="cov0" title="0">{
+                                gr.logger.Error(err.Error())
+                                gr.logger.Info("Start graceful shutdown")
+
+                                return err
+                        }</span>
+
+                        <span class="cov0" title="0">return nil</span>
+                }
+
+                <span class="cov0" title="0">g.Go(f)</span>
+        }
+
+        <span class="cov0" title="0">err := g.Wait()
+        if err != nil </span><span class="cov0" title="0">{
+                gr.logger.Info("Application stopped gracefully")
+
+                return err
+        }</span>
+
+        <span class="cov0" title="0">gr.logger.Info("Every process stopped by itself with no error")
+
+        return nil</span>
+}
+
+func (gr *graceful) SetLogger(l *slog.Logger) <span class="cov0" title="0">{
+        gr.logger = l
+}</span>
+</pre>
+		
+		<pre class="file" id="file46" style="display: none">package graceful
+
+type process struct {
+        starter  starter
+        disabled bool
+}
+
+func NewProcess(starter starter) process <span class="cov0" title="0">{
+        return process{
+                starter:  starter,
+                disabled: false,
+        }
+}</span>
+
+func (p process) Disable(d bool) process <span class="cov0" title="0">{
+        p.disabled = d
+
+        return p
+}</span>
+</pre>
+		
+		<pre class="file" id="file47" style="display: none">package helpers
+
+import (
+        "runtime"
+)
+
+const (
+        defaultDepth = 1
+        defaultIndex = 0
+)
+
+// GetFunctionName Возвращает имяПакета.ИмяФункции.
+func GetFunctionName(depthList ...int) string <span class="cov0" title="0">{ //nolint:unused // helper func
+        var depth int
+
+        if depthList == nil </span><span class="cov0" title="0">{
+                depth = defaultDepth
+        }</span> else<span class="cov0" title="0"> {
+                depth = depthList[defaultIndex]
+        }</span>
+
+        <span class="cov0" title="0">function, _, _, ok := runtime.Caller(depth)
+        if !ok </span><span class="cov0" title="0">{
+                return "Не удалось получить имя функции"
+        }</span>
+
+        <span class="cov0" title="0">return runtime.FuncForPC(function).Name()</span>
+}
+</pre>
+		
+		<pre class="file" id="file48" style="display: none">package http_server
+
+import (
+        "context"
+        "errors"
+        "log/slog"
+        "net/http"
+        "time"
+
+        "golang.org/x/sync/errgroup"
+)
+
+type Server struct {
+        logger *slog.Logger
+        server *http.Server
+        config Config
+}
+
+type Config struct {
+        Port              string
+        StartMsg          string
+        ReadHeaderTimeout time.Duration
+        WriteTimeout      time.Duration
+        ReadTimeout       time.Duration
+        ShutdownTimeout   time.Duration
+}
+
+func New(logger *slog.Logger, config Config, handler http.Handler) *Server <span class="cov0" title="0">{
+        server := &amp;http.Server{
+                Handler:           handler,
+                ReadTimeout:       config.ReadTimeout,
+                WriteTimeout:      config.WriteTimeout,
+                ReadHeaderTimeout: config.ReadHeaderTimeout,
+                Addr:              config.Port,
+        }
+
+        s := Server{
+                logger: logger,
+                server: server,
+        }
+
+        return &amp;s
+}</span>
+
+func (a *Server) Start(ctx context.Context) error <span class="cov0" title="0">{
+        a.logger.Info(a.config.StartMsg)
+
+        g, ctx := errgroup.WithContext(ctx)
+
+        g.Go(func() error </span><span class="cov0" title="0">{
+                &lt;-ctx.Done()
+
+                ctx, cancel := context.WithTimeout(context.Background(), a.config.ShutdownTimeout)
+                defer cancel()
+
+                err := a.server.Shutdown(ctx) //nolint:contextcheck // sic
+                if err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+
+                <span class="cov0" title="0">return nil</span>
+        })
+
+        <span class="cov0" title="0">g.Go(func() error </span><span class="cov0" title="0">{
+                err := a.server.ListenAndServe()
+                if err != nil </span><span class="cov0" title="0">{
+                        if errors.Is(err, http.ErrServerClosed) </span>{<span class="cov0" title="0">
+                                // ok
+                        }</span> else<span class="cov0" title="0"> {
+                                return err
+                        }</span>
+                }
+
+                <span class="cov0" title="0">return nil</span>
+        })
+
+        <span class="cov0" title="0">err := g.Wait()
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file49" style="display: none">package middlewarehelpers
+
+import "net/http"
+
+type middleware = func(f http.Handler) http.Handler
+
+func And(middlewares ...middleware) middleware <span class="cov0" title="0">{
+        return func(h http.Handler) http.Handler </span><span class="cov0" title="0">{
+                wrapped := h
+
+                for _, middleware := range middlewares </span><span class="cov0" title="0">{
+                        wrapped = middleware(wrapped)
+                }</span>
+
+                <span class="cov0" title="0">return wrapped</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file50" style="display: none">package providerhelpers
+
+import (
+        "context"
+        "errors"
+        "fmt"
+        "net/http"
+        "reflect"
+
+        resty "github.com/go-resty/resty/v2"
+        "go.uber.org/multierr"
+        "moul.io/http2curl"
+)
+
+var RetryCondition = func(r *resty.Response, err error) bool <span class="cov0" title="0">{
+        // retry if return is true
+
+        if err != nil </span><span class="cov0" title="0">{
+                return true
+        }</span>
+
+        <span class="cov0" title="0">switch r.StatusCode() </span>{
+        case
+                // 400:
+                http.StatusRequestTimeout,
+                http.StatusConflict,
+                http.StatusTooManyRequests,
+
+                // 500:
+                http.StatusInternalServerError,
+                http.StatusBadGateway,
+                http.StatusServiceUnavailable,
+                http.StatusGatewayTimeout:<span class="cov0" title="0">
+
+                return true</span>
+        }
+
+        <span class="cov0" title="0">return false</span>
+}
+
+type Endpoint struct {
+        Method  string
+        Path    string
+        Headers map[string]string
+}
+
+func CreateRequest(ctx context.Context, client *resty.Client, endpoint Endpoint) *resty.Request <span class="cov0" title="0">{
+        req := client.R()
+
+        req.Method = endpoint.Method
+        req.URL = endpoint.Path
+
+        req.SetContext(ctx)
+
+        return req
+}</span>
+
+func ValidateEndpoints(endpoints interface{}) (err error) <span class="cov8" title="1">{
+        refValue := reflect.ValueOf(endpoints)
+
+        n := refValue.NumField()
+
+        var combinedErr error
+
+        for i := 0; i &lt; n; i++ </span><span class="cov8" title="1">{
+                fieldName := refValue.Type().Field(i).Name
+
+                fieldInterface := refValue.FieldByName(fieldName).Interface()
+
+                err := ValidateEndpoint(fieldInterface)
+                if err != nil </span><span class="cov8" title="1">{
+                        errString := fmt.Sprintf("\nэндпоинт: [%v] заполнен некорректно: %s", refValue.Type().Field(i).Name, err.Error())
+                        err := errors.New(errString)
+
+                        combinedErr = multierr.Append(combinedErr, err)
+                }</span>
+        }
+
+        <span class="cov8" title="1">if combinedErr != nil </span><span class="cov8" title="1">{
+                return combinedErr
+        }</span>
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+func ValidateEndpoint(endpoint interface{}) error <span class="cov8" title="1">{
+        //method, ok1 := reflect.TypeOf(endpoint).FieldByName("Method")
+        //path, ok2 := reflect.TypeOf(endpoint).FieldByName("Path")
+        //if !(ok1 &amp;&amp; ok2) {
+        //        return nil
+        //}
+        e, ok := endpoint.(Endpoint)
+        if !ok </span><span class="cov8" title="1">{
+                return nil
+        }</span>
+
+        <span class="cov8" title="1">methodValid := allHttpMethods[e.Method]
+        methodNotValid := !methodValid
+
+        pathIsEmpty := e.Path == ""
+
+        if methodNotValid || pathIsEmpty </span><span class="cov8" title="1">{
+                errString := ""
+
+                if methodNotValid </span><span class="cov8" title="1">{
+                        errString = errString + fmt.Sprintf("\nМетод: [%s] не распознан", e.Method)
+                }</span>
+
+                <span class="cov8" title="1">if pathIsEmpty </span><span class="cov8" title="1">{
+                        errString = errString + fmt.Sprintf("\nПуть не может быть пустым")
+                }</span>
+
+                <span class="cov8" title="1">err := errors.New(errString)
+
+                return err</span>
+        }
+
+        <span class="cov8" title="1">return nil</span>
+}
+
+var allHttpMethods = map[string]bool{
+        http.MethodGet:     true,
+        http.MethodHead:    true,
+        http.MethodPost:    true,
+        http.MethodPut:     true,
+        http.MethodPatch:   true,
+        http.MethodDelete:  true,
+        http.MethodConnect: true,
+        http.MethodOptions: true,
+        http.MethodTrace:   true,
+}
+
+func ValidateStatusCode(receivedStatusCode int, body []byte) (err error) <span class="cov0" title="0">{
+        switch getStatusCodeGroup(receivedStatusCode) </span>{
+        case "1xx":<span class="cov0" title="0"></span>
+                //
+        case "2xx":<span class="cov0" title="0">
+                if receivedStatusCode == http.StatusOK </span><span class="cov0" title="0">{
+                        return
+                }</span>
+
+                <span class="cov0" title="0">return</span>
+        case "3xx":<span class="cov0" title="0"></span>
+                //
+        case "4xx":<span class="cov0" title="0">
+                switch receivedStatusCode </span>{
+                case http.StatusBadRequest:<span class="cov0" title="0">
+                        err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
+
+                        return</span>
+                case http.StatusNotFound:<span class="cov0" title="0">
+                        err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
+
+                        return</span>
+                }
+
+        case "5xx":<span class="cov0" title="0"></span>
+                //
+        default:<span class="cov0" title="0"></span> //
+        }
+
+        <span class="cov0" title="0">err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
+
+        return</span>
+}
+
+func getStatusCodeGroup(receivedStatusCode int) (group string) <span class="cov0" title="0">{
+        switch </span>{
+        case 100 &lt;= receivedStatusCode &amp;&amp; receivedStatusCode &lt;= 199:<span class="cov0" title="0">
+                group = "1xx"</span>
+        case 200 &lt;= receivedStatusCode &amp;&amp; receivedStatusCode &lt;= 299:<span class="cov0" title="0">
+                group = "2xx"</span>
+        case 300 &lt;= receivedStatusCode &amp;&amp; receivedStatusCode &lt;= 399:<span class="cov0" title="0">
+                group = "3xx"</span>
+        case 400 &lt;= receivedStatusCode &amp;&amp; receivedStatusCode &lt;= 499:<span class="cov0" title="0">
+                group = "4xx"</span>
+        case 500 &lt;= receivedStatusCode &amp;&amp; receivedStatusCode &lt;= 599:<span class="cov0" title="0">
+                group = "5xx"</span>
+        default:<span class="cov0" title="0"></span>
+        }
+
+        <span class="cov0" title="0">return</span>
+}
+
+func PrintRequestHook(client *resty.Client, request *http.Request) error <span class="cov0" title="0">{
+        curl, err := http2curl.GetCurlCommand(request)
+        if err != nil </span><span class="cov0" title="0">{
+                return err
+        }</span>
+
+        <span class="cov0" title="0">fmt.Println()
+        fmt.Println("---http2curl------")
+        fmt.Println(curl.String())
+        fmt.Println("---http2curl------")
+        fmt.Println()
+
+        return nil</span>
+}
+
+func And(hooks ...func(client *resty.Client, request *http.Request) error) func(client *resty.Client, request *http.Request) error <span class="cov0" title="0">{
+        return func(client *resty.Client, request *http.Request) error </span><span class="cov0" title="0">{
+                for _, hook := range hooks </span><span class="cov0" title="0">{
+                        err := hook(client, request)
+                        if err != nil </span><span class="cov0" title="0">{
+                                return err
+                        }</span>
+                }
+
+                <span class="cov0" title="0">return nil</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file51" style="display: none">package repo_helpers
+
+import (
+        "fmt"
+        "strings"
+)
+
+const (
+        mssql      = "mssql"
+        postgres   = "postgres"
+        clickhouse = "clickhouse"
+)
+
+// connectionString := repo-helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
+func GetConnectionString(Type, Host, Port, User, Password, Name string) (connectionString string) <span class="cov0" title="0">{
+        switch Type </span>{
+        case mssql:<span class="cov0" title="0">
+                if strings.Contains(Host, "\\") </span><span class="cov0" title="0">{
+                        connectionString = fmt.Sprintf("server=%s;user id=%s;password=%s;database=%s",
+                                Host, User, Password, Name)
+                }</span> else<span class="cov0" title="0"> {
+                        connectionString = fmt.Sprintf("server=%s;port=%s;user id=%s;password=%s;database=%s",
+                                Host, Port, User, Password, Name)
+                }</span>
+
+                <span class="cov0" title="0">return</span>
+        case postgres:<span class="cov0" title="0">
+                return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable TimeZone=%s",
+                        Host, Port, User, Password, Name, "Europe/Moscow")</span>
+        case clickhouse:<span class="cov0" title="0">
+                return fmt.Sprintf(
+                        "http://%s:%s@%s:%s/%s",
+                        User,
+                        Password,
+                        Host,
+                        Port,
+                        Name,
+                )</span>
+        default:<span class="cov0" title="0">
+                panic("Неверный тип БД")</span>
+        }
+
+        <span class="cov0" title="0">return</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>
