@@ -1,13 +1,14 @@
-package books_gateway
+package entity5_gateway
 
 import (
 	"log/slog"
 
 	"github.com/go-resty/resty/v2"
+
 	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
 )
 
-type BooksGateway struct {
+type Entity5Gateway struct {
 	logger *slog.Logger
 	config Config
 	client *resty.Client
@@ -16,7 +17,7 @@ type BooksGateway struct {
 func New(
 	l *slog.Logger,
 	config Config,
-) *BooksGateway {
+) *Entity5Gateway {
 	err := providerhelpers.ValidateEndpoints(config.Endpoints)
 	if err != nil {
 		panic(err)
@@ -27,7 +28,7 @@ func New(
 		// SetTLSClientConfig(&tls.Config{InsecureSkipVerify: true}).
 		SetRetryCount(3)
 
-	return &BooksGateway{
+	return &Entity5Gateway{
 		logger: l,
 		config: config,
 		client: client,

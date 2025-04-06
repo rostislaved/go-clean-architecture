@@ -1,5 +1,13 @@
 ## Work in progress
 
+v0.0.3
+* db instances now created outside of repositories and then passed into them as argument (for all db types)
+* pgxpool used instead of sqlx
+* Book entity replaced with several entities with more generic names "Entity*"
+* rename controllers->handlers (controllers is a mvc term)
+* rename provider->gateway (place where you make https cals to other microservices)
+* update linters config (v1.62.2)
+
 v0.0.2 (27.10.2024)
 * added graceful lib for graceful shutdown
 * http-adapter is ready

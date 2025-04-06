@@ -5,12 +5,13 @@ import (
 	kafka_queue "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-queue"
 	nats_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
 	pprofAdapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter"
-	books_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/books-gateway"
+	books_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/entity5-gateway"
 	kafka_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
 	nats_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
-	books_repository_clickhouse "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-clickhouse"
-	books_repository_mongo "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-mongo"
-	books_repository_postgres "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-postgres"
+	entity1_repository "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/entity1-repository"
+	entity2_repository "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/entity2-repository"
+	entity3_repository "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/entity3-repository"
+	entity4_repository "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/entity4-repository"
 )
 
 type Adapters struct {
@@ -26,16 +27,14 @@ type Primary struct {
 }
 
 type Secondary struct {
+	Entity1Config entity1_repository.Config
+	Entity2Config entity2_repository.Config
+	Entity3Config entity3_repository.Config
+	Entity4Config entity4_repository.Config
+
 	NatsAdapterPublisher  nats_adapter_publisher.Config
 	KafkaAdapterPublisher kafka_adapter_publisher.Config
-	Databases             Databases
 	Gateways              Gateways
-}
-
-type Databases struct {
-	Postgres   books_repository_postgres.Config
-	Clickhouse books_repository_clickhouse.Config
-	Mongo      books_repository_mongo.Config
 }
 
 type Gateways struct {

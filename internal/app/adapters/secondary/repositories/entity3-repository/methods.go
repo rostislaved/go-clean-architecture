@@ -1,15 +1,16 @@
-package books_repository_mongo
+package entity3_repository
 
 import (
 	"context"
 	"log"
 	"time"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
 	"go.mongodb.org/mongo-driver/bson"
+
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity3"
 )
 
-func (repo *BooksRepositoryMongo) Get(ids []int64) ([]book.Book, error) {
+func (repo *Entity3Repository) Get(ids []int64) ([]entity3.Entity3, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
@@ -25,7 +26,7 @@ func (repo *BooksRepositoryMongo) Get(ids []int64) ([]book.Book, error) {
 		},
 	}
 
-	collection := repo.DB.Collection("book_collection")
+	collection := repo.client.Database("database").Collection("entity3_collection")
 
 	cursor, err := collection.Find(ctx, doc)
 	if err != nil {
@@ -39,12 +40,12 @@ func (repo *BooksRepositoryMongo) Get(ids []int64) ([]book.Book, error) {
 		}
 	}()
 
-	var books []book.Book
+	var entities []entity3.Entity3
 
-	err = cursor.All(ctx, &books)
+	err = cursor.All(ctx, &entities)
 	if err != nil {
 		return nil, err
 	}
 
-	return books, nil
+	return entities, nil
 }

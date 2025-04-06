@@ -1,38 +1,36 @@
-package books_repository_mongo
+package mongo
 
 import (
 	"context"
 	"log/slog"
 	"time"
 
+	"go.mongodb.org/mongo-driver/v2/mongo"
+	"go.mongodb.org/mongo-driver/v2/mongo/options"
+
 	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
-	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type BooksRepositoryMongo struct {
-	logger *slog.Logger
-	config Config
-	DB     *mongo.Database
-}
-
-func New(l *slog.Logger, cfg Config) *BooksRepositoryMongo {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
+func New(l *slog.Logger, cfg Config) *mongo.Client {
 	credential := options.Credential{
 		Username: cfg.User,
 		Password: cfg.Password,
 	}
 
-	clientOptions := options.Client().ApplyURI(cfg.Host).SetAuth(credential)
+	options := options.
+		Client().
+		ApplyURI(cfg.Host).
+		SetAuth(credential)
 
-	client, err := mongo.Connect(ctx, clientOptions)
+	client, err := mongo.Connect(options)
 	if err != nil {
 		l.Error(err.Error(), "source", helpers.GetFunctionName())
 
 		panic(err)
 	}
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
 	err = client.Ping(ctx, nil)
 	if err != nil {
@@ -43,11 +41,7 @@ func New(l *slog.Logger, cfg Config) *BooksRepositoryMongo {
 
 	db := client.Database(cfg.Name)
 
-	return &BooksRepositoryMongo{
-		logger: l,
-		config: cfg,
-		DB:     db,
-	}
+	return client
 }
 
 type Config struct {

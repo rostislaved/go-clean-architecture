@@ -1,4 +1,4 @@
-package books_gateway
+package entity5_gateway
 
 import providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
 
@@ -8,6 +8,6 @@ type Config struct {
 }
 
 type Endpoints struct {
-	SignFile       providerhelpers.Endpoint
-	GetCertificate providerhelpers.Endpoint
+	Get    providerhelpers.Endpoint
+	Create providerhelpers.Endpoint
 }

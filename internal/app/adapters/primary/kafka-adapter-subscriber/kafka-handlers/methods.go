@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
 func (ctr KafkaHandlers) SaveBooks(ctx context.Context, message []byte) (err error) {
@@ -40,11 +40,11 @@ type RequestBook struct {
 	NumberOfPages int       `json:"number_of_pages"`
 }
 
-func (r Request) ToEntity() []book.Book {
-	books := make([]book.Book, 0, len(r.RequestBooks))
+func (r Request) ToEntity() []entity1.Entity1 {
+	books := make([]entity1.Entity1, 0, len(r.RequestBooks))
 
 	for _, requestBook := range r.RequestBooks {
-		books = append(books, book.Book(requestBook))
+		books = append(books, entity1.Entity1(requestBook))
 	}
 
 	return books

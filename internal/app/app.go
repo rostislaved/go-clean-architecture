@@ -7,12 +7,13 @@ import (
 	kafka_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber"
 	nats_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
 	pprof_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter"
-	books_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/books-gateway"
+	books_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/entity5-gateway"
 	kafka_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
 	nats_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
-	books_repository_postgres "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/books-repository-postgres"
+	entity1_repository "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/entity1-repository"
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
 	"github.com/rostislaved/go-clean-architecture/internal/app/config"
+	"github.com/rostislaved/go-clean-architecture/internal/app/infrastructure/postgres"
 )
 
 type App struct {
@@ -23,7 +24,12 @@ type App struct {
 }
 
 func New(l *slog.Logger, cfg config.Config) App {
-	booksRepository := books_repository_postgres.New(l, cfg.Adapters.Secondary.Databases.Postgres)
+	db, err := postgres.Pgx(l, cfg.Infrastructure.Databases.Postgres)
+	if err != nil {
+		panic(err)
+	}
+
+	entity1Repository := entity1_repository.New(l, cfg.Adapters.Secondary.Entity1Config, db)
 	gateway := books_gateway.New(l, cfg.Adapters.Secondary.Gateways.BooksGateway)
 	natsAdapterPublisher := nats_adapter_publisher.New(l, cfg.Adapters.Secondary.NatsAdapterPublisher)
 	kafkaAdapterPublisher := kafka_adapter_publisher.New(l, cfg.Adapters.Secondary.KafkaAdapterPublisher)
@@ -31,7 +37,7 @@ func New(l *slog.Logger, cfg config.Config) App {
 	usecases := usecases.New(
 		l,
 		cfg.Application.UseCases,
-		booksRepository,
+		entity1Repository,
 		gateway,
 		natsAdapterPublisher,
 		kafkaAdapterPublisher,

@@ -11,7 +11,7 @@ const (
 	clickhouse = "clickhouse"
 )
 
-// connectionString := repo-helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
+// connectionString := repo-helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Field1)
 func GetConnectionString(Type, Host, Port, User, Password, Name string) (connectionString string) {
 	switch Type {
 	case mssql:

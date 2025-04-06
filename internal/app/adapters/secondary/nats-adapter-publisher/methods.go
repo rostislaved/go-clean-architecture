@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
-func (a *NatsAdapterPublisher) SendBook(ctx context.Context, b book.Book) error {
+func (a *NatsAdapterPublisher) SendBook(ctx context.Context, b entity1.Entity1) error {
 	r := Request(b)
 
 	bookJSONBytes, err := json.Marshal(r)

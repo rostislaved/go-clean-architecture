@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
 func (h Handlers) Get(w http.ResponseWriter, r *http.Request) {
@@ -37,7 +37,7 @@ func (h Handlers) Get(w http.ResponseWriter, r *http.Request) {
 
 type RequestGet struct{}
 
-func ToResponse(books []book.Book) ResponseGet {
+func ToResponse(books []entity1.Entity1) ResponseGet {
 	responseGetBooks := make([]ResponseGetBook, 0, len(books))
 
 	for _, book := range books {
