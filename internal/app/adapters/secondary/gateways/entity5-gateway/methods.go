@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity5"
-	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
+	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/provider-helpers"
 )
 
 func (prv *Entity5Gateway) Get(ctx context.Context, input struct{}) (entities []entity5.Entity5, err error) {
@@ -45,8 +45,10 @@ func (prv *Entity5Gateway) Get(ctx context.Context, input struct{}) (entities []
 	return entities, nil
 }
 
-type RequestGet struct{}
-type ResponseGet struct{}
+type (
+	RequestGet  struct{}
+	ResponseGet struct{}
+)
 
 func (r ResponseGet) ToEntity() (entities []entity5.Entity5) {
 	// mapping

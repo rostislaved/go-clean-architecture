@@ -9,7 +9,7 @@ import (
 	"github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
 
-	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
+	"github.com/rostislaved/go-clean-architecture/internal/pkg/helpers"
 )
 
 func New(l *slog.Logger, cfg Config) driver.Conn {

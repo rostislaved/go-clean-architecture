@@ -1,4 +1,4 @@
-# supported golangci-lint version = 1.62.2
+# supported golangci-lint version = 1.64.8
 run:
   # Number of operating system threads (`GOMAXPROCS`) that can execute golangci-lint simultaneously.
   # If it is explicitly set to 0 (i.e. not the default) then golangci-lint will automatically set the value to match Linux container CPU quota.
@@ -27,13 +27,13 @@ linters:
     - errname
     - errorlint
     - exhaustive
+    - exptostd
     - fatcontext
     - forbidigo
     - forcetypeassert
     - gci
     - ginkgolinter
     - gocheckcompilerdirectives
-    - gochecknoglobals
     - gochecknoinits
     - gochecksumtype
     - gocognit
@@ -69,13 +69,13 @@ linters:
     - nakedret
     - nestif
     - nilerr
+    - nilnesserr
     - nilnil
     - nlreturn
     - noctx
     - nolintlint
     - nosprintfhostport
     - paralleltest
-    - perfsprint
     - prealloc
     - predeclared
     - promlinter
@@ -91,7 +91,6 @@ linters:
     - stylecheck
     - tagalign
     - tagliatelle
-    - tenv
     - testableexamples
     - testifylint
     - thelper
@@ -100,6 +99,7 @@ linters:
     - unparam
     - unused
     - usestdlibvars
+    - usetesting
     - wastedassign
     - whitespace
     - wsl
@@ -229,5 +229,10 @@ linters-settings:
 
   wsl:
     allow-trailing-comment: true
+
+  reassign:
+    patterns:
+      - ".*"
+
 issues:
   max-same-issues: 0

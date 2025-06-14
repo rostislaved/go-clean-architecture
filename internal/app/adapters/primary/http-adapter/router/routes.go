@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter/handlers"
-	middlewarehelpers "github.com/rostislaved/go-clean-architecture/internal/libs/middleware-helpers"
+	middlewarehelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/middleware-helpers"
 )
 
 func (r *Router) AppendRoutes(config Config, handlers *handlers.Handlers) {

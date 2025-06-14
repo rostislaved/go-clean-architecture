@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
 
-	"github.com/rostislaved/go-clean-architecture/internal/libs/helpers"
+	"github.com/rostislaved/go-clean-architecture/internal/pkg/helpers"
 )
 
 func New(l *slog.Logger, cfg Config) *mongo.Client {

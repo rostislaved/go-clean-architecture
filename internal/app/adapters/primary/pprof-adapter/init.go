@@ -6,7 +6,7 @@ import (
 	"net/http/pprof"
 
 	"github.com/gorilla/mux"
-	http_server "github.com/rostislaved/go-clean-architecture/internal/libs/http-server"
+	http_server "github.com/rostislaved/go-clean-architecture/internal/pkg/http-server"
 )
 
 type PprofAdapter struct {

@@ -5,7 +5,7 @@ import (
 
 	"github.com/go-resty/resty/v2"
 
-	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
+	providerhelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/provider-helpers"
 )
 
 type Entity5Gateway struct {

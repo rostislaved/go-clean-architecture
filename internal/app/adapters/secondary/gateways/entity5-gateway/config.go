@@ -1,6 +1,6 @@
 package entity5_gateway
 
-import providerhelpers "github.com/rostislaved/go-clean-architecture/internal/libs/provider-helpers"
+import providerhelpers "github.com/rostislaved/go-clean-architecture/internal/pkg/provider-helpers"
 
 type Config struct {
 	Host      string

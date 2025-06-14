@@ -1,8 +1,8 @@
 module github.com/rostislaved/go-clean-architecture
 
-go 1.22.0
+go 1.23.0
 
-toolchain go1.24.1
+toolchain go1.24.4
 
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.34.0
@@ -13,6 +13,7 @@ require (
 	github.com/jackc/pgx/v5 v5.7.4
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/lib/pq v1.10.9
+	github.com/rostislaved/graceful v0.0.1
 	github.com/segmentio/kafka-go v0.4.43
 	github.com/twmb/franz-go v1.18.0
 	github.com/twmb/franz-go/plugin/kslog v1.0.0
@@ -20,7 +21,7 @@ require (
 	go.mongodb.org/mongo-driver/v2 v2.1.0
 	go.uber.org/automaxprocs v1.5.3
 	go.uber.org/multierr v1.11.0
-	golang.org/x/sync v0.11.0
+	golang.org/x/sync v0.15.0
 	google.golang.org/grpc v1.57.0
 	google.golang.org/protobuf v1.33.0
 	moul.io/http2curl v1.0.0
