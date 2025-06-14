@@ -18,7 +18,7 @@ import (
 func main() {
 	cfg := config.New()
 
-	h := slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{})
+	h := slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{})
 	l := slog.New(h)
 
 	app := app.New(l, cfg)
