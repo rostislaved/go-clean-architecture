@@ -18,7 +18,7 @@ func (h Handlers) Get(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	books, err := h.service.GetBooksByIDs(r.Context(), ids)
+	books, err := h.service.Get(r.Context(), ids)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 

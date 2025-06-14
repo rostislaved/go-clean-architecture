@@ -3,9 +3,7 @@ package entity2_repository
 import (
 	"log/slog"
 
-	_ "github.com/denisenkom/go-mssqldb"
 	"github.com/jackc/pgx/v5/pgxpool"
-	_ "github.com/lib/pq"
 )
 
 type Entity2Repository struct {

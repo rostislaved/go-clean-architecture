@@ -5,7 +5,7 @@ import (
 	kafka_queue "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber/kafka-queue"
 	nats_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
 	pprofAdapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter"
-	books_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/entity5-gateway"
+	entity5_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/entity5-gateway"
 	kafka_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
 	nats_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
 	entity1_repository "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/entity1-repository"
@@ -38,5 +38,5 @@ type Secondary struct {
 }
 
 type Gateways struct {
-	BooksGateway books_gateway.Config
+	Entity5Gateway entity5_gateway.Config
 }

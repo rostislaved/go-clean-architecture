@@ -6,46 +6,47 @@ import (
 	"time"
 
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity5"
 )
 
 type UseCases struct {
 	logger                *slog.Logger
 	config                Config
-	booksRepository       booksRepository
+	entity1Repository     entity1Repository
 	gateway               gateway
-	kafkaAdapterPublisher bookSender
-	natsAdapterPublisher  bookSender
+	kafkaAdapterPublisher Entity1Sender
+	natsAdapterPublisher  Entity1Sender
 }
 
 type Config struct {
 	UpdateInterval time.Duration
 }
 
-type booksRepository interface {
-	Get(ctx context.Context, ids []int) (books []entity1.Entity1, err error)
-	Save(ctx context.Context, books []entity1.Entity1) (ids []int, err error)
+type entity1Repository interface {
+	Get(ctx context.Context, ids []int) (entities []entity1.Entity1, err error)
+	Save(ctx context.Context, entities []entity1.Entity1) (ids []int, err error)
 }
 
-type bookSender interface {
-	SendBook(ctx context.Context, b entity1.Entity1) error
+type Entity1Sender interface {
+	SendEntity1(ctx context.Context, e entity1.Entity1) error
 }
 
 type gateway interface {
-	GetBooks(ctx context.Context, input struct{}) (books []entity1.Entity1, err error)
+	Get(ctx context.Context, input struct{}) (entities []entity5.Entity5, err error)
 }
 
 func New(
 	l *slog.Logger,
 	cfg Config,
-	repository booksRepository,
+	repository entity1Repository,
 	gateway gateway,
-	kafkaAdapterPublisher bookSender,
-	natsAdapterPublisher bookSender,
+	kafkaAdapterPublisher Entity1Sender,
+	natsAdapterPublisher Entity1Sender,
 ) *UseCases {
 	return &UseCases{
 		logger:                l,
 		config:                cfg,
-		booksRepository:       repository,
+		entity1Repository:     repository,
 		gateway:               gateway,
 		kafkaAdapterPublisher: kafkaAdapterPublisher,
 		natsAdapterPublisher:  natsAdapterPublisher,

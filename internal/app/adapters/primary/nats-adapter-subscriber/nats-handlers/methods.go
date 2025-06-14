@@ -20,7 +20,7 @@ func (ctr NatsHandlers) SaveBooks(message []byte) (err error) {
 
 	books := request.ToEntity()
 
-	value, err := ctr.service.SaveBooks(ctx, books)
+	value, err := ctr.service.Save(ctx, books)
 	if err != nil {
 		return
 	}

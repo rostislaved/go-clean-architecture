@@ -3,7 +3,6 @@ package clickhouse
 import (
 	"crypto/tls"
 	"fmt"
-	"log"
 	"log/slog"
 
 	"github.com/ClickHouse/clickhouse-go/v2"
@@ -15,10 +14,7 @@ import (
 func New(l *slog.Logger, cfg Config) driver.Conn {
 	currentHostString := fmt.Sprintf("db host: [%s:%s].", cfg.Host, cfg.Port)
 
-	log.Println(currentHostString + " Подключение...")
 	l.Info(currentHostString+" Подключение...", "source", helpers.GetFunctionName())
-
-	// connectionString := repo_helpers.GetConnectionString(cfg.Type, cfg.Host, cfg.Port, cfg.User, cfg.Password, cfg.Name)
 
 	options := clickhouse.Options{
 		Addr: []string{"<CLICKHOUSE_SECURE_NATIVE_HOSTNAME>:9440"},
@@ -51,7 +47,6 @@ func New(l *slog.Logger, cfg Config) driver.Conn {
 		panic(err)
 	}
 
-	log.Println(currentHostString + " Подключено!")
 	l.Info(currentHostString+" Подключено!", "source", helpers.GetFunctionName())
 
 	return conn

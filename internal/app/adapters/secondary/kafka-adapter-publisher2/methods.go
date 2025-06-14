@@ -11,7 +11,7 @@ import (
 )
 
 //
-// func (a *KafkaAdapterPublisher) SendBook(ctx context.Context, b book.Entity1) error {
+// func (a *KafkaAdapterPublisher) SendEntity1(ctx context.Context, b book.Entity1) error {
 //	r := Request(b)
 //
 //	bookJSONBytes, err := json.Marshal(r)

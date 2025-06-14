@@ -7,12 +7,10 @@ toolchain go1.24.4
 require (
 	github.com/ClickHouse/clickhouse-go/v2 v2.34.0
 	github.com/Masterminds/squirrel v1.5.4
-	github.com/denisenkom/go-mssqldb v0.12.3
 	github.com/go-resty/resty/v2 v2.15.3
 	github.com/gorilla/mux v1.8.0
 	github.com/jackc/pgx/v5 v5.7.4
 	github.com/jmoiron/sqlx v1.3.5
-	github.com/lib/pq v1.10.9
 	github.com/rostislaved/graceful v0.0.1
 	github.com/segmentio/kafka-go v0.4.43
 	github.com/twmb/franz-go v1.18.0
@@ -32,8 +30,6 @@ require (
 	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/go-faster/city v1.0.1 // indirect
 	github.com/go-faster/errors v0.7.1 // indirect
-	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
-	github.com/golang-sql/sqlexp v0.1.0 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/uuid v1.6.0 // indirect
@@ -44,6 +40,7 @@ require (
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
+	github.com/lib/pq v1.10.9 // indirect
 	github.com/paulmach/orb v0.11.1 // indirect
 	github.com/pierrec/lz4/v4 v4.1.22 // indirect
 	github.com/rogpeppe/go-internal v1.10.0 // indirect

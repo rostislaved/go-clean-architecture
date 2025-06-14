@@ -2,13 +2,22 @@
 
 v0.0.3
 * Db instances now created outside of repositories and then passed into them as argument (for all db types)
-* Pgxpool used instead of sqlx
+* Replace sqlx with Pgxpool
+* Replace kafka-go with franz-go
+* Replace go-clickhouse with clickhouse-go
 * Book entity replaced with several entities with more generic names - "Entity*"
 * Rename controllers->handlers (controllers is a mvc term)
 * Rename provider->gateway (where you make https requests to other microservices)
 * Rename libs -> pkg. pkg is more widespread name
 * Update linters config (1.64.8)
 * Graceful is a lib now
+* Various fixes and refinements
+
+todo:
+1. get rid of "books"
+2. Check adapters
+3. Image
+4. Infra to pkg
 
 v0.0.2 (27.10.2024)
 * added graceful lib for graceful shutdown
@@ -32,6 +41,7 @@ v0.0.1
 6. Think about fatals in adapters constructors (+)
 7. Validate how context is propagated in adapters
 8. Consider changing (or adding) Config.toml to yaml or hcl
+9. Add Transaction Manager?
 
 
 Notes:
@@ -87,3 +97,9 @@ Notes:
 
 
 ```
+
+TODO:
+What to include in FAQ:
+Why package names snake_case
+Why pkg inside internal
+It is a template of a project layout, not a example project

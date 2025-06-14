@@ -8,8 +8,8 @@ import (
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
-func (a *NatsAdapterPublisher) SendBook(ctx context.Context, b entity1.Entity1) error {
-	r := Request(b)
+func (a *NatsAdapterPublisher) SendEntity1(ctx context.Context, e entity1.Entity1) error {
+	r := Request(e)
 
 	bookJSONBytes, err := json.Marshal(r)
 	if err != nil {

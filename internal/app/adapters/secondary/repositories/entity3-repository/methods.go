@@ -2,7 +2,6 @@ package entity3_repository
 
 import (
 	"context"
-	"log"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -36,7 +35,7 @@ func (repo *Entity3Repository) Get(ids []int64) ([]entity3.Entity3, error) {
 	defer func() {
 		errC := cursor.Close(ctx)
 		if errC != nil {
-			log.Println(errC)
+			repo.logger.Info(errC.Error())
 		}
 	}()
 

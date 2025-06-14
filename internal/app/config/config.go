@@ -2,9 +2,9 @@ package config
 
 import (
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
-	"github.com/rostislaved/go-clean-architecture/internal/app/infrastructure/clickhouse"
-	"github.com/rostislaved/go-clean-architecture/internal/app/infrastructure/mongo"
-	"github.com/rostislaved/go-clean-architecture/internal/app/infrastructure/postgres"
+	"github.com/rostislaved/go-clean-architecture/internal/pkg/clickhouse"
+	"github.com/rostislaved/go-clean-architecture/internal/pkg/mongo"
+	"github.com/rostislaved/go-clean-architecture/internal/pkg/postgres"
 )
 
 type Config struct {

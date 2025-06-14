@@ -64,17 +64,17 @@
 
 
         [Adapters.Secondary.Gateways]
-            [Adapters.Secondary.Gateways.Gateway1]
+            [Adapters.Secondary.Gateways.Entity5Gateway]
                 Host = "http://example.com"
 
-                [Adapters.Secondary.Gateways.Gateway1.Endpoints]
-                    [Adapters.Secondary.Gateways.Gateway1.Endpoints.CreateArticle]
+                [Adapters.Secondary.Gateways.Entity5Gateway.Endpoints]
+                    [Adapters.Secondary.Gateways.Entity5Gateway.Endpoints.Create]
                         Method = "POST"
-                        Path = "/api/v2/article"
+                        Path = "/api/v2/entity5"
                         Headers = {}
-                    [Adapters.Secondary.Gateways.Gateway1.Endpoints.GetBook]
+                    [Adapters.Secondary.Gateways.Entity5Gateway.Endpoints.Get]
                         Method = "GET"
-                        Path = "/api/v1/book"
+                        Path = "/api/v1/entity5"
                         Headers = {}
         [Adapters.Secondary.NatsAdapterPublisher]
             [Adapters.Secondary.NatsAdapterPublisher.Connection]

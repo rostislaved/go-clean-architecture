@@ -9,17 +9,17 @@ import (
 
 var ErrNotFound = errors.New("not found")
 
-func (svc *UseCases) GetBooksByIDs(ctx context.Context, ids []int) (books []entity1.Entity1, err error) {
-	books, err = svc.booksRepository.Get(ctx, ids)
+func (svc *UseCases) Get(ctx context.Context, ids []int) (entities []entity1.Entity1, err error) {
+	entities, err = svc.entity1Repository.Get(ctx, ids)
 	if err != nil {
 		return nil, err
 	}
 
-	return books, nil
+	return entities, nil
 }
 
-func (svc *UseCases) SaveBooks(ctx context.Context, books []entity1.Entity1) (ids []int, err error) {
-	ids, err = svc.booksRepository.Save(ctx, books)
+func (svc *UseCases) Save(ctx context.Context, entities []entity1.Entity1) (ids []int, err error) {
+	ids, err = svc.entity1Repository.Save(ctx, entities)
 	if err != nil {
 		return nil, err
 	}

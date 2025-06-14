@@ -18,7 +18,7 @@ func (ctr KafkaHandlers) SaveBooks(ctx context.Context, message []byte) (err err
 
 	books := request.ToEntity()
 
-	value, err := ctr.service.SaveBooks(ctx, books)
+	value, err := ctr.service.Save(ctx, books)
 	if err != nil {
 		return
 	}

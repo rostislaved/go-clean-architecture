@@ -9,7 +9,7 @@ import (
 	"github.com/segmentio/kafka-go"
 )
 
-func (a *KafkaAdapterPublisher) SendBook(ctx context.Context, b entity1.Entity1) error {
+func (a *KafkaAdapterPublisher) SendEntity1(ctx context.Context, b entity1.Entity1) error {
 	r := Request(b)
 
 	bookJSONBytes, err := json.Marshal(r)
