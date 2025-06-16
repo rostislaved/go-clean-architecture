@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
-func (ctr KafkaHandlers) SaveBooks(ctx context.Context, message []byte) (err error) {
+func (h KafkaHandlers) SaveEntities1(ctx context.Context, message []byte) (err error) {
 	var request Request
 
 	err = json.Unmarshal(message, &request)
@@ -16,9 +16,9 @@ func (ctr KafkaHandlers) SaveBooks(ctx context.Context, message []byte) (err err
 		return
 	}
 
-	books := request.ToEntity()
+	entities := request.ToEntity()
 
-	value, err := ctr.service.SaveBooks(ctx, books)
+	value, err := h.service.Save(ctx, entities)
 	if err != nil {
 		return
 	}
@@ -29,23 +29,22 @@ func (ctr KafkaHandlers) SaveBooks(ctx context.Context, message []byte) (err err
 }
 
 type Request struct {
-	RequestBooks []RequestBook `json:"books"`
+	RequestEntities1 []RequestEntity `json:"entities1"`
 }
 
-type RequestBook struct {
-	ID            int64     `json:"id"`
-	Name          string    `json:"name"`
-	Author        string    `json:"author"`
-	Date          time.Time `json:"date"`
-	NumberOfPages int       `json:"number_of_pages"`
+type RequestEntity struct {
+	ID     int64     `json:"id"`
+	Field1 string    `json:"field1"`
+	Field2 int       `json:"field2"`
+	Field3 time.Time `json:"field3"`
 }
 
-func (r Request) ToEntity() []book.Book {
-	books := make([]book.Book, 0, len(r.RequestBooks))
+func (r Request) ToEntity() []entity1.Entity1 {
+	entities := make([]entity1.Entity1, 0, len(r.RequestEntities1))
 
-	for _, requestBook := range r.RequestBooks {
-		books = append(books, book.Book(requestBook))
+	for _, requestEntity := range r.RequestEntities1 {
+		entities = append(entities, entity1.Entity1(requestEntity))
 	}
 
-	return books
+	return entities
 }

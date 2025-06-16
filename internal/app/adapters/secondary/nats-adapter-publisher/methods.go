@@ -5,18 +5,18 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/book"
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
-func (a *NatsAdapterPublisher) SendBook(ctx context.Context, b book.Book) error {
-	r := Request(b)
+func (a *NatsAdapterPublisher) SendEntity1(ctx context.Context, entity entity1.Entity1) error {
+	request := Request(entity)
 
-	bookJSONBytes, err := json.Marshal(r)
+	JSONBytes, err := json.Marshal(request)
 	if err != nil {
 		return err
 	}
 
-	err = a.publisher.Publish(a.config.Publisher1.Channel, bookJSONBytes)
+	err = a.publisher.Publish(a.config.Publisher1.Channel, JSONBytes)
 	if err != nil {
 		return err
 	}
@@ -25,9 +25,8 @@ func (a *NatsAdapterPublisher) SendBook(ctx context.Context, b book.Book) error 
 }
 
 type Request struct {
-	ID            int64     `json:"id"`
-	Name          string    `json:"name"`
-	Author        string    `json:"author"`
-	Date          time.Time `json:"date"`
-	NumberOfPages int       `json:"number_of_pages"`
+	ID     int64     `json:"id"`
+	Field1 string    `json:"field1"`
+	Field2 int       `json:"field2"`
+	Field3 time.Time `json:"field3"`
 }

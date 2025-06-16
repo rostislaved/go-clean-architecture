@@ -9,21 +9,21 @@ import (
 )
 
 type KafkaAdapter struct {
-	logger          *slog.Logger
-	config          kafka_queue.Config
-	kafkaQueue      *kafka_queue.KafkaQueue
-	kafkaController *kafka_handlers.KafkaHandlers
+	logger        *slog.Logger
+	config        kafka_queue.Config
+	kafkaQueue    *kafka_queue.KafkaQueue
+	kafkaHandlers *kafka_handlers.KafkaHandlers
 }
 
 func New(l *slog.Logger, config kafka_queue.Config, svc *usecases.UseCases) *KafkaAdapter {
 	kafkaQueue := kafka_queue.New(l, config)
 
-	kafkaController := kafka_handlers.New(l, svc)
+	kafkaHandlers := kafka_handlers.New(l, svc)
 
 	return &KafkaAdapter{
-		logger:          l,
-		config:          config,
-		kafkaQueue:      kafkaQueue,
-		kafkaController: kafkaController,
+		logger:        l,
+		config:        config,
+		kafkaQueue:    kafkaQueue,
+		kafkaHandlers: kafkaHandlers,
 	}
 }
