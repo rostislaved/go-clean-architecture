@@ -28,9 +28,9 @@ func New(logger *slog.Logger, config Config, svc *usecases.UseCases) *HttpAdapte
 func newRouter(logger *slog.Logger, config Config, svc *usecases.UseCases) http.Handler {
 	r := router.New()
 
-	ctr := handlers.New(logger, svc)
+	handlers := handlers.New(logger, svc)
 
-	r.AppendRoutes(config.Router, ctr)
+	r.AppendRoutes(config.Router, handlers)
 
 	router := r.Router()
 

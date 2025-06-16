@@ -11,8 +11,6 @@ import (
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
-type Model struct{}
-
 func (repo *Entity1Repository) Get(ctx context.Context, ids []int) (entities []entity1.Entity1, err error) {
 	psql := sq.StatementBuilder.PlaceholderFormat(sq.Dollar)
 
@@ -37,7 +35,7 @@ func (repo *Entity1Repository) Get(ctx context.Context, ids []int) (entities []e
 
 	defer rows.Close()
 
-	models, err := pgx.CollectRows(rows, pgx.RowToStructByName[Model])
+	models, err := pgx.CollectRows(rows, pgx.RowToStructByName[model])
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) || len(models) == 0 {
 			return nil, usecases.ErrNotFound
@@ -49,18 +47,17 @@ func (repo *Entity1Repository) Get(ctx context.Context, ids []int) (entities []e
 	entities = make([]entity1.Entity1, 0, len(models))
 
 	for _, model := range models {
-		entities = append(entities, toEntity(model))
+		e, err := model.toEntity()
+		if err != nil {
+			return nil, err
+		}
+
+		entities = append(entities, e)
 	}
 
 	return entities, nil
 }
 
-func toEntity(m Model) (entity entity1.Entity1) {
-	// mapping
-
-	return entity
-}
-
-func (repo *Entity1Repository) Save(ctx context.Context, entities []entity1.Entity1) (ids []int, err error) {
+func (repo *Entity1Repository) Save(ctx context.Context, entities []entity1.Entity1) (createdEntities []entity1.Entity1, err error) {
 	return
 }

@@ -24,7 +24,7 @@ type Config struct {
 
 type entity1Repository interface {
 	Get(ctx context.Context, ids []int) (entities []entity1.Entity1, err error)
-	Save(ctx context.Context, entities []entity1.Entity1) (ids []int, err error)
+	Save(ctx context.Context, entities []entity1.Entity1) (createdEntities []entity1.Entity1, err error)
 }
 
 type Entity1Sender interface {

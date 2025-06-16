@@ -1,11 +1,13 @@
 package grpc_adapter
 
 import (
+	"context"
 	"net"
+
+	"google.golang.org/grpc"
 
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/generated"
 	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter/handlers"
-	"google.golang.org/grpc"
 )
 
 type GrpcAdapter struct {
@@ -33,9 +35,11 @@ func New() *GrpcAdapter {
 	}
 }
 
-func (a GrpcAdapter) Start() {
+func (a GrpcAdapter) Start(ctx context.Context) error {
 	err := a.start()
 	if err != nil {
 		panic(err)
 	}
+
+	return nil
 }

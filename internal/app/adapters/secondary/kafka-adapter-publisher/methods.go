@@ -5,21 +5,22 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 	"github.com/segmentio/kafka-go"
+
+	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
-func (a *KafkaAdapterPublisher) SendEntity1(ctx context.Context, b entity1.Entity1) error {
-	r := Request(b)
+func (a *KafkaAdapterPublisher) SendEntity1(ctx context.Context, entities entity1.Entity1) error {
+	request := Request(entities)
 
-	bookJSONBytes, err := json.Marshal(r)
+	JSONBytes, err := json.Marshal(request)
 	if err != nil {
 		return err
 	}
 
 	message := kafka.Message{
 		Key:   []byte("Key"),
-		Value: bookJSONBytes,
+		Value: JSONBytes,
 	}
 
 	err = a.writer.WriteMessages(ctx, message)
@@ -31,9 +32,8 @@ func (a *KafkaAdapterPublisher) SendEntity1(ctx context.Context, b entity1.Entit
 }
 
 type Request struct {
-	ID            int64     `json:"id"`
-	Name          string    `json:"name"`
-	Author        string    `json:"author"`
-	Date          time.Time `json:"date"`
-	NumberOfPages int       `json:"number_of_pages"`
+	ID     int64     `json:"id"`
+	Field1 string    `json:"field1"`
+	Field2 int       `json:"field2"`
+	Field3 time.Time `json:"field3"`
 }

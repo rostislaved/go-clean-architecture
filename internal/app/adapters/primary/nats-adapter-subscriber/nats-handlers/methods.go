@@ -8,9 +8,7 @@ import (
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
 
-func (ctr NatsHandlers) SaveBooks(message []byte) (err error) {
-	ctx := context.TODO()
-
+func (h NatsHandlers) SaveEntities(ctx context.Context, message []byte) (err error) {
 	var request Request
 
 	err = json.Unmarshal(message, &request)
@@ -18,9 +16,9 @@ func (ctr NatsHandlers) SaveBooks(message []byte) (err error) {
 		return
 	}
 
-	books := request.ToEntity()
+	entities := request.ToEntity()
 
-	value, err := ctr.service.Save(ctx, books)
+	value, err := h.service.Save(ctx, entities)
 	if err != nil {
 		return
 	}
@@ -31,23 +29,22 @@ func (ctr NatsHandlers) SaveBooks(message []byte) (err error) {
 }
 
 type Request struct {
-	RequestBooks []RequestBook `json:"books"`
+	RequestEntities1 []RequestEntity `json:"entities1"`
 }
 
-type RequestBook struct {
-	ID            int64     `json:"id"`
-	Name          string    `json:"name"`
-	Author        string    `json:"author"`
-	Date          time.Time `json:"date"`
-	NumberOfPages int       `json:"number_of_pages"`
+type RequestEntity struct {
+	ID     int64     `json:"id"`
+	Field1 string    `json:"field1"`
+	Field2 int       `json:"field2"`
+	Field3 time.Time `json:"field3"`
 }
 
 func (r Request) ToEntity() []entity1.Entity1 {
-	books := make([]entity1.Entity1, 0, len(r.RequestBooks))
+	entities := make([]entity1.Entity1, 0, len(r.RequestEntities1))
 
-	for _, requestBook := range r.RequestBooks {
-		books = append(books, entity1.Entity1(requestBook))
+	for _, requestEntity := range r.RequestEntities1 {
+		entities = append(entities, entity1.Entity1(requestEntity))
 	}
 
-	return books
+	return entities
 }

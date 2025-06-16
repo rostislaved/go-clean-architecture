@@ -24,11 +24,12 @@ func main() {
 	app := app.New(l, cfg)
 
 	gr := graceful.New(
+		graceful.NewProcess(os_signal_adapter.New()),
 		graceful.NewProcess(app.HttpAdapter),
+		graceful.NewProcess(app.GrpcAdapter),
 		graceful.NewProcess(app.PprofAdapter),
 		graceful.NewProcess(app.NatsAdapterSubscriber),
 		graceful.NewProcess(app.KafkaAdapterSubscriber),
-		graceful.NewProcess(os_signal_adapter.New()),
 	)
 
 	err := gr.Start(context.Background())

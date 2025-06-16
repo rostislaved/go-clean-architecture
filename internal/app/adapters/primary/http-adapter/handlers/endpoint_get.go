@@ -9,23 +9,23 @@ import (
 )
 
 func (h Handlers) Get(w http.ResponseWriter, r *http.Request) {
-	var ids []int
+	var request RequestGet
 
-	err := json.NewDecoder(r.Body).Decode(&ids)
+	err := json.NewDecoder(r.Body).Decode(&request)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 
 		return
 	}
 
-	books, err := h.service.Get(r.Context(), ids)
+	entities1, err := h.service.Get(r.Context(), request.IDs)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 
 		return
 	}
 
-	response := ToResponse(books)
+	response := toResponseGet(entities1)
 
 	err = json.NewEncoder(w).Encode(response)
 	if err != nil {
@@ -35,28 +35,29 @@ func (h Handlers) Get(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-type RequestGet struct{}
-
-func ToResponse(books []entity1.Entity1) ResponseGet {
-	responseGetBooks := make([]ResponseGetBook, 0, len(books))
-
-	for _, book := range books {
-		responseGetBooks = append(responseGetBooks, ResponseGetBook(book))
-	}
-
-	response := ResponseGet{responseGetBooks}
-
-	return response
+type RequestGet struct {
+	IDs []int `json:"ids"`
 }
 
 type ResponseGet struct {
-	ResponseGetBooks []ResponseGetBook `json:"books"`
+	ResponseGetData []ResponseGetData `json:"data"`
 }
 
-type ResponseGetBook struct {
-	ID            int64     `json:"id"`
-	Name          string    `json:"name"`
-	Author        string    `json:"author"`
-	Date          time.Time `json:"date"`
-	NumberOfPages int       `json:"number_of_pages"`
+type ResponseGetData struct {
+	ID     int64     `json:"id"`
+	Field1 string    `json:"field1"`
+	Field2 int       `json:"field2"`
+	Field3 time.Time `json:"field3"`
+}
+
+func toResponseGet(entities []entity1.Entity1) ResponseGet {
+	responseGet := make([]ResponseGetData, 0, len(entities))
+
+	for _, entity := range entities {
+		responseGet = append(responseGet, ResponseGetData(entity))
+	}
+
+	response := ResponseGet{responseGet}
+
+	return response
 }

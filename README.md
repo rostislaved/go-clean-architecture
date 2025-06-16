@@ -1,4 +1,7 @@
 ## Work in progress
+<p style="text-align: center;">
+  <img src="./logo.svg" alt="logo" width="300"/>
+</p>
 
 v0.0.3
 * Db instances now created outside of repositories and then passed into them as argument (for all db types)
@@ -12,12 +15,7 @@ v0.0.3
 * Update linters config (1.64.8)
 * Graceful is a lib now
 * Various fixes and refinements
-
-todo:
-1. get rid of "books"
-2. Check adapters
-3. Image
-4. Infra to pkg
+* Added logo
 
 v0.0.2 (27.10.2024)
 * added graceful lib for graceful shutdown
@@ -27,8 +25,6 @@ v0.0.2 (27.10.2024)
 * consistent package names (all snake_case)
 * general refactoring. Refactored names of: packages, variables, functions etc.
 
-
-
 v0.0.1
 * initial version
 
@@ -37,20 +33,25 @@ v0.0.1
 2. Rethink the structure of http-adapter (+)
 3. Implement graceful shutdown (+)
 4. Consider making a branch with DI
-5. Separate interface adapters layer and infrastructure layer
+5. Separate interface adapters layer and infrastructure layer (+)
 6. Think about fatals in adapters constructors (+)
-7. Validate how context is propagated in adapters
+7. Validate how context is propagated in adapters (+)
 8. Consider changing (or adding) Config.toml to yaml or hcl
 9. Add Transaction Manager?
-
+10. get rid of "books" (+)
+11. Check adapters (+)
+12. Logo (+)
+13. Infra to pkg (+)
+14. make compile
 
 Notes:
 1. Opinionated: snake_case in package names 
 2. Opinionated: I put the struct and constructor in init.go and the methods in methods.go
-3. adapters implementations are not production ready. They are just examples (except http-adapter)
+
 
 # Project layout
 ```
+> tree -d
 .
 ├── cmd
 │   └── service
@@ -73,33 +74,41 @@ Notes:
     │   │   │   └── pprof-adapter
     │   │   └── secondary
     │   │       ├── gateways
-    │   │       │   └── books-gateway
+    │   │       │   └── entity5-gateway
     │   │       ├── grpc-adapter
     │   │       │   └── generated
     │   │       ├── kafka-adapter-publisher
+    │   │       ├── kafka-adapter-publisher2
+    │   │       │   └── kafka-client
     │   │       ├── nats-adapter-publisher
     │   │       └── repositories
-    │   │           ├── books-repository-clickhouse
-    │   │           ├── books-repository-mongo
-    │   │           └── books-repository-postgres
+    │   │           ├── entity1-repository
+    │   │           ├── entity2-repository
+    │   │           ├── entity3-repository
+    │   │           └── entity4-repository
     │   ├── application
     │   │   └── usecases
     │   ├── config
     │   └── domain
-    │       └── book
-    └── libs
-        ├── graceful
+    │       ├── entity1
+    │       ├── entity2
+    │       ├── entity3
+    │       ├── entity4
+    │       └── entity5
+    └── pkg
+        ├── clickhouse
         ├── helpers
         ├── http-server
         ├── middleware-helpers
-        ├── provider-helpers
-        └── repo-helpers
+        ├── mongo
+        ├── postgres
+        └── provider-helpers
+
 
 
 ```
 
-TODO:
-What to include in FAQ:
-Why package names snake_case
-Why pkg inside internal
-It is a template of a project layout, not a example project
+# FAQ
+#### Why package names snake_case
+#### Why pkg inside internal
+#### It is a template of a project layout, not a example project
