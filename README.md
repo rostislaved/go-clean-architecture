@@ -1,9 +1,10 @@
 ## Work in progress
-<p style="text-align: center;">
+<p align="center">
   <img src="./logo.svg" alt="logo" width="300"/>
 </p>
 
-v0.0.3
+
+v0.0.3 (16.06.2025)
 * Db instances now created outside of repositories and then passed into them as argument (for all db types)
 * Replace sqlx with Pgxpool
 * Replace kafka-go with franz-go
