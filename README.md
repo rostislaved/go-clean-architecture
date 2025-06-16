@@ -16,7 +16,7 @@ v0.0.3 (16.06.2025)
 * Update linters config (1.64.8)
 * Graceful is a lib now
 * Various fixes and refinements
-* Added logo
+* Added draft logo
 
 v0.0.2 (27.10.2024)
 * added graceful lib for graceful shutdown
