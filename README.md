@@ -1,9 +1,19 @@
-## Work in progress
 <p align="center">
   <img src="./logo.svg" alt="logo" width="300"/>
 </p>
 
+## Go Clean Architecture Template
 
+Шаблон для создания приложений в соответствии с принципами чистой архитектуры.
+
+Ключевые моменты:
+- Соответствие принципам чистой архитектуры
+- Используются паттерны DDD
+- Учтены лучшие практики написания Go кода
+
+Это шаблон, а не пример реального приложения. Задача шаблона быть максимально общим и показывать подходы, а не реализовывать конкретную бизнес-логику, которая будет отличаться для каждого реального приложения.
+
+## Work in progress
 v0.0.3 (16.06.2025)
 * Db instances now created outside of repositories and then passed into them as argument (for all db types)
 * Replace sqlx with Pgxpool
