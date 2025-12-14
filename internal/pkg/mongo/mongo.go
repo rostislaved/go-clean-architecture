@@ -5,10 +5,9 @@ import (
 	"log/slog"
 	"time"
 
+	"github.com/rostislaved/go-clean-architecture/internal/pkg/helpers"
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
-
-	"github.com/rostislaved/go-clean-architecture/internal/pkg/helpers"
 )
 
 func New(l *slog.Logger, cfg Config) *mongo.Client {
@@ -39,7 +38,7 @@ func New(l *slog.Logger, cfg Config) *mongo.Client {
 		panic(err)
 	}
 
-	db := client.Database(cfg.Name)
+	// db := client.Database(cfg.Name)
 
 	return client
 }

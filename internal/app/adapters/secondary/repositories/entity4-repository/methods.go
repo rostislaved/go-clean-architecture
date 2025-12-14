@@ -10,6 +10,5 @@ func (repo *Entity4Repository) Get(ids []int64) (entities []entity4.Entity4, err
 	// defer cancel()
 
 	// s := repo.db.Stats()
-
 	return entities, nil
 }

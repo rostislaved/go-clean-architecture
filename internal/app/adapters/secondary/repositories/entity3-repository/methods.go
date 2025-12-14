@@ -4,9 +4,8 @@ import (
 	"context"
 	"time"
 
-	"go.mongodb.org/mongo-driver/bson"
-
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity3"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 func (repo *Entity3Repository) Get(ids []int64) ([]entity3.Entity3, error) {

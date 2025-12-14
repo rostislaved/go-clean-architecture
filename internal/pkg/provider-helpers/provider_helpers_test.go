@@ -12,9 +12,12 @@ type TestStruct1 struct {
 type TestStruct2 struct{}
 
 func TestValidateFields(t *testing.T) {
+	t.Parallel()
+
 	type args struct {
-		endpoints interface{}
+		endpoints any
 	}
+
 	tests := []struct {
 		name    string
 		args    args
@@ -93,7 +96,7 @@ func TestValidateFields(t *testing.T) {
 			wantErr: false,
 		},
 		// TODO implement
-		//{
+		// {
 		//	name: "wrong endpoint struct itself, error",
 		//	args: args{
 		//		endpoints: config.Endpoint{
@@ -103,12 +106,15 @@ func TestValidateFields(t *testing.T) {
 		//		},
 		//	},
 		//	wantErr: true,
-		//},
+		// },
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := ValidateEndpoints(tt.args.endpoints); (err != nil) != tt.wantErr {
+			t.Parallel()
+
+			err := ValidateEndpoints(tt.args.endpoints)
+			if (err != nil) != tt.wantErr {
 				t.Errorf("ValidateEndpoints() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
@@ -116,9 +122,12 @@ func TestValidateFields(t *testing.T) {
 }
 
 func TestValidateEndpoint(t *testing.T) {
+	t.Parallel()
+
 	type args struct {
-		endpoint interface{}
+		endpoint any
 	}
+
 	tests := []struct {
 		name    string
 		args    args
@@ -183,7 +192,10 @@ func TestValidateEndpoint(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := ValidateEndpoint(tt.args.endpoint); (err != nil) != tt.wantErr {
+			t.Parallel()
+
+			err := ValidateEndpoint(tt.args.endpoint)
+			if (err != nil) != tt.wantErr {
 				t.Errorf("ValidateEndpoint() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})

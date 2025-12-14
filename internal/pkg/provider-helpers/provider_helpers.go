@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"reflect"
 
-	resty "github.com/go-resty/resty/v2"
+	"github.com/go-resty/resty/v2"
 	"go.uber.org/multierr"
 	"moul.io/http2curl"
 )
@@ -55,14 +55,14 @@ func CreateRequest(ctx context.Context, client *resty.Client, endpoint Endpoint)
 	return req
 }
 
-func ValidateEndpoints(endpoints interface{}) (err error) {
+func ValidateEndpoints(endpoints any) (err error) {
 	refValue := reflect.ValueOf(endpoints)
 
 	n := refValue.NumField()
 
 	var combinedErr error
 
-	for i := 0; i < n; i++ {
+	for i := range n {
 		fieldName := refValue.Type().Field(i).Name
 
 		fieldInterface := refValue.FieldByName(fieldName).Interface()
@@ -83,12 +83,12 @@ func ValidateEndpoints(endpoints interface{}) (err error) {
 	return nil
 }
 
-func ValidateEndpoint(endpoint interface{}) error {
-	//method, ok1 := reflect.TypeOf(endpoint).FieldByName("Method")
-	//path, ok2 := reflect.TypeOf(endpoint).FieldByName("Path")
-	//if !(ok1 && ok2) {
+func ValidateEndpoint(endpoint any) error {
+	// method, ok1 := reflect.TypeOf(endpoint).FieldByName("Method")
+	// path, ok2 := reflect.TypeOf(endpoint).FieldByName("Path")
+	// if !(ok1 && ok2) {
 	//	return nil
-	//}
+	// }
 	e, ok := endpoint.(Endpoint)
 	if !ok {
 		return nil
@@ -103,11 +103,11 @@ func ValidateEndpoint(endpoint interface{}) error {
 		errString := ""
 
 		if methodNotValid {
-			errString = errString + fmt.Sprintf("\nМетод: [%s] не распознан", e.Method)
+			errString += fmt.Sprintf("\nМетод: [%s] не распознан", e.Method)
 		}
 
 		if pathIsEmpty {
-			errString = errString + fmt.Sprintf("\nПуть не может быть пустым")
+			errString += "\nПуть не может быть пустым"
 		}
 
 		err := errors.New(errString)
@@ -130,16 +130,17 @@ var allHttpMethods = map[string]bool{
 	http.MethodTrace:   true,
 }
 
+//nolint:revive // identical-switch-branches для явности кейсы отдельно
 func ValidateStatusCode(receivedStatusCode int, body []byte) (err error) {
 	switch getStatusCodeGroup(receivedStatusCode) {
 	case "1xx":
 		//
 	case "2xx":
 		if receivedStatusCode == http.StatusOK {
-			return
+			return err
 		}
 
-		return
+		return err
 	case "3xx":
 		//
 	case "4xx":
@@ -147,11 +148,11 @@ func ValidateStatusCode(receivedStatusCode int, body []byte) (err error) {
 		case http.StatusBadRequest:
 			err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
 
-			return
+			return err
 		case http.StatusNotFound:
 			err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
 
-			return
+			return err
 		}
 
 	case "5xx":
@@ -161,7 +162,7 @@ func ValidateStatusCode(receivedStatusCode int, body []byte) (err error) {
 
 	err = fmt.Errorf("получен статускод [%v]. Тело ответа: [%s]", receivedStatusCode, string(body))
 
-	return
+	return err
 }
 
 func getStatusCodeGroup(receivedStatusCode int) (group string) {
@@ -182,7 +183,8 @@ func getStatusCodeGroup(receivedStatusCode int) (group string) {
 	return
 }
 
-func PrintRequestHook(client *resty.Client, request *http.Request) error {
+//nolint:forbidigo // sic
+func PrintRequestHook(_ *resty.Client, request *http.Request) error {
 	curl, err := http2curl.GetCurlCommand(request)
 	if err != nil {
 		return err

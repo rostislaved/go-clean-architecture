@@ -11,12 +11,12 @@ import (
 func (a *NatsAdapterPublisher) SendEntity1(ctx context.Context, entity entity1.Entity1) error {
 	request := Request(entity)
 
-	JSONBytes, err := json.Marshal(request)
+	jsonBytes, err := json.Marshal(request)
 	if err != nil {
 		return err
 	}
 
-	err = a.publisher.Publish(a.config.Publisher1.Channel, JSONBytes)
+	err = a.publisher.Publish(a.config.Publisher1.Channel, jsonBytes)
 	if err != nil {
 		return err
 	}

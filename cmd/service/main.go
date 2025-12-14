@@ -1,10 +1,9 @@
 package main
 
 import (
-	_ "go.uber.org/automaxprocs"
-
 	"github.com/rostislaved/go-clean-architecture/internal/app"
 	"github.com/rostislaved/go-clean-architecture/internal/pkg/logger"
+	_ "go.uber.org/automaxprocs"
 )
 
 func main() {

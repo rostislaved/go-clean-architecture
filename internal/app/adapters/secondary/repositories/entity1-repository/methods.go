@@ -6,7 +6,6 @@ import (
 
 	sq "github.com/Masterminds/squirrel"
 	"github.com/jackc/pgx/v5"
-
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
 )
@@ -59,5 +58,5 @@ func (repo *Entity1Repository) Get(ctx context.Context, ids []int) (entities []e
 }
 
 func (repo *Entity1Repository) Save(ctx context.Context, entities []entity1.Entity1) (createdEntities []entity1.Entity1, err error) {
-	return
+	return createdEntities, nil
 }

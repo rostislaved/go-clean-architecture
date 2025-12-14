@@ -3,7 +3,7 @@ package nats_adapter_subscriber
 import (
 	"log/slog"
 
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber/nats-handlers"
+	nats_handlers "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber/nats-handlers"
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
 )
 
@@ -15,9 +15,7 @@ type NatsAdapterSubscriber struct {
 	natsHandlers *nats_handlers.NatsHandlers
 }
 
-type subscriber interface {
-	// Subscribe(cfg SubscriptionConfig) (*Subscription, error)
-}
+type subscriber any
 
 func New(logger *slog.Logger, config Config, svc *usecases.UseCases) *NatsAdapterSubscriber {
 	natsHandlers := nats_handlers.New(logger, svc)

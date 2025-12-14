@@ -1,238 +1,302 @@
-# supported golangci-lint version = 1.64.8
-run:
-  # Number of operating system threads (`GOMAXPROCS`) that can execute golangci-lint simultaneously.
-  # If it is explicitly set to 0 (i.e. not the default) then golangci-lint will automatically set the value to match Linux container CPU quota.
-  # Default: the number of logical CPUs in the machine
-  concurrency: 0
-  timeout: 3m
-
+# https://github.com/rostislaved/golangci-lint-config
+# supported golangci-lint version = 2.6.0
+version: "2"
 linters:
-  disable-all: true
-  enable:
-    - asasalint
-    - asciicheck
-    - bidichk
-    - bodyclose
-    - canonicalheader
-    - containedctx
-    - contextcheck
-    - copyloopvar
-    - cyclop
-    - decorder
-    - dogsled
-    - dupword
-    - durationcheck
-    - errcheck
-    - errchkjson
-    - errname
-    - errorlint
-    - exhaustive
-    - exptostd
-    - fatcontext
-    - forbidigo
-    - forcetypeassert
-    - gci
-    - ginkgolinter
-    - gocheckcompilerdirectives
-    - gochecknoinits
-    - gochecksumtype
-    - gocognit
-    - goconst
-    - gocritic
-    - gocyclo
-    - godot
-    - godox
-    - gofmt
-    - gofumpt
-    - goheader
-    - goimports
-    - gomoddirectives
-    - gomodguard
-    - goprintffuncname
-    - gosec
-    - gosimple
-    - gosmopolitan
-    - govet
-    - grouper
-    - iface
-    - importas
-    - inamedparam
-    - ineffassign
-    - interfacebloat
-    - ireturn
-    - loggercheck
-    - maintidx
-    - makezero
-    - mirror
-    - misspell
-    - musttag
-    - nakedret
-    - nestif
-    - nilerr
-    - nilnesserr
-    - nilnil
-    - nlreturn
-    - noctx
-    - nolintlint
-    - nosprintfhostport
-    - paralleltest
-    - prealloc
-    - predeclared
-    - promlinter
-    - protogetter
-    - reassign
-    - recvcheck
-    - revive
-    - rowserrcheck
-    - sloglint
-    - spancheck
-    - sqlclosecheck
-    - staticcheck
-    - stylecheck
-    - tagalign
-    - tagliatelle
-    - testableexamples
-    - testifylint
-    - thelper
-    - tparallel
-    - unconvert
-    - unparam
-    - unused
-    - usestdlibvars
-    - usetesting
-    - wastedassign
-    - whitespace
-    - wsl
-    - zerologlint
+    default: none
+    enable:
+        - arangolint
+        - asasalint
+        - asciicheck
+        - bidichk
+        - bodyclose
+        - canonicalheader
+        - containedctx
+        - contextcheck
+        - copyloopvar
+        - cyclop
+        - decorder
+        #    - depguard # хороший способ запретить импорт чего-либо. Зависит от подхода к разработке.
+        - dogsled
+        #    - dupl # сплошные false positives
+        - dupword
+        - durationcheck
+        - embeddedstructfieldcheck
+        #    - err113 # Opinionated.
+        - errcheck
+        - errchkjson
+        - errname
+        - errorlint
+        - exhaustive
+        #    - exhaustruct # Зависит от подхода к разработке.
+        - exptostd
+        - fatcontext
+        - forbidigo
+        - forcetypeassert
+        - funcorder
+        #    - funlen # не лучшая метрика качества кода. Лучше в gocyclo, gocognit, maintidx. Например, табличные тесты всегда будут большими.
+        - ginkgolinter
+        - gocheckcompilerdirectives
+        #    - gochecknoglobals # не позволяет добавлять исключения (time.Date, regex.Must, etc). reassign с настройкой * частично решает проблему https://github.com/tommy-muehle/go-mnd/issues/14
+        - gochecknoinits
+        - gochecksumtype
+        - gocognit
+        - goconst
+        - gocritic
+        - gocyclo
+        #    - godoclint # Подходит скорее для библиотек
+        - godot
+        - godox
+        - goheader
+        - gomoddirectives
+        - gomodguard
+        - goprintffuncname
+        - gosec
+        - gosmopolitan
+        - govet
+        - grouper
+        - iface
+        - importas
+        - inamedparam
+        - ineffassign
+        - interfacebloat
+        #    - intrange # обычный трехкомпонентный for довольно стандартен, чтобы заставлять менять на for i := range n
+        - iotamixing
+        #    - ireturn # существуют ситуации, когда нужно возвращать интерфейсы: паттерн фабрика или какие-то внешние либы подразумевают это (ogen, otel)
+        #    - lll # редко актуальный при наличии большого экрана и включённом автоформатировании
+        - loggercheck
+        - maintidx
+        - makezero
+        - mirror
+        #    - mnd # не поддерживает игнор чисел по регулярному выражению. Нельзя исключить строки вида 5*time.Second
+        - misspell
+        - modernize
+        - musttag
+        - nakedret
+        - nestif
+        - nilerr
+        - nilnesserr
+        - nilnil
+        - nlreturn
+        - noctx
+        - noinlineerr
+        - nolintlint
+        #    - nonamedreturns # named returns делают код более явным
+        - nosprintfhostport
+        - paralleltest
+        #    - perfsprint # компромисс производительности и чистоты кода. Чаще лучше выбрать чистоту (легкость восприятия)
+        - prealloc
+        - predeclared
+        - promlinter
+        - protogetter
+        - reassign
+        - recvcheck
+        - revive
+        - rowserrcheck
+        - sloglint
+        - spancheck
+        - sqlclosecheck
+        - staticcheck
+        - tagalign
+        - tagliatelle
+        - testableexamples
+        - testifylint
+        #    - testpackage # Зависит от подхода к разработке.
+        - thelper
+        - tparallel
+        - unconvert
+        - unparam
+        - unqueryvet
+        - unused
+        - usestdlibvars
+        - usetesting
+        #    - varnamelen # Иногда сложно найти достойную замену однобуквенным именам. Как вариант _name, но тоже некрасиво.
+        - wastedassign
+        - whitespace
+        #    - wrapcheck # если обертка не через fmt.Errorf, линтер все равно ругается
+        #    - wsl # deprecated, но почему-то не удален из golangci-lint. Заменен wsl_v5
+        - wsl_v5
+        - zerologlint
 
-output:
-  # Default: false
-  sort-results: true
-  # Default: ["file"]
-  sort-order:
-    - linter
-    - file
+    settings:
+        cyclop:
+            # Default: 10
+            max-complexity: 15
+        gocritic:
+            enable-all: true
+            disabled-checks:
+                - hugeParam
+                - rangeValCopy
+                - importShadow
+        nestif:
+            min-complexity: 7
+        nolintlint:
+            allow-unused: false
+            require-explanation: true
+            require-specific: true
+        reassign:
+            patterns:
+                - .*
+        govet:
+            enable-all: true
+            disable:
+                - fieldalignment
+                - shadow # Это не всегда ошибка
+        prealloc:
+            # Report pre-allocation suggestions on for loops.
+            # Default: false
+            for-loops: true
+        nilnil:
+            # In addition, detect opposite situation (simultaneous return of non-nil error and valid value).
+            # E.g, `return clone, fh.indexer.Update(clone)` will be considered as invalid.
+            # Default: false
+            detect-opposite: true
+        revive:
+            enable-all-rules: true
+            rules:
+                - name: unexported-return
+                  disabled: true
+                - name: line-length-limit
+                  disabled: true
+                - name: add-constant
+                  disabled: true
+                - name: unhandled-error
+                  disabled: true
+                - name: comment-spacings
+                  disabled: true
+                - name: var-naming
+                  disabled: true
+                - name: nested-structs
+                  disabled: true
+                - name: max-public-structs
+                  disabled: true
+                - name: function-length
+                  disabled: true
+                - name: import-shadowing
+                  disabled: true
+                - name: import-alias-naming
+                  disabled: true
+                - name: empty-block
+                  disabled: true
+                - name: confusing-naming
+                  disabled: true
+                - name: exported
+                  disabled: true
+                - name: unused-receiver
+                  disabled: true
+                - name: indent-error-flow
+                  disabled: true
+                - name: early-return
+                  disabled: true
+                - name: use-any
+                  disabled: true
+                - name: argument-limit
+                  disabled: true
+                - name: cognitive-complexity
+                  disabled: true
+                - name: cyclomatic
+                  arguments:
+                      - 15
+                - name: confusing-naming
+                  disabled: true
+                - name: deep-exit
+                  disabled: true
+                - name: get-return
+                  disabled: true
+                - name: package-directory-mismatch
+                  disabled: true
+                - name: struct-tag # conflicts with validate user custom flags. Workaround: "validate,option1,option2"
+                  disabled: true
+        testifylint:
+            # Enable all checkers (https://github.com/Antonboom/testifylint#checkers).
+            # Default: false
+            enable-all: true
+        usestdlibvars:
+            # Suggest the use of time.Month in time.Date.
+            # Default: false
+            time-date-month: true
+            # Suggest the use of time.Month.String().
+            # Default: false
+            time-month: true
+            # Suggest the use of time.Layout.
+            # Default: false
+            time-layout: true
+            # Suggest the use of crypto.Hash.String().
+            # Default: false
+            crypto-hash: true
+            # Suggest the use of rpc.DefaultXXPath.
+            # Default: false
+            default-rpc-path: true
+            # Suggest the use of sql.LevelXX.String().
+            # Default: false
+            sql-isolation-level: true
+            # Suggest the use of tls.SignatureScheme.String().
+            # Default: false
+            tls-signature-scheme: true
+            # Suggest the use of constant.Kind.String().
+            # Default: false
+            constant-kind: true
+        errcheck:
+            # Report about not checking of errors in type assertions: `a := b.(MyStruct)`.
+            # Such cases aren't reported by default.
+            # Default: false
+            check-type-assertions: true
+            # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`.
+            # Such cases aren't reported by default.
+            # Default: false
+            check-blank: true
 
-linters-settings:
-  ireturn:
-    allow:
-      - anon
-      - error
-      - empty
-      - stdlib
-      - Opt
-      - TextMapPropagator
-      - Span
+        staticcheck:
+            checks:
+                - all
+                - -S1008
+                - -ST1003  # Poorly chosen identifier. Like camel_case
+        tagliatelle:
+            case:
+                rules:
+                    avro: snake
+                    bson: snake
+                    env: snake
+                    envconfig: upperSnake
+                    json: snake
+                    mapstructure: snake
+                    toml: snake
+                    whatever: snake
+                    xml: snake
+                    yaml: snake
 
-  nolintlint:
-    allow-unused: false
-    # Enable to require an explanation of nonzero length after each nolint directive.
-    # Default: false
-    require-explanation: true
-    # Enable to require nolint directives to mention the specific linter being suppressed.
-    # Default: false
-    require-specific: true
+        wsl_v5:
+            allow-first-in-block: false
 
-  tagliatelle:
-    # Checks the struct tag name case.
-    case:
-      rules:
-        json: snake
-        yaml: snake
-        xml: snake
-        toml: snake
-        bson: snake
-        avro: snake
-        mapstructure: snake
-        env: snake
-        #        env: upperSnake
-        envconfig: upperSnake
-        whatever: snake
+    exclusions:
+        presets:
+            - comments
+            - common-false-positives
 
-
-  revive:
-    enable-all-rules: true
-    rules:
-      - name: unexported-return
-        disabled: true
-      - name: line-length-limit
-        disabled: true
-      - name: add-constant
-        disabled: true
-      - name: unhandled-error
-        disabled: true
-      - name: comment-spacings
-        disabled: true
-      - name: var-naming
-        disabled: true
-      - name: nested-structs
-        disabled: true
-      - name: max-public-structs
-        disabled: true
-      - name: function-length
-        disabled: true
-      - name: import-shadowing
-        disabled: true
-      - name: import-alias-naming
-        disabled: true
-      - name: empty-block
-        disabled: true
-      - name: confusing-naming
-        disabled: true
-      - name: exported
-        disabled: true
-      - name: unused-receiver
-        disabled: true
-      - name: indent-error-flow
-        disabled: true
-      - name:  early-return
-        disabled: true
-      - name:  use-any
-        disabled: true
-      - name: argument-limit
-        disabled: true
-      - name: cognitive-complexity
-        disabled: true
-      - name: cyclomatic
-        arguments:
-          - 15
-      - name: confusing-naming
-        disabled: true
-      - name: deep-exit
-        disabled: true
-      - name: get-return
-        disabled: true
-
-  gosimple:
-    checks:
-      - "all"
-      - "-S1008"
-
-  stylecheck:
-    checks:
-      - "all"
-      - "-ST1003" # Poorly chosen identifier. Like camel_case
-
-  nestif:
-    min-complexity: 7
-
-  cyclop:
-    # Default: 10
-    max-complexity: 15
-
-  gocritic:
-    enable-all: true
-    disabled-checks:
-      - hugeParam
-      - rangeValCopy
-      - importShadow
-
-  wsl:
-    allow-trailing-comment: true
-
-  reassign:
-    patterns:
-      - ".*"
+formatters:
+    enable:
+        - gci
+        - gofmt
+        - gofumpt
+        - goimports
+        #        - golines # сворачивает даже строки с функциями всего с одним аргументом
+        - swaggo
+    exclusions:
+        generated: lax
+        paths:
+            - third_party$
+            - builtin$
+            - examples$
 
 issues:
-  max-same-issues: 0
+    max-same-issues: 0
+
+run:
+    # The mode used to evaluate relative paths.
+    # It's used by exclusions, Go plugins, and some linters.
+    # The value can be:
+    # - `gomod`: the paths will be relative to the directory of the `go.mod` file.
+    # - `gitroot`: the paths will be relative to the git root (the parent directory of `.git`).
+    # - `cfg`: the paths will be relative to the configuration file.
+    # - `wd` (NOT recommended): the paths will be relative to the place where golangci-lint is run.
+    # Default: cfg
+    relative-path-mode: gomod

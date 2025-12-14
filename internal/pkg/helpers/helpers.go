@@ -10,7 +10,7 @@ const (
 )
 
 // GetFunctionName Возвращает имяПакета.ИмяФункции.
-func GetFunctionName(depthList ...int) string { //nolint:unused // helper func
+func GetFunctionName(depthList ...int) string {
 	var depth int
 
 	if depthList == nil {

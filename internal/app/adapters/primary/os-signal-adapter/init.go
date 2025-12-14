@@ -25,7 +25,7 @@ func (a *OsSignalAdapter) Start(ctx context.Context) error {
 
 		return err
 	case sig := <-osSignCh:
-		err := fmt.Errorf("\nПолучен сигнал [%s]\n", sig.String()) //nolint:stylecheck
+		err := fmt.Errorf("\nПолучен сигнал [%s]\n", sig.String())
 
 		return err
 	}
