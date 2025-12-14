@@ -1,20 +1,23 @@
 package app
 
 import (
+	"context"
 	"log/slog"
 
 	grpc_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/grpc-adapter"
 	http_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/http-adapter"
 	kafka_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/kafka-adapter-subscriber"
 	nats_adapter_subscriber "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/nats-adapter-subscriber"
+	os_signal_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/os-signal-adapter"
 	pprof_adapter "github.com/rostislaved/go-clean-architecture/internal/app/adapters/primary/pprof-adapter"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/entity5-gateway"
+	entity5_gateway "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/gateways/entity5-gateway"
 	kafka_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/kafka-adapter-publisher"
 	nats_adapter_publisher "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/nats-adapter-publisher"
-	"github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/entity1-repository"
+	entity1_repository "github.com/rostislaved/go-clean-architecture/internal/app/adapters/secondary/repositories/entity1-repository"
 	"github.com/rostislaved/go-clean-architecture/internal/app/application/usecases"
 	"github.com/rostislaved/go-clean-architecture/internal/app/config"
 	"github.com/rostislaved/go-clean-architecture/internal/pkg/postgres"
+	"github.com/rostislaved/graceful"
 )
 
 type App struct {
@@ -25,10 +28,15 @@ type App struct {
 	KafkaAdapterSubscriber *kafka_adapter_subscriber.KafkaAdapter
 }
 
-func New(l *slog.Logger, cfg config.Config) App {
+func New(l *slog.Logger) (App, error) {
+	cfg, err := config.New()
+	if err != nil {
+		return App{}, err
+	}
+
 	db, err := postgres.Pgx(l, cfg.Infrastructure.Databases.Postgres)
 	if err != nil {
-		panic(err)
+		return App{}, err
 	}
 
 	entity1Repository := entity1_repository.New(l, cfg.Adapters.Secondary.Entity1Config, db)
@@ -57,5 +65,23 @@ func New(l *slog.Logger, cfg config.Config) App {
 		PprofAdapter:           pprofAdapter,
 		NatsAdapterSubscriber:  natsAdapterSubscriber,
 		KafkaAdapterSubscriber: kafkaAdapter,
+	}, nil
+}
+
+func (a App) Start() error {
+	gr := graceful.New(
+		graceful.NewProcess(os_signal_adapter.New()),
+		graceful.NewProcess(a.HttpAdapter),
+		graceful.NewProcess(a.GrpcAdapter),
+		graceful.NewProcess(a.PprofAdapter),
+		graceful.NewProcess(a.NatsAdapterSubscriber),
+		graceful.NewProcess(a.KafkaAdapterSubscriber),
+	)
+
+	err := gr.Start(context.Background())
+	if err != nil {
+		return err
 	}
+
+	return nil
 }

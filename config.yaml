@@ -1,0 +1,76 @@
+---
+Application:
+  UpdateService:
+    UpdateInterval: '1m'
+Adapters:
+  Primary:
+    HttpAdapter:
+      Server:
+        Port: ':8080'
+      Router:
+        Shutdown:
+          Duration: 15
+        Timeout:
+          Duration: 60
+    KafkaAdapterSubscriber:
+      Host: 'KAFKA_HOST'
+      Topic: 'topic_name'
+      GroupID: 'gorup_name'
+    NatsAdapterSubscriber:
+      Connection:
+        Host: 'NATS_HOST'
+        ClusterID: ''
+        ClientID: ''
+        AllowMultipleClients: true
+        User: 'NATS_USER'
+        Password: 'NATS_PASSWORD'
+      Subscriber1:
+        Channel: ''
+        QueueGroup: ''
+        DurableName: ''
+        MaxInflight: 123
+        DeliverAllAvailable: true
+        AckWaitTimeout: 123
+  Secondary:
+    Databases:
+      Postgres:
+        Host: 'POSTGRES_HOST'
+        Port: 'POSTGRES_PORT'
+        Type: 'postgres'
+        Name: 'POSTGRES_NAME'
+        User: 'POSTGRES_USER'
+        Password: 'POSTGRES_PASSWORD'
+      Clickhouse:
+        Host: 'CLICKHOUSE_HOST'
+        Port: 'CLICKHOUSE_PORT'
+        Type: 'chhttp'
+        Name: 'CLICKHOUSE_NAME'
+        User: 'CLICKHOUSE_USER'
+        Password: 'CLICKHOUSE_PASSWORD'
+      Mongo:
+        Name: 'MONGO_NAME'
+        Host: 'MONGO_HOST'
+        User: 'MONGO_USER'
+        Password: 'MONGO_PASSWORD'
+    Gateways:
+      Entity5Gateway:
+        Host: 'http://example.com'
+        Endpoints:
+          Create:
+            Method: 'POST'
+            Path: '/api/v2/entity5'
+            Headers: {}
+          Get:
+            Method: 'GET'
+            Path: '/api/v1/entity5'
+            Headers: {}
+    NatsAdapterPublisher:
+      Connection:
+        Host: 'NATS_HOST'
+        ClusterID: ''
+        ClientID: ''
+        AllowMultipleClients: true
+        User: 'NATS_USER'
+        Password: 'NATS_PASSWORD'
+      Publisher1:
+        Channel: ''

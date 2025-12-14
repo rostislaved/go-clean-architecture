@@ -15,8 +15,8 @@ type Router struct {
 type Config struct {
 	Shutdown             shutdown
 	Timeout              timeout
-	AuthenticationConfig string `config:"envVar"`
-	AuthorizationConfig  string `config:"envVar"`
+	AuthenticationConfig string
+	AuthorizationConfig  string
 }
 
 type shutdown struct {

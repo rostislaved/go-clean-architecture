@@ -8,14 +8,9 @@ import (
 )
 
 type Config struct {
-	Info           Info
 	Application    Application
 	Adapters       Adapters
 	Infrastructure Infrastructure
-}
-type Info struct {
-	Name    string
-	Version string
 }
 
 type Application struct {

@@ -5,9 +5,8 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/segmentio/kafka-go"
-
 	"github.com/rostislaved/go-clean-architecture/internal/app/domain/entity1"
+	"github.com/segmentio/kafka-go"
 )
 
 func (a *KafkaAdapterPublisher) SendEntity1(ctx context.Context, entities entity1.Entity1) error {

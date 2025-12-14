@@ -7,7 +7,6 @@ import (
 
 	"github.com/ClickHouse/clickhouse-go/v2"
 	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
-
 	"github.com/rostislaved/go-clean-architecture/internal/pkg/helpers"
 )
 
@@ -32,11 +31,13 @@ func New(l *slog.Logger, cfg Config) driver.Conn {
 			},
 		},
 
-		Debugf: func(format string, v ...interface{}) {
-			fmt.Printf(format, v)
+		Debugf: func(format string, v ...any) {
+			s := fmt.Sprintf(format, v)
+
+			slog.Info(s)
 		},
 		TLS: &tls.Config{
-			InsecureSkipVerify: true,
+			InsecureSkipVerify: true, //nolint:gosec // ok
 		},
 	}
 
@@ -54,10 +55,10 @@ func New(l *slog.Logger, cfg Config) driver.Conn {
 
 type Config struct {
 	Type       string
-	Host       string `config:"envVar"`
-	Port       string `config:"envVar"`
-	User       string `config:"envVar"`
-	Password   string `config:"envVar"`
+	Host       string
+	Port       string
+	User       string
+	Password   string
 	Name       string
 	Procedures map[string]string
 }

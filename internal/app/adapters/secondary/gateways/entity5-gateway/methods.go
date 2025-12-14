@@ -32,12 +32,12 @@ func (prv *Entity5Gateway) Get(ctx context.Context, input struct{}) (entities []
 
 	resp, err := req.Send()
 	if err != nil {
-		return
+		return entities, err
 	}
 
 	err = providerhelpers.ValidateStatusCode(resp.StatusCode(), resp.Body())
 	if err != nil {
-		return
+		return entities, err
 	}
 
 	entities = response.ToEntity()
@@ -52,12 +52,10 @@ type (
 
 func (r ResponseGet) ToEntity() (entities []entity5.Entity5) {
 	// mapping
-
 	return entities
 }
 
 func toRequest(input struct{}) (request RequestGet) {
 	// mapping
-
 	return request
 }
