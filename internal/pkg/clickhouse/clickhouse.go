@@ -54,10 +54,10 @@ func New(l *slog.Logger, cfg Config) driver.Conn {
 
 type Config struct {
 	Type       string
-	Host       string `config:"envVar"`
-	Port       string `config:"envVar"`
-	User       string `config:"envVar"`
-	Password   string `config:"envVar"`
+	Host       string
+	Port       string
+	User       string
+	Password   string
 	Name       string
 	Procedures map[string]string
 }

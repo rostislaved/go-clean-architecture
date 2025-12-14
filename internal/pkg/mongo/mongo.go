@@ -46,7 +46,7 @@ func New(l *slog.Logger, cfg Config) *mongo.Client {
 
 type Config struct {
 	Name     string
-	Host     string `config:"envVar"`
-	User     string `config:"envVar"`
-	Password string `config:"envVar"`
+	Host     string
+	User     string
+	Password string
 }

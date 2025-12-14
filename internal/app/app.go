@@ -30,7 +30,10 @@ type App struct {
 }
 
 func New(l *slog.Logger) (App, error) {
-	cfg := config.New()
+	cfg, err := config.New()
+	if err != nil {
+		return App{}, err
+	}
 
 	db, err := postgres.Pgx(l, cfg.Infrastructure.Databases.Postgres)
 	if err != nil {

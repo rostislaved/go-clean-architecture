@@ -11,11 +11,11 @@ func postgresConnectionString(host, port, user, password, name, timeZone string)
 }
 
 type Config struct {
-	Host     string `config:"envVar"`
-	Port     string `config:"envVar"`
+	Host     string
+	Port     string
 	Name     string
-	User     string `config:"envVar"`
-	Password string `config:"envVar"`
+	User     string
+	Password string
 	TimeZone string
 
 	MaxOpenConns    *int

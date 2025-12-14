@@ -11,12 +11,12 @@ type Config struct {
 }
 
 type Connection struct {
-	Host                 string `config:"envVar"`
+	Host                 string
 	ClusterID            string
 	ClientID             string
 	AllowMultipleClients bool
-	User                 string `config:"envVar"`
-	Password             string `config:"envVar"`
+	User                 string
+	Password             string
 }
 
 type Subscriber struct {
